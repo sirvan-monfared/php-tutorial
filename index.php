@@ -35,7 +35,7 @@
         ],
         [
             "title" => "Harry Potter and Prisoner of Azkaban",
-            "author" => "J.K Rolling",
+            "author" => "Sirvan Monfared",
             "releaseYear" => 1999,
             "genres" => "Novel, Children's literature, Fantasy Fiction, High fantasy",
             "characters" => "Harry Potter, Hermione Granger, Lord Voldemort, Albus Dambledor"
@@ -49,8 +49,8 @@
         ],
         [
             "title" => "Harry Potter and the Order Of Pheonix",
-            "author" => "J.K Rolling",
-            "releaseYear" => 2003,
+            "author" => "Sirvan Monfared",
+            "releaseYear" => 2005,
             "genres" => "Novel, Children's literature, Fantasy Fiction, High fantasy",
             "characters" => "Harry Potter, Hermione Granger, Lord Voldemort, Albus Dambledor"
         ],
@@ -69,9 +69,26 @@
             "characters" => "Harry Potter, Hermione Granger, Lord Voldemort, Albus Dambledor"
         ]
     ];
+
+    // function filter($items, $fn) {
+    //     $filteredItems = [];
+
+    //     foreach($items as $item) {
+    //         if ($fn($item)) {
+    //             $filteredItems[] = $item;
+    //         }
+    //     }
+
+    //     return $filteredItems;
+    // }
+
+
+    $filtered = array_filter($books, function($book) {
+        return $book['releaseYear'] >= 2000;
+    });
     ?>
 
-    <?php foreach ($books as $book) : ?>
+    <?php foreach ($filtered as $book) : ?>
         <ul>
             <li><strong>title: </strong><?= $book['title'] ?></li>
             <li><strong>author:</strong> <?= $book['author'] ?></li>
