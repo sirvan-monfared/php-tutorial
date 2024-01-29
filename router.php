@@ -5,7 +5,9 @@ $url = currentUrl();
 $routes = [
     '/'         => './controllers/index.php',
     '/about-us' => './controllers/about.php',
-    '/contact'  => './controllers/contact.php'
+    '/contact'  => './controllers/contact.php',
+    '/post'     => './controllers/post.php'
+    ///post?id=2
 ];
 
 mapRoute($url, $routes);

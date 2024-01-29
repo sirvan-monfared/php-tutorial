@@ -1,7 +1,10 @@
 <?php
 
 function currentUrl() {
-    return substr($_SERVER['REQUEST_URI'], strlen("/php-tutorial"));
+
+    $url = parse_url($_SERVER['REQUEST_URI']);
+    
+    return substr($url['path'], strlen("/php-tutorial"));
 }
 
 function isUrl($url) {
