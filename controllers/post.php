@@ -3,8 +3,8 @@ $title = "Post";
 
 $id = $_GET['id'];
 
-$query = "SELECT * FROM `posts` WHERE id=?";
+$db = new Database();
 
-$post = fetchOne($query, [$id]);
+$post = $db->prepare("SELECT * FROM `posts` WHERE id=:id", ['id' => $id])->fetch();
 
 require("views/post.view.php");

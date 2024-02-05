@@ -1,10 +1,23 @@
 <?php
-// $connection = mysqli_connect('localhost', 'root', '123', 'tutorial_php');
 
-// mysqli_set_charset($connection, 'utf8mb4');
+class Database
+{
+    public $pdo;
 
-$dsn = "mysql:host=localhost;dbname=tutorial_php;charset=utf8mb4";
+    public function __construct()
+    {
+        $dsn = "mysql:host=localhost;dbname=tutorial_php;charset=utf8mb4";
 
-$pdo = new PDO($dsn, 'root', '123');
+        $this->pdo = new PDO($dsn, 'root', '123', [
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+        ]);
+    }
 
+    public function prepare($sql, $params = [])
+    {
+        $statement = $this->pdo->prepare($sql);
+        $statement->execute($params);
 
+        return $statement;
+    }
+}

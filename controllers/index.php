@@ -1,6 +1,7 @@
 <?php
 $title = "Home";
 
-$posts = fetchAll("SELECT * FROM `posts`");
+$db = new Database();
+$posts = $db->prepare("SELECT * FROM `posts`")->fetchAll();
 
 require("./views/index.view.php");
