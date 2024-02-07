@@ -12,11 +12,11 @@ $note = $db->prepare("SELECT * FROM `notes` WHERE id=:id", [
 ])->fetch();
 
 if (! $note) {
-    redirectTo('/not-found');
+    abort();
 }
 
 if (intval($note['user_id']) !== $user_id)  {
-    redirectTo('/not-authorized');
+    abort(403);
 }
 
 require("views/note.view.php");

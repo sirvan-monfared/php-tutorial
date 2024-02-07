@@ -23,3 +23,10 @@ function mapRoute($url, $routes)
         redirectTo();
     }
 }
+
+function abort($code = 404) {
+    http_response_code($code);
+
+    require("views/codes/{$code}.view.php");
+    die();
+}
