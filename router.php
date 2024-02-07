@@ -9,6 +9,8 @@ $routes = [
     '/post'     => './controllers/post.php',
     '/notes'    => './controllers/notes.php',
     '/note'     => './controllers/note.php',
+    '/not-found' => './controllers/not-found.php',
+    '/not-authorized' => './controllers/not-authorized.php',
 ];
 
 mapRoute($url, $routes);
