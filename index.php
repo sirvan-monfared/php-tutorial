@@ -1,5 +1,5 @@
 <?php
-define('PROJECT_URL', '/php-tutorial/');
+define('PROJECT_URL', '/');
 
 require_once("./Database.php");
 require("./functions.php");

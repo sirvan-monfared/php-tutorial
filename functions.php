@@ -4,7 +4,7 @@ function currentUrl() {
 
     $url = parse_url($_SERVER['REQUEST_URI']);
     
-    return substr($url['path'], strlen("/php-tutorial"));
+    return $url['path'];
 }
 
 function isUrl($url) {

@@ -6,8 +6,9 @@ $routes = [
     '/'         => './controllers/index.php',
     '/about-us' => './controllers/about.php',
     '/contact'  => './controllers/contact.php',
-    '/post'     => './controllers/post.php'
-    ///post?id=2
+    '/post'     => './controllers/post.php',
+    '/notes'    => './controllers/notes.php',
+    '/note'     => './controllers/note.php',
 ];
 
 mapRoute($url, $routes);
