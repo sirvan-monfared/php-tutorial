@@ -23,3 +23,14 @@ function redirectTo($url = PROJECT_URL) {
     header("location: $url");
     exit();
 }
+
+function e($value) {
+    return htmlspecialchars($value);
+}
+
+function authorize($condition, $status = Request::ACCES_DENIED)
+{
+    if (! $condition) {
+        abort($status);
+    }
+}

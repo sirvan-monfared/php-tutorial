@@ -3,6 +3,7 @@
 class Database
 {
     public $pdo;
+    private $statement;
 
     public function __construct()
     {
@@ -15,9 +16,30 @@ class Database
 
     public function prepare($sql, $params = [])
     {
-        $statement = $this->pdo->prepare($sql);
-        $statement->execute($params);
+        $this->statement = $this->pdo->prepare($sql);
+        $this->statement->execute($params);
 
-        return $statement;
+        return $this;
+    }
+
+    public function all() 
+    {
+        return $this->statement->fetchAll();
+    }
+
+    public function find()
+    {
+        return $this->statement->fetch();
+    }
+
+    public function findOrFail() 
+    {
+        $item = $this->find();
+
+        if (! $item) {
+            abort();
+        }
+
+        return $item;
     }
 }

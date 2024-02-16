@@ -9,14 +9,8 @@ $user_id = 1;
 
 $note = $db->prepare("SELECT * FROM `notes` WHERE id=:id", [
     'id' => $id
-])->fetch();
+])->findOrFail();
 
-if (! $note) {
-    abort();
-}
-
-if (intval($note['user_id']) !== $user_id)  {
-    abort(403);
-}
+authorize(intval($note['user_id']) === $user_id);
 
 require("views/note.view.php");
