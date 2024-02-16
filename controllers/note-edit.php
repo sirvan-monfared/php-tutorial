@@ -1,6 +1,16 @@
 <?php
-$title = "Create a Note";
+$title = "Edit a Note";
 
+$id = $_GET['id'];
+
+$user_id = 1;
+
+$db = new Database();
+$note = $db->prepare("SELECT * FROM `notes` WHERE id=:id", [
+    'id' => $id
+])->findOrFail();
+
+authorize(intval($note['user_id']) === $user_id);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -15,13 +25,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (empty($errors)) {
-        $db = new Database();
-        $db->prepare("INSERT INTO `notes` (title, body, user_id) VALUES (:title, :body, :user_id)", [
+        $db->prepare("UPDATE `notes` SET title=:title, body=:body WHERE id=:id", [
             'title' => $_POST['title'],
             'body' => $_POST['body'],
-            'user_id' => 1
+            'id' => $note['id']
         ]);
+
+        redirectTo("/notes/edit?id={$note['id']}");
     }
 }
 
-require('views/note-create.view.php');
+require('views/note-edit.view.php');

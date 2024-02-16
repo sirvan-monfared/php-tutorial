@@ -15,6 +15,10 @@
             <div class="text-lg text-gray-700 leading-smooth">
                 <?= e($note['body']) ?>
             </div>
+
+            <div class="flex justify-end">
+                <a href="/notes/edit?id=<?= $note['id'] ?>" class="bg-blue-500 text-white text-xs py-1 px-2">Edit</a>
+            </div>
         </article>
         
     </div>
