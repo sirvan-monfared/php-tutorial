@@ -9,6 +9,7 @@ return [
     '/note'     => './controllers/note.php',
     '/notes/create' => './controllers/note-create.php',
     '/notes/edit' => './controllers/note-edit.php',
+    '/notes/delete' => './controllers/note-delete.php',
     '/not-found' => './controllers/not-found.php',
     '/not-authorized' => './controllers/not-authorized.php',
 ];

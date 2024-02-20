@@ -16,9 +16,17 @@
                 <?= e($note['body']) ?>
             </div>
 
-            <div class="flex justify-end">
+            <div class="flex justify-between">
+                
+
+                <form method="POST" action="/notes/delete?id=<?= $note['id'] ?>">
+                    <button class="bg-red-500 text-white text-xs py-1 px-2">Delete</button>    
+                </form>
+                
                 <a href="/notes/edit?id=<?= $note['id'] ?>" class="bg-blue-500 text-white text-xs py-1 px-2">Edit</a>
             </div>
+
+
         </article>
         
     </div>
