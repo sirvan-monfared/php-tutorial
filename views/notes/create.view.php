@@ -1,6 +1,7 @@
-<?php require("partials/_header.php") ?>
-<?php require("partials/_nav.php") ?>
-<?php require("partials/_hero.php") ?>
+<?php require("views/partials/_header.php") ?>
+<?php require("views/partials/_nav.php") ?>
+<?php require("views/partials/_hero.php") ?>
+
 <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
     <form method="POST" action="/notes/create">
         <div class="space-y-12">
@@ -40,4 +41,4 @@
     </form>
 </div>
 
-<?php require("partials/_footer.php") ?>
+<?php require("views/partials/_footer.php") ?>

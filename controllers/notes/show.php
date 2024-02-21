@@ -13,4 +13,4 @@ $note = $db->prepare("SELECT * FROM `notes` WHERE id=:id", [
 
 authorize(intval($note['user_id']) === $user_id);
 
-require("views/note.view.php");
+require("views/notes/show.view.php");

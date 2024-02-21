@@ -35,4 +35,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-require('views/note-edit.view.php');
+require('views/notes/edit.view.php');

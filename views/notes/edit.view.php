@@ -1,6 +1,7 @@
-<?php require("partials/_header.php") ?>
-<?php require("partials/_nav.php") ?>
-<?php require("partials/_hero.php") ?>
+<?php require("views/partials/_header.php") ?>
+<?php require("views/partials/_nav.php") ?>
+<?php require("views/partials/_hero.php") ?>
+
 <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
     <form method="POST" action="/notes/edit?id=<?= $note['id'] ?>">
         <div class="space-y-12">
@@ -35,10 +36,10 @@
         </div>
 
         <div class="mt-6 flex items-center justify-end gap-x-6">
-            <a class="bg-gray-500 text-white px-3 py-2 rounded-md text-sm" href="/note?id=<?= $note['id'] ?>">Cancel</a>
+            <a class="bg-gray-500 text-white px-3 py-2 rounded-md text-sm" href="/notes/show?id=<?= $note['id'] ?>">Cancel</a>
             <button type="submit" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Update</button>
         </div>
     </form>
 </div>
 
-<?php require("partials/_footer.php") ?>
+<?php require("views/partials/_footer.php") ?>

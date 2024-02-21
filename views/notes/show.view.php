@@ -1,11 +1,8 @@
-<?php require("partials/_header.php") ?>
-<?php require("partials/_nav.php") ?>
-<?php require("partials/_hero.php") ?>
+<?php require("views/partials/_header.php") ?>
+<?php require("views/partials/_nav.php") ?>
+<?php require("views/partials/_hero.php") ?>
 
 <main>
-
-
-
     <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
 
         <article class="bg-white shadow-md p-5 flex flex-col gap-4">
@@ -19,7 +16,7 @@
             <div class="flex justify-between">
                 
 
-                <form method="POST" action="/notes/delete?id=<?= $note['id'] ?>">
+                <form method="POST" action="/notes/destroy?id=<?= $note['id'] ?>">
                     <button class="bg-red-500 text-white text-xs py-1 px-2">Delete</button>    
                 </form>
                 
@@ -32,5 +29,5 @@
     </div>
 </main>
 
-<?php require("partials/_footer.php") ?>
+<?php require("views/partials/_footer.php") ?>
     
