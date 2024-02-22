@@ -1,10 +1,9 @@
 <?php
 $title = "Create a Note";
 
+$errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-    $errors = [];
 
     if (! Validator::string($_POST['title'], 1, 200)) {
         $errors['title'] = "a title of a max of 200 characters is required";
@@ -24,4 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-require('views/note-create.view.php');
+view('notes/create.view.php', [
+    'title' => 'Create a Note',
+    'errors' => $errors
+]);

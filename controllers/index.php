@@ -1,7 +1,8 @@
 <?php
-$title = "Home";
-
 $db = new Database();
 $posts = $db->prepare("SELECT * FROM `posts`")->all();
 
-require("./views/index.view.php");
+view('index.view.php', [
+    'title' => 'Home',
+    'posts' => $posts
+]);

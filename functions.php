@@ -19,7 +19,7 @@ function dd($var) {
     die();
 }
 
-function redirectTo($url = PROJECT_URL) {
+function redirectTo($url = '/') {
     header("location: $url");
     exit();
 }
@@ -33,4 +33,14 @@ function authorize($condition, $status = Request::ACCES_DENIED)
     if (! $condition) {
         abort($status);
     }
+}
+
+function base_path($path) {
+    return BASE_PATH . $path;
+}
+
+function view($path, $params = []) {
+    extract($params);
+
+    require base_path('views/' . $path);
 }

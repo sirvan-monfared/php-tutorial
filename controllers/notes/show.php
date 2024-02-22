@@ -1,6 +1,4 @@
 <?php
-$title = "Note";
-
 $id = $_GET['id'];
 
 $db = new Database();
@@ -13,4 +11,7 @@ $note = $db->prepare("SELECT * FROM `notes` WHERE id=:id", [
 
 authorize(intval($note['user_id']) === $user_id);
 
-require("views/notes/show.view.php");
+view('notes/show.view.php', [
+    'title' => 'Note',
+    'note' => $note
+]);

@@ -1,9 +1,9 @@
 <?php
-$title = "Edit a Note";
-
 $id = $_GET['id'];
 
 $user_id = 1;
+
+$errors = [];
 
 $db = new Database();
 $note = $db->prepare("SELECT * FROM `notes` WHERE id=:id", [
@@ -12,9 +12,9 @@ $note = $db->prepare("SELECT * FROM `notes` WHERE id=:id", [
 
 authorize(intval($note['user_id']) === $user_id);
 
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $errors = [];
 
     if (! Validator::string($_POST['title'], 1, 200)) {
         $errors['title'] = "a title of a max of 200 characters is required";
@@ -35,4 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-require('views/notes/edit.view.php');
+view('notes/edit.view.php', [
+    'title' => 'Edit a Note',
+    'note' => $note,
+    'errors' => $errors
+]);

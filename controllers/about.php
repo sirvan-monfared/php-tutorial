@@ -1,5 +1,5 @@
 <?php
 
-$title = "About";
-
-require("views/about.view.php");
+view('about.view.php', [
+    'title' => 'About'
+]);
