@@ -14,7 +14,7 @@ function mapRoute($url, $routes)
     }
 }
 
-function abort($code = Request::NOT_FOUND) {
+function abort($code = Core\Request::NOT_FOUND) {
     http_response_code($code);
 
     view("codes/{$code}.view.php");

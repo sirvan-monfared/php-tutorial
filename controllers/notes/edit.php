@@ -5,7 +5,7 @@ $user_id = 1;
 
 $errors = [];
 
-$db = new Database();
+$db = new Core\Database();
 $note = $db->prepare("SELECT * FROM `notes` WHERE id=:id", [
     'id' => $id
 ])->findOrFail();
@@ -16,11 +16,11 @@ authorize(intval($note['user_id']) === $user_id);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
-    if (! Validator::string($_POST['title'], 1, 200)) {
+    if (! Core\Validator::string($_POST['title'], 1, 200)) {
         $errors['title'] = "a title of a max of 200 characters is required";
     }
 
-    if (! Validator::string($_POST['body'], 1, 1000)) {
+    if (! Core\Validator::string($_POST['body'], 1, 1000)) {
         $errors['body'] = "a body of a max of 1000 characters is required";
     }
 

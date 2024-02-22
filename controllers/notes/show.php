@@ -1,7 +1,7 @@
 <?php
 $id = $_GET['id'];
 
-$db = new Database();
+$db = new Core\Database();
 
 $user_id = 1;
 

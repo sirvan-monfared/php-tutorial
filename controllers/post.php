@@ -1,7 +1,7 @@
 <?php
 $id = $_GET['id'];
 
-$db = new Database();
+$db = new Core\Database();
 
 $post = $db->prepare("SELECT * FROM `posts` WHERE id=:id", ['id' => $id])->findOrFail();
 

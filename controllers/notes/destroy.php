@@ -5,7 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 $user_id = 1;
 
-$db = new Database();
+$db = new Core\Database();
 $note = $db->prepare("SELECT * FROM `notes` WHERE id=:id", [
     'id' => $_GET['id']
 ])->findOrFail();

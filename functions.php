@@ -28,7 +28,7 @@ function e($value) {
     return htmlspecialchars($value);
 }
 
-function authorize($condition, $status = Request::ACCES_DENIED)
+function authorize($condition, $status = Core\Request::ACCES_DENIED)
 {
     if (! $condition) {
         abort($status);
