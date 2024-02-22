@@ -1,5 +1,5 @@
 <?php
-$db = new Database();
+$db = new Core\Database();
 $posts = $db->prepare("SELECT * FROM `posts`")->all();
 
 view('index.view.php', [
