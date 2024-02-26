@@ -1,8 +1,4 @@
 <?php 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    abort();
-}
-
 $user_id = 1;
 
 $db = new Core\Database();
