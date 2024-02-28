@@ -16,7 +16,7 @@
             <div class="flex justify-between">
                 
 
-                <form method="POST" action="/notes/destroy?id=<?= $note['id'] ?>">
+                <form method="POST" action="/notes/show?id=<?= $note['id'] ?>">
                     <input type="hidden" name="_method" value="DELETE">
 
                     <button class="bg-red-500 text-white text-xs py-1 px-2">Delete</button>    
