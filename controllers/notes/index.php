@@ -1,6 +1,4 @@
 <?php
-
-
 $user_id = 1;
 
 $db = new Core\Database();
