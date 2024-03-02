@@ -28,8 +28,6 @@
                     <!-- Profile dropdown -->
                     <div class="relative ml-3">
                         
-                    
-                    
                         <div>
 
                             <?php if (isset($_SESSION['user']) ?? false) : ?>

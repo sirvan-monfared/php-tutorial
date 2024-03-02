@@ -42,7 +42,7 @@ if ($user) {
 // 2-2: if no user found -> save a user to datbase , login and redirect
 $db->prepare('INSERT INTO `users` (`email`, `password`, `name`) VALUES (:email, :password, :name)', [
     'email' => $email,
-    'password' => $password,
+    'password' => password_hash($password, PASSWORD_BCRYPT),
     'name' => ''
 ]);
 
