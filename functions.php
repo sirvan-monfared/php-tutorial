@@ -1,5 +1,7 @@
 <?php
 
+use Core\Request;
+
 function currentUrl() {
 
     $url = parse_url($_SERVER['REQUEST_URI']);
@@ -43,4 +45,11 @@ function view($path, $params = []) {
     extract($params);
 
     require base_path('views/' . $path);
+}
+
+function abort($code = Request::NOT_FOUND) {
+    http_response_code($code);
+
+    view("codes/{$code}.view.php");
+    die();
 }
