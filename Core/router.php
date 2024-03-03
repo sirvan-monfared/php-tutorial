@@ -2,6 +2,8 @@
 
 namespace Core;
 
+use Core\Middlewares\Middleware;
+
 class Router {
 
     public $routes = [];
@@ -50,17 +52,11 @@ class Router {
 
     public function route($url, $method) 
     {
+
         foreach($this->routes as $route) {
             if ($url === $route['uri'] && $method === $route['method']) {
 
-
-                if ($route['middleware']) {
-                    $class = "Core\\Middlewares\\".ucwords($route['middleware']);
-
-                    if(file_exists(base_path(str_replace('\\', '/', $class)) . '.php')) {
-                        (new $class)->handle();
-                    };
-                }
+                Middleware::handle($route['middleware']);
 
                 return require base_path($route['controller']);
             }
@@ -73,21 +69,4 @@ class Router {
     public function abort($code = Request::NOT_FOUND) {
         abort($code);
     }
-}
-
-
-// function mapRoute($url, $routes)
-// {
-//     if (array_key_exists($url, $routes)) {
-//         require base_path($routes[$url]);
-//     } else {
-//         redirectTo();
-//     }
-// }
-
-function abort($code = Core\Request::NOT_FOUND) {
-    http_response_code($code);
-
-    view("codes/{$code}.view.php");
-    die();
 }

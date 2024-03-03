@@ -53,3 +53,11 @@ function abort($code = Request::NOT_FOUND) {
     view("codes/{$code}.view.php");
     die();
 }
+
+function login($user) {
+    $_SESSION['user'] = [
+        'email' => $user['email']
+    ];
+
+    session_regenerate_id(true);
+}

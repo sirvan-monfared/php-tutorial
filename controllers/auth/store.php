@@ -47,8 +47,8 @@ $db->prepare('INSERT INTO `users` (`email`, `password`, `name`) VALUES (:email, 
 ]);
 
 
-$_SESSION['user'] = [
+login([
     'email' => $email
-];
+]);
 
 redirectTo('/');
