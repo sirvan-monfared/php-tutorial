@@ -20,5 +20,6 @@ $router->post('/register', 'controllers/auth/store.php')->only('guest');
 
 $router->get('/login', 'controllers/auth/login_form.php')->only('guest');
 $router->post('/login', 'controllers/auth/login.php')->only('guest');
+$router->delete('/login', 'controllers/auth/logout.php')->only('auth');
 
 
