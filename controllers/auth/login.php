@@ -19,10 +19,13 @@ if (! Validator::string($password)) {
 }
 
 if (! empty($errors)) {
-    return view('auth/login_form.view.php', [
-        'title' => 'Login',
-        'errors' => $errors
-    ]);
+    $_SESSION['_flash']['errors'] = $errors;
+
+    redirectTo('/login');
+    // return view('auth/login_form.view.php', [
+    //     'title' => 'Login',
+    //     'errors' => $errors
+    // ]);
 }
 
 
@@ -39,13 +42,14 @@ if ($user && password_verify($password, $user['password'])) {
     redirectTo('/');
 }
 
+redirectTo('/login');
 
-return view('auth/login_form.view.php', [
-    'title' => 'Login',
-    'errors' => [
-        'email' => 'Sorry but we couldn\'t find a user with provided credentials'
-    ]
-]);
+// return view('auth/login_form.view.php', [
+//     'title' => 'Login',
+//     'errors' => [
+//         'email' => 'Sorry but we couldn\'t find a user with provided credentials'
+//     ]
+// ]);
 
 
 

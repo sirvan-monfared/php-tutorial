@@ -23,3 +23,5 @@ require(base_path('routes.php'));
 $method = isset($_POST['_method']) ? $_POST['_method'] : $_SERVER['REQUEST_METHOD'];
 
 $router->route($url, $method);
+
+unset($_SESSION['_flash']);
