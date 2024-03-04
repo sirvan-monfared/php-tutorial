@@ -1,6 +1,7 @@
 <?php
 
 use Core\Database;
+use Core\Session;
 use Core\Validator;
 
 $email = $_POST['email'];
@@ -19,13 +20,10 @@ if (! Validator::string($password)) {
 }
 
 if (! empty($errors)) {
-    $_SESSION['_flash']['errors'] = $errors;
+
+    Session::flash('errors', $errors);
 
     redirectTo('/login');
-    // return view('auth/login_form.view.php', [
-    //     'title' => 'Login',
-    //     'errors' => $errors
-    // ]);
 }
 
 
@@ -42,16 +40,12 @@ if ($user && password_verify($password, $user['password'])) {
     redirectTo('/');
 }
 
+
+Session::flash('errors', [
+    'email' => 'Sorry but we couldn\'t find a user with provided credentials'
+]);
+
 redirectTo('/login');
-
-// return view('auth/login_form.view.php', [
-//     'title' => 'Login',
-//     'errors' => [
-//         'email' => 'Sorry but we couldn\'t find a user with provided credentials'
-//     ]
-// ]);
-
-
 
 
 
