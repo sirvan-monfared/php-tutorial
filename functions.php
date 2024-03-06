@@ -63,16 +63,7 @@ function abort($code = Request::NOT_FOUND)
     die();
 }
 
-function login($user)
+function old($key, $default = '')
 {
-    $_SESSION['user'] = [
-        'email' => $user['email']
-    ];
-
-    session_regenerate_id(true);
-}
-
-function logout()
-{
-    Session::destroy();
+    return Session::get('old')[$key] ?? $default;
 }

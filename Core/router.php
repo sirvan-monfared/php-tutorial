@@ -58,7 +58,7 @@ class Router {
 
                 Middleware::handle($route['middleware']);
 
-                return require base_path($route['controller']);
+                return require base_path('Http/controllers/'. $route['controller']);
             }
         }
 
