@@ -1,10 +1,15 @@
 <?php
-function myInfo(string $name, int $age) {
-
-    return "Your name is {$name} and your age is {$age}";
-}
-
-echo myInfo(age: 25, name: 'sirvan');
+$actors = ['harry', 'hermione', 'ron', 'albus dumbledor'];
 
 
-setcookie('authorization', domain: "https://laraplus.ir");
+$limit = 4;
+// $filtered = array_filter($actors, function($item) use ($limit) {
+//     return strlen($item) > $limit;
+// });
+
+// $filtered = array_filter($actors, fn($item) => strlen($item) > $limit);
+
+
+$filtered = array_filter($actors, fn($item) => 436);
+
+print_r($filtered);
