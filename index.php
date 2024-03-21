@@ -1,9 +1,10 @@
 <?php
-function sum(string $text, int|float ...$numbers) {
+function myInfo(string $name, int $age) {
 
-    return $text . ' ' . array_sum($numbers);
-
+    return "Your name is {$name} and your age is {$age}";
 }
 
-echo sum('Total Sum of these numbers are:', 3, 5, 8, 10, 20);
+echo myInfo(age: 25, name: 'sirvan');
 
+
+setcookie('authorization', domain: "https://laraplus.ir");
