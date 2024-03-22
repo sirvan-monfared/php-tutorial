@@ -1,32 +1,12 @@
 <?php
-declare(strict_types=1);
+date_default_timezone_set('Asia/Tehran');
 
-function getMyName(string $name) {
-    
-    $dsn = "mysql:host=localhost;dbname=tutorial_php;charset=utf8mb4";
+echo date('Y--m H') . "<br>";
 
-    $pdo = new PDO($dsn, 'root', '1234', [
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-    ]);
+$timestamp = time() + (24 * 60 * 60); //timestamp
 
-    echo $name;
-}
+echo date("Y/m/d H:i:s", $timestamp) . "<br>";
 
+$ti = mktime(1, 2, 3, 4, 5, 2006);
 
-try {
-    echo 1 . "<br>";
-    getMyName('235325');
-    echo 2 . "<br>";
-} catch(ArgumentCountError $e) {
-    echo "an ArgumentCountError accoured <br>" . $e->getMessage() . "<br>";
-} catch(TypeError $e) {
-    echo "an TypeError accoured <br>" . $e->getMessage() . "<br>";
-} catch(Error $e) {
-    echo "an General Error accoured <br>" . $e->getMessage() . "<br>";
-} catch(PDOException $e) {
-    echo "exception in connecting to data base <br>" . $e->getMessage() . "<br>";
-} catch (Exception $e) {
-    echo "general exception in connecting to data base <br>" . $e->getMessage() . "<br>";
-}
-
-echo "hey salam";
+echo date('Y/m/d', $ti);
