@@ -1,15 +1,20 @@
 <?php
-$actors = ['harry', 'hermione', 'ron', 'albus dumbledor'];
 
+const BASE_PATH = __DIR__ . '/';
 
-$limit = 4;
-// $filtered = array_filter($actors, function($item) use ($limit) {
-//     return strlen($item) > $limit;
-// });
+// if(! file_exists(BASE_PATH. 'list.txt')) {
+    // fopen(BASE_PATH . 'list.txt', 'w');
+    // echo filesize(BASE_PATH . 'list.txt');
+    // unlink(BASE_PATH . 'list.txt');
 
-// $filtered = array_filter($actors, fn($item) => strlen($item) > $limit);
+// }
 
+// file_put_contents(BASE_PATH. 'list.txt', 'Welcome To My file');
+// echo file_get_contents(BASE_PATH. 'list.txt');
 
-$filtered = array_filter($actors, fn($item) => 436);
+// mkdir(BASE_PATH . 'sirvan');
+// rename(BASE_PATH . 'list.txt', BASE_PATH . 'sirvan/list2.txt');
 
-print_r($filtered);
+$files = glob(BASE_PATH . 'sirvan/fsaf.csv');
+
+print_r($files);
