@@ -1,20 +1,32 @@
 <?php
+declare(strict_types=1);
 
-const BASE_PATH = __DIR__ . '/';
+function getMyName(string $name) {
+    
+    $dsn = "mysql:host=localhost;dbname=tutorial_php;charset=utf8mb4";
 
-// if(! file_exists(BASE_PATH. 'list.txt')) {
-    // fopen(BASE_PATH . 'list.txt', 'w');
-    // echo filesize(BASE_PATH . 'list.txt');
-    // unlink(BASE_PATH . 'list.txt');
+    $pdo = new PDO($dsn, 'root', '1234', [
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+    ]);
 
-// }
+    echo $name;
+}
 
-// file_put_contents(BASE_PATH. 'list.txt', 'Welcome To My file');
-// echo file_get_contents(BASE_PATH. 'list.txt');
 
-// mkdir(BASE_PATH . 'sirvan');
-// rename(BASE_PATH . 'list.txt', BASE_PATH . 'sirvan/list2.txt');
+try {
+    echo 1 . "<br>";
+    getMyName('235325');
+    echo 2 . "<br>";
+} catch(ArgumentCountError $e) {
+    echo "an ArgumentCountError accoured <br>" . $e->getMessage() . "<br>";
+} catch(TypeError $e) {
+    echo "an TypeError accoured <br>" . $e->getMessage() . "<br>";
+} catch(Error $e) {
+    echo "an General Error accoured <br>" . $e->getMessage() . "<br>";
+} catch(PDOException $e) {
+    echo "exception in connecting to data base <br>" . $e->getMessage() . "<br>";
+} catch (Exception $e) {
+    echo "general exception in connecting to data base <br>" . $e->getMessage() . "<br>";
+}
 
-$files = glob(BASE_PATH . 'sirvan/fsaf.csv');
-
-print_r($files);
+echo "hey salam";
