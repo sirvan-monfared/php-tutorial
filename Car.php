@@ -1,32 +1,20 @@
-<?php 
+<?php
+
 class Car {
-    public $color;
-    public $model;
+    public $color = 'red';
+    public $name = 'car';
     public $gear;
-    public $oil;
-    public $gas;
-    public $material;
-    public $gearMaterial;
-    public $tireElasticity;
-    public $brakePercision;
+    protected $tiresCount = 4;
 
-    public function start() {
-        $this->igniteEngine();
-        $this->pumpOil();
-        $this->pumpGas();
-        $this->handleElectricity();
-        $this->moveTire();
-        $this->moveBody();
+    public function move() {
+        echo "{$this->name} is Moving...";
     }
-    
-    public function accelerate() {}
-    public function brake() {}
 
+    public function brake() {
+        echo "Car is stopped...";
+    }
 
-    private function igniteEngine() {}
-    private function pumpOil() {}
-    private function pumpGas() {}
-    private function moveTires() {}
-    private function Radiator() {}
-    private function waterHeat() {}
+    public function tiresStatus() {
+        echo "This car has {$this->tiresCount} Tires and all of them are healthy";
+    }
 }
