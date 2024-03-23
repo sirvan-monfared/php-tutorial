@@ -1,12 +1,35 @@
 <?php
-date_default_timezone_set('Asia/Tehran');
+/*-------- 4 Pillars of OOP ---------*/
 
-echo date('Y--m H') . "<br>";
+// 1. Encapsulation
+// 1. Public Interface (API)
+// 2. Internal Methods and properties (Pivate)
+require('BankAccount.php');
 
-$timestamp = time() + (24 * 60 * 60); //timestamp
+$account = new BankAccount();
+// $account->password = '123456789';
+// $account->login('123456789');
+$account->getLoan(50000);
 
-echo date("Y/m/d H:i:s", $timestamp) . "<br>";
+$account->getBalance();
 
-$ti = mktime(1, 2, 3, 4, 5, 2006);
+$account->setUsername('sirvan');
 
-echo date('Y/m/d', $ti);
+
+
+// 2. Abstraction
+
+
+
+
+
+
+// 3. Inheritance
+
+
+
+
+
+
+
+// 4. Polymorphism
