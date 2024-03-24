@@ -1,6 +1,7 @@
 <?php
 class User {
     public $age;
+    public $fullName;
     // constructor property promotion
     public function __construct(
         public string $name, 
@@ -10,11 +11,28 @@ class User {
     }
 
     public function fullName() {
-        return "{$this->name} {$this->lastName}";
+        $this->fullName = "{$this->name} {$this->lastName}";
+
+        return null;
+    }
+
+    public function yourAge() {
+        return 25;
     }
 }
 
 
 $user = new User('sirvan', 'monfared');
 
-echo $user->fullName();
+// $user = null;
+
+// if (isset($user)) {
+//     echo $user->fullName();
+// }
+
+echo $user?->fullName()?->yourAge();
+
+echo 'safsaf';
+
+
+
