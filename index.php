@@ -12,16 +12,11 @@ require('Car.php');
 require('Dena.php');
 require('BMW.php');
 $dena = new Dena();
-$dena->tiresStatus();
-// echo $dena->tiresCount;
-// $dena->move();
-// $dena->brake();
-// $dena->drift();
-// echo $dena->color;
+$dena->move(20, 100);
 
-$bmw = new BMW();
-// $bmw->move();
-// echo $bmw->color;
+
+// $bmw = new BMW();
+
 
 
 // 4. Polymorphism

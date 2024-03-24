@@ -5,9 +5,14 @@ class Car {
     public $name = 'car';
     public $gear;
     protected $tiresCount = 4;
+    protected $brakePercision;
 
-    public function move() {
-        echo "{$this->name} is Moving...";
+    public function __construct($brakePercision) {
+        $this->brakePercision = $brakePercision;
+    }
+
+    public function move($km, $speed) {
+        echo "{$this->name} is Moving by {$km} and {$speed} kh/h";
     }
 
     public function brake() {
