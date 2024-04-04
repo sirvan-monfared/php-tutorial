@@ -1,0 +1,19 @@
+{
+    "name": "dev/php-tutorial",
+    "authors": [
+        {
+            "name": "sirvan monfared",
+            "email": "test@test.com"
+        }
+    ],
+    "require": {
+        "illuminate/collections": "^10.48",
+        "nesbot/carbon": "^3.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Core\\": "Core/",
+            "Http\\": "Http/"
+        }
+    }
+}
