@@ -1,9 +1,15 @@
 <?php
+
+use Models\Post;
+
 $id = $_GET['id'];
 
-$db = new Core\Database();
+$post = (new Post)->findOrFail($id);
+dd($post->sluggify());
+$post->sluggify();
 
-$post = $db->prepare("SELECT * FROM `posts` WHERE id=:id", ['id' => $id])->findOrFail();
+dd($post);
+
 
 view('post.view.php', [
     'title' => 'Post',

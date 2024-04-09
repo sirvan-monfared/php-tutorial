@@ -67,3 +67,4 @@ function old($key, $default = '')
 {
     return Session::get('old')[$key] ?? $default;
 }
+
