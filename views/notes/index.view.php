@@ -12,7 +12,7 @@
         <section class="grid grid-cols-3 gap-2">
             <?php foreach ($notes as $note) : ?>
                 <article class="bg-white shadow-md p-5 flex flex-col gap-2">
-                    <p><a href="/notes/show?id=<?= $note->id ?>"><?= e($note->title) ?></a></p>
+                    <p><a href="<?= route('notes.show', ['id' => $note->id]) ?>"><?= e($note->title) ?></a></p>
                 </article>
             <?php endforeach; ?>
         </section>

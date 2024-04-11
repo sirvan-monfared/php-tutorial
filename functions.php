@@ -68,3 +68,9 @@ function old($key, $default = '')
     return Session::get('old')[$key] ?? $default;
 }
 
+function route($route_name, $params)
+{
+    global $router;
+
+    return $router->route($route_name, $params);
+}

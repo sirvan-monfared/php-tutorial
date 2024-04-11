@@ -16,13 +16,13 @@
             <div class="flex justify-between">
                 
 
-                <form method="POST" action="/notes/show?id=<?= $note->id ?>">
+                <form method="POST" action="<?= route('notes.edit', ['id' => $note->id]) ?>">
                     <input type="hidden" name="_method" value="DELETE">
 
                     <button class="bg-red-500 text-white text-xs py-1 px-2">Delete</button>    
                 </form>
                 
-                <a href="/notes/edit?id=<?= $note->id ?>" class="bg-blue-500 text-white text-xs py-1 px-2">Edit</a>
+                <a href="/notes/<?= $note->id ?>/edit" class="bg-blue-500 text-white text-xs py-1 px-2">Edit</a>
             </div>
 
 

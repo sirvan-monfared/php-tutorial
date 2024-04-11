@@ -21,10 +21,8 @@ class NotesController
         ]);
     }
 
-    public function show()
+    public function show($id)
     {
-        $id = $_GET['id'];
-
         $user_id = 1;
 
         $note = (new Note)->findOrFail($id);
@@ -69,10 +67,8 @@ class NotesController
         redirectTo('/notes/create');
     }
 
-    public function edit()
+    public function edit($id)
     {
-        $id = $_GET['id'];
-
         $user_id = 1;
 
         $db = new Database();
@@ -89,10 +85,8 @@ class NotesController
         ]);
     }
 
-    public function update()
+    public function update($id)
     {
-        $id = $_GET['id'];
-
         $user_id = 1;
 
         $db = new Database();
@@ -118,17 +112,17 @@ class NotesController
                 'id' => $note['id']
             ]);
 
-            redirectTo("/notes/edit?id={$note['id']}");
+            redirectTo(route('notes.edit', ['id' => $note['id']]));
         }
     }
 
-    public function destroy()
+    public function destroy($id)
     {
         $user_id = 1;
 
         $db = new Database();
         $note = $db->prepare("SELECT * FROM `notes` WHERE id=:id", [
-            'id' => $_GET['id']
+            'id' => $id
         ])->findOrFail();
 
         authorize(intval($note['user_id']) === $user_id);

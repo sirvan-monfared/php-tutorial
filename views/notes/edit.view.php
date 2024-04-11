@@ -4,7 +4,7 @@
 
 
 <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-    <form method="POST" action="/notes/show?id=<?= $note['id'] ?>">
+    <form method="POST" action="<?= route('notes.update', ['id' => $note['id']]) ?>">
 
         <input type="hidden" name="_method" value="PATCH">
 

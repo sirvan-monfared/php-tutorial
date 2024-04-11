@@ -18,10 +18,8 @@ class PostsController
         ]);
     }
 
-    public function show()
+    public function show($id)
     {
-        $id = $_GET['id'];
-
         $post = (new Post)->findOrFail($id);
 
         view('post.view.php', [

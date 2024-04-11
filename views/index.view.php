@@ -8,7 +8,7 @@
         <?php foreach($posts as $post): ?>
             <article class="bg-white shadow-md p-5 flex flex-col gap-2">
                 <img src="https://placehold.co/600x400" alt="">
-                <p><a href="./post?id=<?= $post->id ?>"><?= $post->title ?></a></p>
+                <p><a href="<?= route('posts.show', ['id' => $post->id]) ?>"><?= $post->title ?></a></p>
             </article>
         <?php endforeach; ?>
         </section>
