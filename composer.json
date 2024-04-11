@@ -9,7 +9,8 @@
     "require": {
         "illuminate/collections": "^10.48",
         "nesbot/carbon": "^3.2",
-        "altorouter/altorouter": "^2.0"
+        "altorouter/altorouter": "^2.0",
+        "eftec/bladeone": "^4.13"
     },
     "autoload": {
         "psr-4": {

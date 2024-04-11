@@ -2,9 +2,11 @@
 
 namespace Http\controllers;
 
+use eftec\bladeone\BladeOne;
+use Http\Controllers\BaseController;
 use Models\Post;
 
-class PostsController
+class PostsController extends BaseController
 {
 
     public function index()
@@ -12,7 +14,7 @@ class PostsController
         $posts = (new Post)->all();
 
 
-        view('index.view.php', [
+        $this->view("index", [
             'title' => 'Home',
             'posts' => $posts
         ]);
@@ -22,7 +24,8 @@ class PostsController
     {
         $post = (new Post)->findOrFail($id);
 
-        view('post.view.php', [
+
+        $this->view('post', [
             'title' => 'Post',
             'post' => $post
         ]);
