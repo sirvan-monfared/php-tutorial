@@ -31,8 +31,11 @@ class Database
         return $this;
     }
 
-    public function all() 
+    public function all($class = null) 
     {
+        if ($class) {
+            $this->statement->setFetchMode(PDO::FETCH_CLASS, $class);
+        }
         return $this->statement->fetchAll();
     }
 
