@@ -1,6 +1,7 @@
 <?php
 
-use Core\Session;
+use App\Core\Session;
+use App\Core\Router;
 
 const BASE_PATH = __DIR__ . '/../';
 
@@ -13,11 +14,11 @@ require BASE_PATH . "functions.php";
 
 $url = currentUrl();
 
-$router = new Core\Router();
+$router = new Router();
 
 require(base_path('routes.php'));
 
-$method = isset($_POST['_method']) ? $_POST['_method'] : $_SERVER['REQUEST_METHOD'];
+$method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
 
 $router->match($method);
 

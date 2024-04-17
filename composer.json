@@ -10,13 +10,12 @@
         "illuminate/collections": "^10.48",
         "nesbot/carbon": "^3.2",
         "altorouter/altorouter": "^2.0",
-        "eftec/bladeone": "^4.13"
+        "eftec/bladeone": "^4.13",
+        "ext-pdo": "*"
     },
     "autoload": {
         "psr-4": {
-            "Core\\": "Core/",
-            "Http\\": "Http/",
-            "Models\\": "Models/"
+            "App\\": "App/"
         }
     }
 }

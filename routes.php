@@ -1,10 +1,10 @@
 <?php
 
-use Http\controllers\Auth\LoginController;
-use Http\controllers\Auth\RegisterController;
-use Http\controllers\NotesController;
-use Http\controllers\PagesController;
-use Http\controllers\PostsController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\NotesController;
+use App\Http\Controllers\PagesController;
+use App\Http\Controllers\PostsController;
 
 
 $router->get('/', [PostsController::class, 'index'], 'home');
