@@ -4,6 +4,7 @@ use App\Core\Session;
 use App\Core\Router;
 
 const BASE_PATH = __DIR__ . '/../';
+const SITE_URL = 'http://laracommerce.test/';
 
 require BASE_PATH . "vendor/autoload.php";
 

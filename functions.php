@@ -74,3 +74,8 @@ function route($route_name, $params)
 
     return $router->route($route_name, $params);
 }
+
+function asset($path): string
+{
+    return SITE_URL . "assets/$path";
+}
