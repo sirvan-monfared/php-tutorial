@@ -2,6 +2,7 @@
 
 use App\Core\Session;
 use App\Core\Router;
+use App\Helpers\Cart;
 
 const BASE_PATH = __DIR__ . '/../';
 const SITE_URL = 'http://laracommerce.test/';
@@ -12,6 +13,7 @@ session_start();
 
 require BASE_PATH . "functions.php";
 
+$cart = new Cart;
 
 $url = currentUrl();
 

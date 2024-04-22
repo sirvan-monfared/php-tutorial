@@ -5,22 +5,31 @@ use App\Core\Database;
 
 class Model {
 
-    protected $table = '';
+    protected string $table = '';
+    protected Database $db;
 
-
-    public function all()
+    public function __construct()
     {
-        $db = new Database();
+        $this->db = new Database();
+    }
 
 
-        return $db->prepare("SELECT * FROM `{$this->table}`", class: get_called_class())->all();
+    public function all(?int $limit = null)
+    {
+        $sql = "SELECT * FROM `{$this->table}`";
+
+        if ($limit) {
+            $sql .= " LIMIT {$limit}";
+        }
+
+        return $this->db->prepare($sql, class: get_called_class())->all();
     }
 
     public function findOrFail($id)
     {
         $db = new Database();
 
-        $post = $db->prepare("SELECT * FROM `{$this->table}` WHERE id=:id", ['id' => $id], get_called_class())->findOrFail();
+        $post = $this->db->prepare("SELECT * FROM `{$this->table}` WHERE id=:id", ['id' => $id], get_called_class())->findOrFail();
 
         return $post;
     }
@@ -29,6 +38,6 @@ class Model {
     {
         $db = new Database();
 
-        return $db->prepare("SELECT * FROM `{$this->table}` WHERE id=:id", ['id' => $id], get_called_class())->find();
+        return $this->db->prepare("SELECT * FROM `{$this->table}` WHERE id=:id", ['id' => $id], get_called_class())->find();
     }
 }

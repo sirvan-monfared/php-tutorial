@@ -2,6 +2,7 @@
 
 use App\Core\Request;
 use App\Core\Session;
+use App\Helpers\Cart;
 
 function currentUrl()
 {
@@ -68,7 +69,7 @@ function old($key, $default = '')
     return Session::get('old')[$key] ?? $default;
 }
 
-function route($route_name, $params)
+function route(string $route_name, ?array $params = []): string
 {
     global $router;
 
@@ -78,4 +79,16 @@ function route($route_name, $params)
 function asset($path): string
 {
     return SITE_URL . "assets/$path";
+}
+
+function cart(): Cart
+{
+    global $cart;
+
+    return $cart;
+}
+
+function priceFormat($price): string
+{
+    return number_format($price) . " تومان";
 }

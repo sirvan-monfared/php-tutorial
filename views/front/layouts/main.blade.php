@@ -217,56 +217,38 @@
                                         <div class="onhover-dropdown header-badge">
                                             <button type="button" class="btn p-0 position-relative header-wishlist">
                                                 <i data-feather="shopping-cart"></i>
-                                                <span class="position-absolute top-0 start-100 translate-middle badge">2
-                                                    <span class="visually-hidden">پیام جدید</span>
+                                                <span class="position-absolute top-0 start-100 translate-middle badge"> {{ cart()->count() }}
+                                                    <span class="visually-hidden"></span>
                                                 </span>
                                             </button>
 
                                             <div class="onhover-div">
                                                 <ul class="cart-list">
-                                                    <li class="product-box-contain">
+                                                    @foreach(cart()->all() as $item)
+                                                        <li class="product-box-contain">
                                                         <div class="drop-cart">
-                                                            <a href="product.html" class="drop-image">
+                                                            <a href="{{ route('products.show', ['id' => $item['id']]) }}" class="drop-image">
                                                                 <img src="{{ asset('front/images/vegetable/product/1.png') }}"
                                                                     class="blur-up lazyload" alt="">
                                                             </a>
 
                                                             <div class="drop-contain">
-                                                                <a href="product.html">
-                                                                    <h5>شکلات قهوه ای فرانسوی با ظرف شیشه ای</h5>
+                                                                <a href="{{ route('products.show', ['id' => $item['id']]) }}">
+                                                                    <h5>{{ $item['name'] }}</h5>
                                                                 </a>
-                                                                <h6><span>1 x</span> 80.000 تومان</h6>
+                                                                <h6><span>{{ $item['qty'] }} x</span> {{ priceFormat($item['price']) }} </h6>
                                                                 <button class="close-button close_button">
                                                                     <i class="fa-solid fa-xmark"></i>
                                                                 </button>
                                                             </div>
                                                         </div>
                                                     </li>
-
-                                                    <li class="product-box-contain">
-                                                        <div class="drop-cart">
-                                                            <a href="product.html" class="drop-image">
-                                                                <img src="{{ asset('front/images/vegetable/product/2.png') }}"
-                                                                    class="blur-up lazyload" alt="">
-                                                            </a>
-
-                                                            <div class="drop-contain">
-                                                                <a href="product.html">
-                                                                    <h5>بیسکویت کره بادام زمینی 600 گرمی
-                                                                    </h5>
-                                                                </a>
-                                                                <h6><span>1 x</span> 25.000 تومان</h6>
-                                                                <button class="close-button close_button">
-                                                                    <i class="fa-solid fa-xmark"></i>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </li>
+                                                    @endforeach
                                                 </ul>
 
                                                 <div class="price-box">
                                                     <h5>جمع کل :</h5>
-                                                    <h4 class="theme-color fw-bold">103.000 تومان</h4>
+                                                    <h4 class="theme-color fw-bold">{{ priceFormat(cart()->sum()) }}</h4>
                                                 </div>
 
                                                 <div class="button-group">
@@ -331,395 +313,7 @@
                                     </button>
                                 </div>
 
-                                <ul class="category-list">
-                                    <li class="onhover-category-list">
-                                        <a href="javascript:void(0)" class="category-name">
-                                            <img src="{{ asset('front/svg/1/vegetable.svg') }}" alt="">
-                                            <h6>میوه جنوب</h6>
-                                            <i class="fa-solid fa-angle-left"></i>
-                                        </a>
-
-                                        <div class="onhover-category-box">
-                                            <div class="list-1">
-                                                <div class="category-title-box">
-                                                    <h5>سبزیجات ارگانیک</h5>
-                                                </div>
-                                                <ul>
-                                                    <li>
-                                                        <a href="javascript:void(0)">سیب زمینی و گوجه فرنگی</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">خیار و فلفل دلمه ای</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">سبزیجات برگ دار</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">ریشه سبزیجات</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">لوبیا و بامیه</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">کلم و گل کلم</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">کدو و چوب طبل</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">سبزیجات</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-
-                                            <div class="list-2">
-                                                <div class="category-title-box">
-                                                    <h5>میوه تازه</h5>
-                                                </div>
-                                                <ul>
-                                                    <li>
-                                                        <a href="javascript:void(0)">موز</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">کیوی</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">سیب</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">میوه استوایی</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">آواکادوو</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">دراگون فروت</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li class="onhover-category-list">
-                                        <a href="javascript:void(0)" class="category-name">
-                                            <img src="{{ asset('front/svg/1/cup.svg') }}" alt="">
-                                            <h6>نوشیدنی</h6>
-                                            <i class="fa-solid fa-angle-left"></i>
-                                        </a>
-
-                                        <div class="onhover-category-box w-100">
-                                            <div class="list-1">
-                                                <div class="category-title-box">
-                                                    <h5>نوشیدنی و انرژِی زا</h5>
-                                                </div>
-                                                <ul>
-                                                    <li>
-                                                        <a href="javascript:void(0)">نوشابه گازدار</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">آب سودا</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">نوشیدنی ورزشی</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">نوشیدنی رژیمی</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">آب طعم دار</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">آب گازدار</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">سایر نوشیدنی ها</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li class="onhover-category-list">
-                                        <a href="javascript:void(0)" class="category-name">
-                                            <img src="{{ asset('front/svg/1/meats.svg') }}" alt="">
-                                            <h6>گوشت و پروتئین</h6>
-                                            <i class="fa-solid fa-angle-left"></i>
-                                        </a>
-
-                                        <div class="onhover-category-box">
-                                            <div class="list-1">
-                                                <div class="category-title-box">
-                                                    <h5>گوشت</h5>
-                                                </div>
-                                                <ul>
-                                                    <li>
-                                                        <a href="javascript:void(0)">گوشت چرخ کرده</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">گوشت منجمد</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">گوشت سفید</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">گوشت با استخوان</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-
-                                            <div class="list-2">
-                                                <div class="category-title-box">
-                                                    <h5>غذای دریایی</h5>
-                                                </div>
-                                                <ul>
-                                                    <li>
-                                                        <a href="javascript:void(0)">ماهی آب شیرین</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">ماهی خشک</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">ماهی و غذاهای دریایی منجمد</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">ماهی آب دریایی</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">غذاهای دریایی کنسرو شده</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">میگو و هشت پا</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">سایر ...</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li class="onhover-category-list">
-                                        <a href="javascript:void(0)" class="category-name">
-                                            <img src="{{ asset('front/svg/1/breakfast.svg') }}" alt="">
-                                            <h6>صبحانه</h6>
-                                            <i class="fa-solid fa-angle-left"></i>
-                                        </a>
-
-                                        <div class="onhover-category-box">
-                                            <div class="list-1">
-                                                <div class="category-title-box">
-                                                    <h5>غلات صبحانه</h5>
-                                                </div>
-                                                <ul>
-                                                    <li>
-                                                        <a href="javascript:void(0)">جو و فرنی</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">غذای کودک</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">ماسالا</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">گرانولا</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">گرانولا و غلات</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">نودل فوری</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">پاستا و ماکارونی</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">تنقلات یخ زده غیر گیاهی</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-
-                                            <div class="list-2">
-                                                <div class="category-title-box">
-                                                    <h5>لبنیات</h5>
-                                                </div>
-                                                <ul>
-                                                    <li>
-                                                        <a href="javascript:void(0)">شیر</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">کره</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">پنیر و خامه</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">ماست و کره</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">شیر کاکائو</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">شیرموز و سایر</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">روغن حیوانی</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">کره حیوانی</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li class="onhover-category-list">
-                                        <a href="javascript:void(0)" class="category-name">
-                                            <img src="{{ asset('front/svg/1/frozen.svg') }}" alt="">
-                                            <h6>غذای منجمد</h6>
-                                            <i class="fa-solid fa-angle-left"></i>
-                                        </a>
-
-                                        <div class="onhover-category-box w-100">
-                                            <div class="list-1">
-                                                <div class="category-title-box">
-                                                    <h5>نودل و پاستا</h5>
-                                                </div>
-                                                <ul>
-                                                    <li>
-                                                        <a href="javascript:void(0)">نودلیت</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">نودل گوشت</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">نودل سبزیجات</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">ورمیشل</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">پاستای گوشت</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li class="onhover-category-list">
-                                        <a href="javascript:void(0)" class="category-name">
-                                            <img src="{{ asset('front/svg/1/biscuit.svg') }}" alt="">
-                                            <h6>بیسکوییت</h6>
-                                            <i class="fa-solid fa-angle-left"></i>
-                                        </a>
-
-                                        <div class="onhover-category-box">
-                                            <div class="list-1">
-                                                <div class="category-title-box">
-                                                    <h5>بیسکوییت و کوکی</h5>
-                                                </div>
-                                                <ul>
-                                                    <li>
-                                                        <a href="javascript:void(0)">بیسکوییت خانگی</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">بیسکوییت صنعتی</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">بیسکوییت خامه ای</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">بیسکوییت شیرین</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">کوکی ها</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-
-                                            <div class="list-2">
-                                                <div class="category-title-box">
-                                                    <h5>چیپس ها</h5>
-                                                </div>
-                                                <ul>
-                                                    <li>
-                                                        <a href="javascript:void(0)">چیپس خانگی</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">چیپس مزه دار</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">چیپس خارجی</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">چیپس رژیمی</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                    <li class="onhover-category-list">
-                                        <a href="javascript:void(0)" class="category-name">
-                                            <img src="{{ asset('front/svg/1/grocery.svg') }}" alt="">
-                                            <h6>مکمل های غذایی</h6>
-                                            <i class="fa-solid fa-angle-left"></i>
-                                        </a>
-
-                                        <div class="onhover-category-box">
-                                            <div class="list-1">
-                                                <div class="category-title-box">
-                                                    <h5>مکمل پروتئینی</h5>
-                                                </div>
-                                                <ul>
-                                                    <li>
-                                                        <a href="javascript:void(0)">گینر</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">مکمل خارجی</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">مکمل چاقی</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">مکمل گیاهی</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-
-                                            <div class="list-2">
-                                                <div class="category-title-box">
-                                                    <h5>مکمل دست ساز</h5>
-                                                </div>
-                                                <ul>
-                                                    <li>
-                                                        <a href="javascript:void(0)">مکمل گیاهی</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">مکمل کاهش وزن</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">مکمل افزایش وزن</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">مکمل تقویتی</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">مکمل دست ساز</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">مکمل برنجی</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">مکمل ایرانی</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="javascript:void(0)">مکمل پروتئینی</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
+                                @include('front.layouts._top_categories')
                             </div>
                         </div>
 

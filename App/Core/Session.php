@@ -4,6 +4,11 @@ namespace App\Core;
 
 class Session {
 
+    public static function has($key): bool
+    {
+        return !empty(Session::get($key));
+    }
+
     public static function put($key, $value) 
     {
         $_SESSION[$key] = $value;
