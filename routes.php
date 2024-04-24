@@ -10,8 +10,8 @@ $router->get('/', [HomeController::class, 'index'], 'home');
 
 $router->get('/product/[i:id]', [ProductController::class, 'show'], 'products.show');
 
+$router->get('/cart', [CartController::class, 'index'], 'cart.index');
 $router->post('/cart', [CartController::class, 'store'], 'cart.store');
-
 
 $router->get('/register', [RegisterController::class, 'create'])->only('guest');
 $router->post('/register', [RegisterController::class, 'store'])->only('guest');

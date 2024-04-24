@@ -92,3 +92,12 @@ function priceFormat($price): string
 {
     return number_format($price) . " تومان";
 }
+
+function str_limit($str, $limit): string
+{
+    if (strlen($str) > $limit) {
+        return mb_substr($str, 0, $limit) . ' ...';
+    }
+
+    return $str;
+}
