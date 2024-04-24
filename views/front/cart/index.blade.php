@@ -141,9 +141,9 @@
                         <div class="button-group cart-button">
                             <ul>
                                 <li>
-                                    <button
+                                    <a href="{{ route('checkout.pay') }}"
                                             class="btn btn-animation proceed-btn fw-bold">پرداخت
-                                    </button>
+                                    </a>
                                 </li>
 
                                 <li>

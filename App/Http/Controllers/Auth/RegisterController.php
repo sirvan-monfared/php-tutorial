@@ -5,14 +5,15 @@ namespace App\Http\Controllers\Auth;
 use App\Core\Authenticator;
 use App\Core\Database;
 use App\Core\Session;
+use App\Http\Controllers\BaseController;
 use App\Http\Forms\LoginForm;
 
-class RegisterController
+class RegisterController extends BaseController
 {
-    public function create()
+    public function create(): void
     {
-        view('auth/create.view.php', [
-            'title' => 'Register'
+        $this->view('front.auth.register', [
+            'errors' => Session::get('errors')
         ]);
     }
 

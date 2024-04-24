@@ -4,15 +4,15 @@ namespace App\Http\Controllers\Auth;
 
 use App\Core\Authenticator;
 use App\Core\Session;
+use App\Http\Controllers\BaseController;
 use App\Http\Forms\LoginForm;
 
-class LoginController
+class LoginController extends BaseController
 {
 
-    public function create()
+    public function create(): void
     {
-        view('auth/login_form.view.php', [
-            'title' => 'Login',
+        $this->view('front.auth.login', [
             'errors' => Session::get('errors', [])
         ]);
     }
