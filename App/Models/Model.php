@@ -27,17 +27,12 @@ class Model {
 
     public function findOrFail($id)
     {
-        $db = new Database();
+        return $this->db->prepare("SELECT * FROM `{$this->table}` WHERE id=:id", ['id' => $id], get_called_class())->findOrFail();
 
-        $post = $this->db->prepare("SELECT * FROM `{$this->table}` WHERE id=:id", ['id' => $id], get_called_class())->findOrFail();
-
-        return $post;
     }
 
     public function find($id)
     {
-        $db = new Database();
-
         return $this->db->prepare("SELECT * FROM `{$this->table}` WHERE id=:id", ['id' => $id], get_called_class())->find();
     }
 }

@@ -3,18 +3,15 @@
 namespace App\Core;
 
 use App\Core\Database;
+use App\Models\User;
 
 class Authenticator
 {
-    public function attempt($email, $password)
+    public function attempt($phone, $password): bool
     {
-        $db = new Database();
+        $user = (new User)->byPhone($phone);
 
-        $user = $db->prepare("SELECT * FROM `users` WHERE email=:email", [
-            'email' => $email
-        ])->find();
-
-        if ($user && password_verify($password, $user['password'])) {
+        if ($user && password_verify($password, $user->password)) {
             $this->login($user);
 
             return true;
@@ -24,16 +21,16 @@ class Authenticator
     }
 
 
-    public function login($user)
+    public function login($user): void
     {
         $_SESSION['user'] = [
-            'email' => $user['email']
+            'phone' => $user->phone
         ];
 
         session_regenerate_id(true);
     }
 
-    public function logout()
+    public function logout(): void
     {
         Session::destroy();
     }

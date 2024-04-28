@@ -42,20 +42,22 @@
                         </div>
 
                         <div class="input-box">
-                            <form class="row g-4">
+                            <form action="{{ route('auth.login.store') }}" method="POST" class="row g-4">
                                 <div class="col-12">
                                     <div class="form-floating theme-form-floating log-in-form">
-                                        <input type="email" class="form-control" id="email"
+                                        <input type="text" class="form-control" name="phone" id="phone" value="{{ old('phone') }}"
                                                placeholder="آدرس ایمیل خود را وارد کنید">
-                                        <label for="email">آدرس ایمیل</label>
+                                        <label for="phone">شماره تلفن</label>
+                                        <div class="help-block text-danger fs-7 ">{{ $errors['phone'] ?? null  }}</div>
                                     </div>
                                 </div>
 
                                 <div class="col-12">
                                     <div class="form-floating theme-form-floating log-in-form">
-                                        <input type="password" class="form-control" id="password"
+                                        <input type="password" class="form-control" id="password" name="password"
                                                placeholder="رمز عبور خود را وارد کنید">
                                         <label for="password">رمز عبور</label>
+                                        <div class="help-block text-danger fs-7 ">{{ $errors['password'] ?? null  }}</div>
                                     </div>
                                 </div>
 

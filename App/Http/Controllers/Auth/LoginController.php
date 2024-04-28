@@ -17,26 +17,26 @@ class LoginController extends BaseController
         ]);
     }
 
-    public function store()
+    public function store(): void
     {
-        $email = $_POST['email'];
+        $phone = $_POST['phone'];
         $password = $_POST['password'];
 
 
         $form = new LoginForm();
 
-        if ($form->validate($email, $password)) {
+        if ($form->validate($phone, $password)) {
 
-            if ((new Authenticator)->attempt($email, $password)) {
+            if ((new Authenticator)->attempt($phone, $password)) {
                 redirectTo('/');
             } else {
-                $form->error('email', 'Sorry but we couldn\'t find a user with provided credentials');
+                $form->error('phone', 'شماره تلفن و رمزعبور ارسال شده مطابقت ندارند');
             }
         }
 
         Session::flash('errors', $form->errors());
         Session::flash('old', [
-            'email' => $email
+            'phone' => $phone
         ]);
 
         redirectTo('/login');
