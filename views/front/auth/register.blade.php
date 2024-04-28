@@ -42,38 +42,31 @@
                         </div>
 
                         <div class="input-box">
-                            <form class="row g-4">
+                            <form method="POST" action="{{ route('auth.register.store') }}" class="row g-4">
                                 <div class="col-12">
                                     <div class="form-floating theme-form-floating">
-                                        <input type="text" class="form-control" id="fullname"
-                                               placeholder="نام و نام خانوادگی">
-                                        <label for="fullname">نام و نام خانوادگی</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-floating theme-form-floating">
-                                        <input type="email" class="form-control" id="email"
-                                               placeholder="آدرس ایمیل خود را وارد کنید">
-                                        <label for="email">ایمیل</label>
+                                        <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone') }}"
+                                               placeholder="شماره تلفن">
+                                        <label for="phone">شماره تلفن</label>
+                                        <div class="help-block text-danger fs-7 ">{{ $errors['phone'] ?? null  }}</div>
                                     </div>
                                 </div>
 
                                 <div class="col-12">
                                     <div class="form-floating theme-form-floating">
-                                        <input type="password" class="form-control" id="رمز عبور خود را وارد کنید"
-                                               placeholder="Password">
-                                        <label for="password">رمز عبور</label>
+                                        <input type="password" class="form-control" id="password" name="password"
+                                               placeholder="رمزعبور خود را وارد کنید">
+                                        <label for="password">رمزعبور</label>
+                                        <div class="help-block text-danger fs-7 ">{{ $errors['password'] ?? null  }}</div>
                                     </div>
                                 </div>
 
                                 <div class="col-12">
-                                    <div class="forgot-box">
-                                        <div class="form-check ps-0 m-0 remember-box">
-                                            <input class="checkbox_animated check-box" type="checkbox"
-                                                   id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                <span>شرایط</span> و <span>قوانین</span> را میپذیرم.</label>
-                                        </div>
+                                    <div class="form-floating theme-form-floating">
+                                        <input type="password" name="password_confirmation" class="form-control" id="password_confirmation"
+                                               placeholder="تکرار رمزعبور را وارد کنید">
+                                        <label for="password_confirmation">تکرار رمز عبور</label>
+                                        <div class="help-block text-danger fs-7 ">{{ $errors['password_confirmation'] ?? null  }}</div>
                                     </div>
                                 </div>
 

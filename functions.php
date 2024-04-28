@@ -26,10 +26,15 @@ function dd($var)
     die();
 }
 
-function redirectTo($url = '/')
+function redirectTo($url = '/'): void
 {
     header("location: $url");
     exit();
+}
+
+function redirectBack(): void
+{
+    redirectTo($_SERVER['HTTP_REFERER'] ?? route('home'));
 }
 
 function e($value)
@@ -100,4 +105,9 @@ function str_limit($str, $limit): string
     }
 
     return $str;
+}
+
+function now($format = 'Y-m-d H:i:s'): string
+{
+    return date($format);
 }

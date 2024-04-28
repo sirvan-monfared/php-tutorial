@@ -7,6 +7,8 @@ use App\Core\Database;
 use App\Core\Session;
 use App\Http\Controllers\BaseController;
 use App\Http\Forms\LoginForm;
+use App\Http\Forms\RegisterForm;
+use App\Models\User;
 
 class RegisterController extends BaseController
 {
@@ -17,34 +19,27 @@ class RegisterController extends BaseController
         ]);
     }
 
-    public function store()
+    public function store(): void
     {
+        $form = new RegisterForm();
 
-        $email = $_POST['email'];
-        $password = $_POST['password'];
+        if ($form->validate($_POST)) {
 
-
-        $form = new LoginForm();
-
-        if ($form->validate($email, $password)) {
-            $db = new Database();
-            $user = $db->prepare("SELECT * FROM `users` WHERE email=:email", [
-                'email' => $email
-            ])->find();
+            $user = (new User)->byPhone($_POST['phone']);
 
             if ($user) {
-                redirectTo('/login');
+                Session::flash('errors', [
+                    'phone' => 'شماره تلفن وارده شده قبلا در سایت ثبت نام کرده است'
+                ]);
+
+                redirectBack();
             }
 
-            $db->prepare('INSERT INTO `users` (`email`, `password`, `name`) VALUES (:email, :password, :name)', [
-                'email' => $email,
-                'password' => password_hash($password, PASSWORD_BCRYPT),
-                'name' => ''
-            ]);
+            (new User)->insert($_POST);
 
 
             (new Authenticator)->login([
-                'email' => $email
+                'phone' => $_POST['phone']
             ]);
 
             redirectTo('/');
@@ -52,9 +47,9 @@ class RegisterController extends BaseController
 
         Session::flash('errors', $form->errors());
         Session::flash('old', [
-            'email' => $email
+            'phone' => $_POST['phone']
         ]);
 
-        redirectTo('/register');
+        redirectBack();
     }
 }

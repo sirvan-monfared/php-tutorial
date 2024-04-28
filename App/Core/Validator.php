@@ -19,4 +19,9 @@ class Validator {
     {
         return strlen($value) === 11;
     }
+
+    public static function matches(string $first_value, string $second_value): bool
+    {
+        return $first_value === $second_value;
+    }
 }
