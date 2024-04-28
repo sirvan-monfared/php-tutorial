@@ -19,7 +19,7 @@ $url = currentUrl();
 
 $router = new Router();
 
-require(base_path('routes.php'));
+require(base_path('routes/routes.php'));
 
 $method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
 

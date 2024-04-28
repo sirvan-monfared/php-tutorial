@@ -1,5 +1,6 @@
 <?php
 
+use App\Core\Authenticator;
 use App\Core\Request;
 use App\Core\Session;
 use App\Helpers\Cart;
@@ -110,4 +111,9 @@ function str_limit($str, $limit): string
 function now($format = 'Y-m-d H:i:s'): string
 {
     return date($format);
+}
+
+function auth(): Authenticator
+{
+    return new Authenticator;
 }

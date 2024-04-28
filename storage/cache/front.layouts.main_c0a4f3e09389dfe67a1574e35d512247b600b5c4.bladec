@@ -221,26 +221,33 @@
  <div class="delivery-icon">
  <i data-feather="user"></i>
  </div>
+ <?php if(auth()->check()): ?>
  <div class="delivery-detail">
  <h6>سلام,</h6>
- <h5>حساب کاربری</h5>
+ <h5><?php echo \htmlentities(auth()->username()??'', ENT_QUOTES, 'UTF-8', false); ?></h5>
  </div>
+ <?php endif; ?>
  </div>
 
  <div class="onhover-div onhover-div-login">
  <ul class="user-box-name">
+ <?php if(! auth()->check()): ?>
  <li class="product-box-contain">
  <i></i>
- <a href="login.html">ورود</a>
+ <a href="<?php echo \htmlentities(route('auth.login')??'', ENT_QUOTES, 'UTF-8', false); ?>">ورود</a>
  </li>
 
  <li class="product-box-contain">
- <a href="sign-up.html">عضویت</a>
+ <a href="<?php echo \htmlentities(route('auth.register')??'', ENT_QUOTES, 'UTF-8', false); ?>">عضویت</a>
  </li>
+ <?php endif; ?>
+ <?php if(auth()->check()): ?>
+ <form method="POST" action="<?php echo \htmlentities(route('auth.logout')??'', ENT_QUOTES, 'UTF-8', false); ?>">
+ <input type='hidden' name='_method' value='<?php echo 'DELETE'; ?>'/>
 
- <li class="product-box-contain">
- <a href="forgot.html">فراموشی رمز عبور</a>
- </li>
+ <button type="submit" class="btn btn-default">خروج</button>
+ </form>
+ <?php endif; ?>
  </ul>
  </div>
  </li>

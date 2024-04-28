@@ -12,9 +12,7 @@ class LoginController extends BaseController
 
     public function create(): void
     {
-        $this->view('front.auth.login', [
-            'errors' => Session::get('errors', [])
-        ]);
+        $this->view('front.auth.login');
     }
 
     public function store(): void
@@ -42,7 +40,7 @@ class LoginController extends BaseController
         redirectTo('/login');
     }
 
-    public function logout()
+    public function logout(): void
     {
         (new Authenticator)->logout();
 

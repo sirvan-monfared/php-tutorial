@@ -14,9 +14,7 @@ class RegisterController extends BaseController
 {
     public function create(): void
     {
-        $this->view('front.auth.register', [
-            'errors' => Session::get('errors')
-        ]);
+        $this->view('front.auth.register');
     }
 
     public function store(): void
@@ -38,7 +36,7 @@ class RegisterController extends BaseController
             (new User)->insert($_POST);
 
 
-            (new Authenticator)->login([
+            (new Authenticator)->login((object) [
                 'phone' => $_POST['phone']
             ]);
 

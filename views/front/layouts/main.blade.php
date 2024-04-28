@@ -221,26 +221,33 @@
                                             <div class="delivery-icon">
                                                 <i data-feather="user"></i>
                                             </div>
-                                            <div class="delivery-detail">
-                                                <h6>سلام,</h6>
-                                                <h5>حساب کاربری</h5>
-                                            </div>
+                                            @if(auth()->check())
+                                                <div class="delivery-detail">
+                                                    <h6>سلام,</h6>
+                                                    <h5>{{ auth()->username() }}</h5>
+                                                </div>
+                                            @endif
                                         </div>
 
                                         <div class="onhover-div onhover-div-login">
                                             <ul class="user-box-name">
-                                                <li class="product-box-contain">
-                                                    <i></i>
-                                                    <a href="login.html">ورود</a>
-                                                </li>
+                                                @if (! auth()->check())
+                                                    <li class="product-box-contain">
+                                                        <i></i>
+                                                        <a href="{{ route('auth.login') }}">ورود</a>
+                                                    </li>
 
-                                                <li class="product-box-contain">
-                                                    <a href="sign-up.html">عضویت</a>
+                                                    <li class="product-box-contain">
+                                                        <a href="{{ route('auth.register') }}">عضویت</a>
                                                 </li>
+                                                @endif
+                                                @if (auth()->check())
+                                                    <form method="POST" action="{{ route('auth.logout') }}">
+                                                        @method('DELETE')
 
-                                                <li class="product-box-contain">
-                                                    <a href="forgot.html">فراموشی رمز عبور</a>
-                                                </li>
+                                                        <button type="submit" class="btn btn-default">خروج</button>
+                                                    </form>
+                                                @endif
                                             </ul>
                                         </div>
                                     </li>

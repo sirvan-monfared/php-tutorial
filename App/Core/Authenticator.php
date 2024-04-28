@@ -20,6 +20,16 @@ class Authenticator
         return false;
     }
 
+    public function check(): bool
+    {
+        return Session::has('user');
+    }
+
+    public function username(): string|null
+    {
+        return $this->check() ? Session::get('user')['phone'] : null;
+    }
+
 
     public function login($user): void
     {

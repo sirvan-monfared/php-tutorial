@@ -10,7 +10,6 @@ class HomeController extends BaseController
     public function index(): void
     {
         $this->view('front.home', [
-            'categories' => (new Category)->all(6),
             'products' => (new Product)->all()
         ]);
     }
