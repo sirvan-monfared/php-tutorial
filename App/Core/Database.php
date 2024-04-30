@@ -54,4 +54,9 @@ class Database
 
         return $item;
     }
+
+    public function lastInsertedId(): bool|string
+    {
+        return (int) $this->pdo->lastInsertId();
+    }
 }

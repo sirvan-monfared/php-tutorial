@@ -6,7 +6,7 @@ class User extends Model
 {
     protected string $table = 'users';
 
-    public function byPhone(string $phone)
+    public function byPhone(string $phone): static
     {
         return $this->db->prepare("SELECT * FROM `{$this->table}` WHERE phone=:phone", [
             'phone' => $phone

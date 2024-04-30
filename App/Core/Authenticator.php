@@ -30,6 +30,11 @@ class Authenticator
         return $this->check() ? Session::get('user')['phone'] : null;
     }
 
+    public function user(): User
+    {
+        return (new User)->byPhone($this->username());
+    }
+
 
     public function login($user): void
     {
