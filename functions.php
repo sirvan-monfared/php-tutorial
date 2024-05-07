@@ -117,3 +117,8 @@ function auth(): Authenticator
 {
     return new Authenticator;
 }
+
+function url($route_name, $params = []): string
+{
+    return rtrim(SITE_URL, '/') . route($route_name, $params);
+}

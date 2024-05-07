@@ -5,7 +5,7 @@ use App\Core\Router;
 use App\Helpers\Cart;
 
 const BASE_PATH = __DIR__ . '/../';
-const SITE_URL = 'http://laracommerce.test/';
+const SITE_URL = 'https://laracommerce.test/';
 
 require BASE_PATH . "vendor/autoload.php";
 
