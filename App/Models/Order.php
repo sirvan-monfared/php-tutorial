@@ -9,6 +9,8 @@ class Order extends Model
     protected string $table = 'orders';
 
     const NOT_PAID = 1;
+    const PAID = 2;
+    const FAILED = 3;
 
     public function insert($amount)
     {
@@ -44,11 +46,43 @@ class Order extends Model
 
     public function findByPaymentInfo($ref_id, $payment_order_id)
     {
-        $sql = "SELECT * FROM {$this->table} WHERE `ref_id`=:ref_id AND `payment_order_id`=:payment_order_id LIMIT 1";
+        $sql = "SELECT * FROM {$this->table} WHERE `ref_id`=:ref_id AND `payment_order_id`=:payment_order_id AND status=:status LIMIT 1";
 
         return $this->db->prepare($sql, [
             'ref_id' => $ref_id,
-            'payment_order_id' => $payment_order_id
+            'payment_order_id' => $payment_order_id,
+            'status' => ORDER::NOT_PAID
         ], __CLASS__)->find();
+    }
+
+    public function changeStatusToPaid(string $track_id): static
+    {
+        $sql = "UPDATE {$this->table} SET `status`=:status, `track_id`=:track_id WHERE `id`=:id";
+
+        $this->db->prepare($sql, [
+            'status' => Order::PAID,
+            'track_id' => $track_id,
+            'id' => $this->id
+        ]);
+
+        return $this;
+    }
+
+    public function changeStatusToFailed(string $track_id): static
+    {
+        $sql = "UPDATE {$this->table} SET `status`=:status, `track_id`=:track_id WHERE `id`=:id";
+
+        $this->db->prepare($sql, [
+            'status' => Order::FAILED,
+            'track_id' => $track_id,
+            'id' => $this->id
+        ]);
+
+        return $this;
+    }
+
+    public function isPaid(): bool
+    {
+        return $this->status === Order::PAID;
     }
 }

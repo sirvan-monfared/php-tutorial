@@ -43,17 +43,22 @@ class CheckoutController extends BaseController
 
         $order = (new Order)->findByPaymentInfo($_POST['id'], $_POST['order_id']);
 
-        dd($order);
+        if (! $order) {
+            // TODO :: handle error for not finding order
+        }
 
-        $response = $gateway->verify($_POST['id'], $_POST['order_id']);
-
+        $response = $gateway->verify($order->ref_id, $order->payment_order_id);
         $result = $response['result'];
         $httpCode = $response['httpCode'];
 
+
         if ($httpCode === 200 && $result->status === 100) {
-            dd('yessss');
+            $order->changeStatusToPaid($result->payment->track_id);
+            // TODO :: clear cart items
         } else {
-            dd('noo');
+            $order->changeStatusToFailed($_POST['track_id']);
         }
+
+        redirectTo(route('order.show', ['id' => $order->id]));
     }
 }

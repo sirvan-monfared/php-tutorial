@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="{{ asset('front/css/rtl.css') }}">
 </head>
 
-<body class="theme-color-1">
+<body class="theme-color-1" style="--theme-color: #0da487; --theme-color-rgb: #0da487">
 
     <!-- Loader Start -->
     <div class="fullpage-loader">

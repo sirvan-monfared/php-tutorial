@@ -379,9 +379,15 @@ header .offcanvas:not(.offcanvas-end):not(.offcanvas-bottom) , [dir=rtl] .banner
     }
     
 }
-
-
-
-
-
-
+.order-box .order-contain {
+    font-family: 'iranyekan';
+}
+.checkmark__check {
+    stroke: white !important;
+}
+ .order-failed .checkmark__background {
+    fill: #dc3545 !important;
+}
+.order-failed .star {
+    fill: #dc3545 !important;
+}
