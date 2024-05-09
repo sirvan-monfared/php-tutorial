@@ -21,6 +21,6 @@ $router->post('/callback', [CheckoutController::class, 'callback'], 'checkout.ca
 $router->get('/order/[i:id]', [OrderController::class, 'show'], 'order.show')->only('auth');
 
 
-//$router->get('/test', [TestController::class, 'index'], 'test');
+$router->get('/test', [TestController::class, 'index'], 'test');
 //$router->post('/test/callback', [TestController::class, 'callback']);
 include (base_path('routes/auth.php'));

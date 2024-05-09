@@ -8,6 +8,7 @@ class TestController extends BaseController
 {
     public function index()
     {
+
         $gateway = new Gateway(true);
 
         $response = $gateway->start();
@@ -19,8 +20,6 @@ class TestController extends BaseController
         if ($httpCode === 201 && $result->link) {
             redirectTo($result->link);
         }
-
-        // TODO :: handle error status
 
     }
 

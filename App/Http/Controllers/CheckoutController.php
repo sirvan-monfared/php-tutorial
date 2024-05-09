@@ -21,8 +21,7 @@ class CheckoutController extends BaseController
             (new OrderItem)->insert($order_id, $item);
         }
 
-        // TODO :: generate random payment order id
-        $payment_order_id = 5646544;
+        $payment_order_id = generateRandom();
         $gateway = new Gateway(true);
         $response = $gateway->start($payment_order_id);
 

@@ -122,3 +122,8 @@ function url($route_name, $params = []): string
 {
     return rtrim(SITE_URL, '/') . route($route_name, $params);
 }
+
+function generateRandom(): string
+{
+    return bin2hex(random_bytes(20));
+}
