@@ -149,7 +149,7 @@
                                     <i class="fa-solid fa-bars"></i>
                                 </span>
                             </button>
-                            <a href="index.html" class="web-logo nav-logo">
+                            <a href="{{ route('home') }}" class="web-logo nav-logo">
                                 <img src="{{ asset('front/images/logo/2.png') }}" class="img-fluid blur-up lazyload" alt="">
                             </a>
 

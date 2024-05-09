@@ -48,14 +48,16 @@
                                     </svg>
                                     @if($order->isPaid())
                                         <svg class="checkmark__check" height="36" viewBox="0 0 48 36" width="48"
-                                        xmlns="http://www.w3.org/2000/svg">
+                                             xmlns="http://www.w3.org/2000/svg">
                                             <path
-                                                d="M47.248 3.9L43.906.667a2.428 2.428 0 0 0-3.344 0l-23.63 23.09-9.554-9.338a2.432 2.432 0 0 0-3.345 0L.692 17.654a2.236 2.236 0 0 0 .002 3.233l14.567 14.175c.926.894 2.42.894 3.342.01L47.248 7.128c.922-.89.922-2.34 0-3.23">
+                                                    d="M47.248 3.9L43.906.667a2.428 2.428 0 0 0-3.344 0l-23.63 23.09-9.554-9.338a2.432 2.432 0 0 0-3.345 0L.692 17.654a2.236 2.236 0 0 0 .002 3.233l14.567 14.175c.926.894 2.42.894 3.342.01L47.248 7.128c.922-.89.922-2.34 0-3.23">
                                             </path>
                                         </svg>
                                     @else
-                                        <svg class="checkmark__check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                                        <svg class="checkmark__check" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                             viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                  d="M6 18 18 6M6 6l12 12"/>
                                         </svg>
                                     @endif
 
@@ -77,6 +79,7 @@
                                     <h5 class="text-content">مشکلی در عملیات پرداخت بوجود آمده است</h5>
                                 @endif
                                 <h6>کد رهگیری : {{ $order->track_id }}</h6>
+                                <h6>تاریخ پرداخت  : {{ $order->updated_at }}</h6>
                             </div>
                         </div>
                     </div>
@@ -95,116 +98,43 @@
                         <div class="table-responsive">
                             <table class="table mb-0">
                                 <tbody>
-                                <tr>
-                                    <td class="product-detail">
-                                        <div class="product border-0">
-                                            <a href="product.left-sidebar.html" class="product-image">
-                                                <img src="{{ asset('front/images/vegetable/product/1.png') }}"
-                                                     class="img-fluid blur-up lazyload" alt="">
-                                            </a>
-                                            <div class="product-detail">
-                                                <ul>
-                                                    <li class="name">
-                                                        <a href="product-left.html">ناگت مرغ</a>
-                                                    </li>
 
-                                                    <li class="text-content">سازنده : فرشیو</li>
-
-                                                    <li class="text-content">مقدار - 500 گرم</li>
-                                                </ul>
+                                @foreach($order->items() as $item)
+                                    <tr>
+                                        <td class="product-detail">
+                                            <div class="product border-0">
+                                                <a href="{{ route('products.show', ['id' => $item->product_id]) }}" class="product-image">
+                                                    <img src="{{ asset('front/images/vegetable/product/1.png') }}"
+                                                         class="img-fluid blur-up lazyload" alt="">
+                                                </a>
+                                                <div class="product-detail">
+                                                    <ul>
+                                                        <li class="name">
+                                                            <a href="{{ route('products.show', ['id' => $item->product_id]) }}">{{ str_limit($item->product_name, 25) }}</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
+                                        </td>
 
-                                    <td class="price">
-                                        <h4 class="table-title text-content">قیمت</h4>
-                                        <h6 class="theme-color">20.690 تومان</h6>
-                                    </td>
+                                        <td class="price">
+                                            <h4 class="table-title text-content">قیمت</h4>
+                                            <h6 class="theme-color">{{ priceFormat($item->unit_price) }}</h6>
+                                        </td>
 
-                                    <td class="quantity">
-                                        <h4 class="table-title text-content">تعداد</h4>
-                                        <h4 class="text-title">01</h4>
-                                    </td>
+                                        <td class="quantity">
+                                            <h4 class="table-title text-content">تعداد</h4>
+                                            <h4 class="text-title">{{ $item->quantity }}</h4>
+                                        </td>
 
-                                    <td class="subtotal">
-                                        <h4 class="table-title text-content">جمع کل</h4>
-                                        <h5>35.159 تومان</h5>
-                                    </td>
-                                </tr>
+                                        <td class="subtotal">
+                                            <h4 class="table-title text-content">جمع کل</h4>
+                                            <h5>{{ priceFormat($item->quantity * $item->unit_price) }}</h5>
+                                        </td>
+                                    </tr>
 
-                                <tr>
-                                    <td class="product-detail">
-                                        <div class="product border-0">
-                                            <a href="product.left-sidebar.html" class="product-image">
-                                                <img src="{{ asset('front/images/vegetable/product/2.png') }}"
-                                                     class="img-fluid blur-up lazyload" alt="">
-                                            </a>
-                                            <div class="product-detail">
-                                                <ul>
-                                                    <li class="name">
-                                                        <a href="product-left.html">نوشیدنی</a>
-                                                    </li>
+                                @endforeach
 
-                                                    <li class="text-content">سازنده : نتسو</li>
-
-                                                    <li class="text-content">مقدار - 250 گرم</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </td>
-
-                                    <td class="price">
-                                        <h4 class="table-title text-content">قیمت</h4>
-                                        <h6 class="theme-color">15.140 تومان</h6>
-                                    </td>
-
-                                    <td class="quantity">
-                                        <h4 class="table-title text-content">تعداد</h4>
-                                        <h4 class="text-title">01</h4>
-                                    </td>
-
-                                    <td class="subtotal">
-                                        <h4 class="table-title text-content">جمع کل</h4>
-                                        <h5>52.950 تومان</h5>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td class="product-detail">
-                                        <div class="product border-0">
-                                            <a href="product.left-sidebar.html" class="product-image">
-                                                <img src="{{ asset('front/images/vegetable/product/3.png') }}"
-                                                     class="img-fluid blur-up lazyload" alt="">
-                                            </a>
-                                            <div class="product-detail">
-                                                <ul>
-                                                    <li class="name">
-                                                        <a href="product-left.html">نان تازه</a>
-                                                    </li>
-
-                                                    <li class="text-content">سازنده : بسکت</li>
-
-                                                    <li class="text-content">مقدار - 750 گرم</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </td>
-
-                                    <td class="price">
-                                        <h4 class="table-title text-content">قیمت</h4>
-                                        <h6 class="theme-color">29.220 تومان</h6>
-                                    </td>
-
-                                    <td class="quantity">
-                                        <h4 class="table-title text-content">تعداد</h4>
-                                        <h4 class="text-title">01</h4>
-                                    </td>
-
-                                    <td class="subtotal">
-                                        <h4 class="table-title text-content">جمع کل</h4>
-                                        <h5>67.360 تومان</h5>
-                                    </td>
-                                </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -217,30 +147,30 @@
                             <div class="summery-box">
                                 <div class="summery-header">
                                     <h3>جزئیات خرید</h3>
-                                    <h5 class="ms-auto theme-color">(3 آیتم)</h5>
+                                    <h5 class="ms-auto theme-color">({{ count($order->items()) }} آیتم)</h5>
                                 </div>
 
                                 <ul class="summery-contain">
                                     <li>
                                         <h4>جمع خرید</h4>
-                                        <h4 class="price">32.320 تومان</h4>
+                                        <h4 class="price">{{ priceFormat($order->amount) }}</h4>
                                     </li>
 
                                     <li>
                                         <h4>سود شما</h4>
-                                        <h4 class="price theme-color">12.230 تومان</h4>
+                                        <h4 class="price theme-color">0 تومان</h4>
                                     </li>
 
                                     <li>
                                         <h4>کد تخفیف</h4>
-                                        <h4 class="price text-danger">6.270 تومان</h4>
+                                        <h4 class="price text-danger">0 تومان</h4>
                                     </li>
                                 </ul>
 
                                 <ul class="summery-total">
                                     <li class="list-total">
                                         <h4>جمع کل (تومان)</h4>
-                                        <h4 class="price">19.680 تومان</h4>
+                                        <h4 class="price">{{ priceFormat($order->amount) }}</h4>
                                     </li>
                                 </ul>
                             </div>
@@ -269,21 +199,6 @@
                                 <ul class="summery-total">
                                     <li class="list-total border-top-0 pt-2">
                                         <h4 class="fw-bold">21 اردیبهشت 1400</h4>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="col-12">
-                            <div class="summery-box">
-                                <div class="summery-header d-block">
-                                    <h3>جزئیات پرداخت</h3>
-                                </div>
-
-                                <ul class="summery-contain pb-0 border-bottom-0">
-                                    <li class="d-block pt-0">
-                                        <p class="text-content">پرداخت نقدی هنگام تحویل (لطفا پول نقد به همراه داشته
-                                            باشید)</p>
                                     </li>
                                 </ul>
                             </div>

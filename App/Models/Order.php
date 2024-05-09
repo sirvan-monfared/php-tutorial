@@ -8,6 +8,8 @@ class Order extends Model
 {
     protected string $table = 'orders';
 
+    protected array $order_items = [];
+
     const NOT_PAID = 1;
     const PAID = 2;
     const FAILED = 3;
@@ -34,12 +36,13 @@ class Order extends Model
 
     public function updatePaymentInfo($ref_id, $payment_order_id, $gateway_code, $order_id): Database
     {
-        $sql = "UPDATE {$this->table} SET `gateway`=:gateway, `ref_id`=:ref_id, payment_order_id=:payment_order_id WHERE `id`=:id";
+        $sql = "UPDATE {$this->table} SET `gateway`=:gateway, `ref_id`=:ref_id, payment_order_id=:payment_order_id, `updated_at`=:updated_at WHERE `id`=:id";
 
         return $this->db->prepare($sql, [
             'gateway' => $gateway_code,
             'ref_id' => $ref_id,
             'payment_order_id' => $payment_order_id,
+            'updated_at' => now(),
             'id' => $order_id
         ]);
     }
@@ -55,13 +58,23 @@ class Order extends Model
         ], __CLASS__)->find();
     }
 
+    public function items(): array
+    {
+        if (! $this->order_items) {
+            $this->order_items = (new OrderItem())->forOrder($this->id);
+        }
+
+        return $this->order_items;
+    }
+
     public function changeStatusToPaid(string $track_id): static
     {
-        $sql = "UPDATE {$this->table} SET `status`=:status, `track_id`=:track_id WHERE `id`=:id";
+        $sql = "UPDATE {$this->table} SET `status`=:status, `track_id`=:track_id, `updated_at`=:updated_at WHERE `id`=:id";
 
         $this->db->prepare($sql, [
             'status' => Order::PAID,
             'track_id' => $track_id,
+            'updated_at' => now(),
             'id' => $this->id
         ]);
 
