@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Core\Session;
 use App\Helpers\Cart;
 use App\Models\Product;
 
@@ -19,6 +20,8 @@ class CartController extends BaseController
         $product = (new Product)->findOrFail($_POST['product_id']);
 
         cart()->add($product);
+
+        Session::success('آیتم با موفقیت به سبد خرید اضافه شد');
 
         redirectTo($product->viewLink());
     }

@@ -5,15 +5,11 @@ namespace App\Models;
 class OrderItem extends Model
 {
     protected string $table = 'order_items';
+    protected bool $timestamps = false;
 
     public function insert(int $order_id, array $item)
     {
-        $sql = "INSERT INTO `{$this->table}` 
-                (`order_id`, `product_id`, `quantity`, `unit_price`)
-                VALUES 
-                (:order_id, :product_id, :quantity, :unit_price)";
-
-        $this->db->prepare($sql, [
+        return $this->create([
             'order_id' => $order_id,
             'product_id' => $item['id'],
             'quantity' => $item['qty'],

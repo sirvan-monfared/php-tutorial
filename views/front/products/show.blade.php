@@ -31,6 +31,9 @@
     <section class="product-section">
         <div class="container-fluid-lg">
             <div class="row">
+
+                @include('partials._alerts')
+
                 <div class="col-sm-12 wow fadeInUp">
                     <div class="row g-4">
                         <div class="col-xl-5 wow fadeInUp">

@@ -7,7 +7,7 @@ class Auth {
     public function handle()
     {
         if (! $_SESSION['user'] ?? false) {
-            redirectTo('/login');
+            redirectTo(route('auth.login'));
         }
     }
 

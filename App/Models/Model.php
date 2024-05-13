@@ -7,6 +7,7 @@ class Model {
 
     protected string $table = '';
     protected Database $db;
+    protected bool $timestamps = true;
 
     public function __construct()
     {
@@ -31,8 +32,42 @@ class Model {
 
     }
 
-    public function find($id)
+    public function find($id): ?static
     {
         return $this->db->prepare("SELECT * FROM `{$this->table}` WHERE id=:id", ['id' => $id], get_called_class())->find();
+    }
+
+    public function create(array $data): ?static
+    {
+        if ($this->timestamps) {
+            $data = $data + ['created_at' => now(), 'updated_at' => now()];
+        }
+
+        $sql = "INSERT INTO `{$this->table}` (" . implode(', ', array_keys($data)) . ") ";
+        $sql .= "VALUES (:" . implode(', :', array_keys($data)) . ")";
+
+        $this->db->prepare($sql, $data);
+
+        return $this->find($this->db->lastInsertedId());
+    }
+
+    public function update(array $data): static
+    {
+        if ($this->timestamps) {
+            $data = $data + ['updated_at' => now()];
+        }
+
+        $sql = "UPDATE {$this->table} SET ";
+
+        foreach($data as $key => $value) {
+            $sql .= "`$key`=:$key,";
+        }
+
+        $sql = rtrim($sql, ',');
+        $sql .= " WHERE `id`=:id";
+
+        $this->db->prepare($sql, $data);
+
+        return $this;
     }
 }

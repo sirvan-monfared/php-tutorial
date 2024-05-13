@@ -45,4 +45,14 @@ class Session {
         setcookie('PHPSESSID', '', time() - 3600, $params['path'], $params['domain'], $params['secure'], $params['httponly']);
     }
 
+    public static function success($text = null): void
+    {
+        Session::flash('_success', $text);
+    }
+
+    public static function warning($text = null): void
+    {
+        Session::flash('_warning', $text);
+    }
+
 }

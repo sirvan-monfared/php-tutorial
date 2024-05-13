@@ -58,6 +58,13 @@ class Cart
         return $this->items->count();
     }
 
+    public function clear(): void
+    {
+        $this->items = collect([]);
+
+        $this->syncSession();
+    }
+
     protected function syncSession(): void
     {
         Session::put('cart', $this->all());

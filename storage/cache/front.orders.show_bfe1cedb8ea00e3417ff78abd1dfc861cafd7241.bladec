@@ -4,6 +4,7 @@
  <section class="breadcrumb-section pt-0">
  <div class="container-fluid-lg">
  <div class="row">
+ <?php echo $this->runChild('partials._alerts'); ?>
  <div class="col-12">
  <div class="breadcrumb-contain breadcrumb-order">
  <div class="order-box">

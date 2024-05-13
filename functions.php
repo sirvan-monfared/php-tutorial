@@ -18,14 +18,17 @@ function isUrl($url)
     return currentUrl() === $url;
 }
 
-function dd($var)
-{
-    echo "<pre>";
-    var_dump($var);
-    echo "</pre>";
+if (!function_exists('dd')) {
+    function dd($var)
+    {
+        echo "<pre>";
+        var_dump($var);
+        echo "</pre>";
 
-    die();
+        die();
+    }
 }
+
 
 function redirectTo($url = '/'): void
 {

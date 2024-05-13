@@ -13,14 +13,9 @@ class User extends Model
         ], __CLASS__)->find();
     }
 
-    public function insert(array $data)
+    public function insert(array $data): ?User
     {
-        $sql = "INSERT INTO `{$this->table}` 
-                (`name`, `last_name`, `phone`, `password`, `email`, `address`, `created_at`, `updated_at`)
-                VALUES 
-                (:name, :last_name, :phone, :password, :email, :address, :created_at, :updated_at)";
-
-        $this->db->prepare($sql, [
+        return $this->create([
             'name' => $data['name'] ?? null,
             'last_name' => $data['last_name'] ?? null,
             'phone' => $data['phone'],

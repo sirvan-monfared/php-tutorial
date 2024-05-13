@@ -3,11 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Gateway;
+use App\Models\User;
 
 class TestController extends BaseController
 {
     public function index()
     {
+        $data = [
+            'name' => '111',
+            'last_name' => 22,
+            'phone' => 333,
+            'password' => '4444',
+            'email' => '555',
+            'address' => '6666'
+        ];
+
+
+        dd((new User())->insert($data));
 
         $gateway = new Gateway(true);
 

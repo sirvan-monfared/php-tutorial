@@ -14,36 +14,25 @@ class Order extends Model
     const PAID = 2;
     const FAILED = 3;
 
-    public function insert($amount)
+    public function insert($amount): ?Order
     {
-        $sql = "INSERT INTO `{$this->table}` 
-                (`user_id`, `shipment_id`, `amount`, `gateway`, `status`, `created_at`, `updated_at`)
-                VALUES 
-                (:user_id, :shipment_id, :amount, :gateway, :status, :created_at, :updated_at)";
-
-        $this->db->prepare($sql, [
+        return $this->create([
             'user_id' => auth()->user()->id,
             'shipment_id' => null,
             'amount' => $amount,
             'gateway' => null,
-            'status' => Order::NOT_PAID,
-            'created_at' => now(),
-            'updated_at' => now()
+            'status' => Order::NOT_PAID
         ]);
-
-        return $this->db->lastInsertedId();
     }
 
-    public function updatePaymentInfo($ref_id, $payment_order_id, $gateway_code, $order_id): Database
+    public function updatePaymentInfo($ref_id, $payment_order_id, $gateway_code): Order
     {
-        $sql = "UPDATE {$this->table} SET `gateway`=:gateway, `ref_id`=:ref_id, payment_order_id=:payment_order_id, `updated_at`=:updated_at WHERE `id`=:id";
-
-        return $this->db->prepare($sql, [
+        return $this->update([
             'gateway' => $gateway_code,
             'ref_id' => $ref_id,
             'payment_order_id' => $payment_order_id,
             'updated_at' => now(),
-            'id' => $order_id
+            'id' => $this->id
         ]);
     }
 
@@ -69,29 +58,21 @@ class Order extends Model
 
     public function changeStatusToPaid(string $track_id): static
     {
-        $sql = "UPDATE {$this->table} SET `status`=:status, `track_id`=:track_id, `updated_at`=:updated_at WHERE `id`=:id";
-
-        $this->db->prepare($sql, [
+        return $this->update([
             'status' => Order::PAID,
             'track_id' => $track_id,
             'updated_at' => now(),
             'id' => $this->id
         ]);
-
-        return $this;
     }
 
     public function changeStatusToFailed(string $track_id): static
     {
-        $sql = "UPDATE {$this->table} SET `status`=:status, `track_id`=:track_id WHERE `id`=:id";
-
-        $this->db->prepare($sql, [
+        return $this->update([
             'status' => Order::FAILED,
             'track_id' => $track_id,
             'id' => $this->id
         ]);
-
-        return $this;
     }
 
     public function isPaid(): bool

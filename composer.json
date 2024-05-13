@@ -12,7 +12,8 @@
         "altorouter/altorouter": "^2.0",
         "eftec/bladeone": "^4.13",
         "ext-pdo": "*",
-        "ext-curl": "*"
+        "ext-curl": "*",
+        "symfony/var-dumper": "^6.4"
     },
     "autoload": {
         "psr-4": {

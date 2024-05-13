@@ -28,6 +28,9 @@
  <!-- Cart Section Start -->
  <section class="cart-section section-b-space">
  <div class="container-fluid-lg">
+
+ <?php echo $this->runChild('partials._alerts'); ?>
+
  <div class="row g-sm-5 g-3">
  <div class="col-xxl-9">
  <div class="cart-table">
