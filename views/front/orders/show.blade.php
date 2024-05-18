@@ -80,7 +80,7 @@
                                     <h5 class="text-content">مشکلی در عملیات پرداخت بوجود آمده است</h5>
                                 @endif
                                 <h6>کد رهگیری : {{ $order->track_id }}</h6>
-                                <h6>تاریخ پرداخت  : {{ $order->updated_at }}</h6>
+                                <h6>زمان پرداخت  : {{ jdate($order->updated_at)->format('Y/m/d ساعت H:i') }}</h6>
                             </div>
                         </div>
                     </div>

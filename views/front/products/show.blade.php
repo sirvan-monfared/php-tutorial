@@ -43,8 +43,10 @@
                                         <div class="product-main no-arrow">
                                             <div>
                                                 <div class="slider-image">
-                                                    <img src="{{ asset('front/images/fashion/product/23.jpg') }}" id="img-1"
-                                                         data-zoom-image="{{ asset('front/images/fashion/product/23.jpg') }}" class="
+                                                    <img src="{{ asset('front/images/fashion/product/23.jpg') }}"
+                                                         id="img-1"
+                                                         data-zoom-image="{{ asset('front/images/fashion/product/23.jpg') }}"
+                                                         class="
                                                         img-fluid image_zoom_cls-0 blur-up lazyload" alt="">
                                                 </div>
                                             </div>
@@ -52,7 +54,8 @@
                                             <div>
                                                 <div class="slider-image">
                                                     <img src="{{ asset('front/images/fashion/product/24.jpg') }}"
-                                                         data-zoom-image="{{ asset('front/images/fashion/product/24.jpg') }}" class="
+                                                         data-zoom-image="{{ asset('front/images/fashion/product/24.jpg') }}"
+                                                         class="
                                                         img-fluid image_zoom_cls-1 blur-up lazyload" alt="">
                                                 </div>
                                             </div>
@@ -60,7 +63,8 @@
                                             <div>
                                                 <div class="slider-image">
                                                     <img src="{{ asset('front/images/fashion/product/25.jpg') }}"
-                                                         data-zoom-image="{{ asset('front/images/fashion/product/25.jpg') }}" class="
+                                                         data-zoom-image="{{ asset('front/images/fashion/product/25.jpg') }}"
+                                                         class="
                                                         img-fluid image_zoom_cls-2 blur-up lazyload" alt="">
                                                 </div>
                                             </div>
@@ -68,7 +72,8 @@
                                             <div>
                                                 <div class="slider-image">
                                                     <img src="{{ asset('front/images/fashion/product/26.jpg') }}"
-                                                         data-zoom-image="{{ asset('front/images/fashion/product/26.jpg') }}" class="
+                                                         data-zoom-image="{{ asset('front/images/fashion/product/26.jpg') }}"
+                                                         class="
                                                         img-fluid image_zoom_cls-3 blur-up lazyload" alt="">
                                                 </div>
                                             </div>
@@ -76,7 +81,8 @@
                                             <div>
                                                 <div class="slider-image">
                                                     <img src="{{ asset('front/images/fashion/product/23.jpg') }}"
-                                                         data-zoom-image="{{ asset('front/images/fashion/product/23.jpg') }}" class="
+                                                         data-zoom-image="{{ asset('front/images/fashion/product/23.jpg') }}"
+                                                         class="
                                                         img-fluid image_zoom_cls-4 blur-up lazyload" alt="">
                                                 </div>
                                             </div>
@@ -84,7 +90,8 @@
                                             <div>
                                                 <div class="slider-image">
                                                     <img src="{{ asset('front/images/fashion/product/24.jpg') }}"
-                                                         data-zoom-image="{{ asset('front/images/fashion/product/24.jpg') }}" class="
+                                                         data-zoom-image="{{ asset('front/images/fashion/product/24.jpg') }}"
+                                                         class="
                                                         img-fluid image_zoom_cls-5 blur-up lazyload" alt="">
                                                 </div>
                                             </div>
@@ -188,16 +195,22 @@
                                     </form>
                                 </div>
 
-                                <div class="buy-box">
-                                    <a href="wishlist.html">
-                                        <i data-feather="heart"></i>
-                                        <span>علاقه‌مندی‌ها</span>
-                                    </a>
+                                <div class="buy-box d-flex justify-content-between">
+                                    <div class="d-flex">
+                                        <a href="wishlist.html">
+                                            <i data-feather="heart"></i>
+                                            <span>علاقه‌مندی‌ها</span>
+                                        </a>
 
-                                    <a href="compare.html">
-                                        <i data-feather="shuffle"></i>
-                                        <span>مقایسه</span>
-                                    </a>
+                                        <a href="compare.html">
+                                            <i data-feather="shuffle"></i>
+                                            <span>مقایسه</span>
+                                        </a>
+                                    </div>
+
+                                    <div>
+                                        آخرین ویرایش: {{ jdate($product->updated_at)->format('Y/m/d') }}
+                                    </div>
                                 </div>
 
                                 <div class="pickup-box">
@@ -1238,7 +1251,8 @@
                                 <div class="product-header">
                                     <div class="product-image">
                                         <a href="product-left-thumbnail.html">
-                                            <img src="{{ asset('front/images/cake/product/7.png') }}" class="img-fluid" alt="">
+                                            <img src="{{ asset('front/images/cake/product/7.png') }}" class="img-fluid"
+                                                 alt="">
                                         </a>
 
                                         <ul class="product-option">
