@@ -57,6 +57,10 @@ class Model {
             $data = $data + ['updated_at' => now()];
         }
 
+        if (! isset($data['id'])) {
+            $data['id'] = $this->id;
+        }
+
         $sql = "UPDATE {$this->table} SET ";
 
         foreach($data as $key => $value) {
@@ -69,5 +73,12 @@ class Model {
         $this->db->prepare($sql, $data);
 
         return $this;
+    }
+
+    public function where($column, $value)
+    {
+        return $this->db->prepare("SELECT * FROM `{$this->table}` WHERE {$column}=:{$column}", [
+            "$column" => $value
+        ], get_called_class())->find();
     }
 }

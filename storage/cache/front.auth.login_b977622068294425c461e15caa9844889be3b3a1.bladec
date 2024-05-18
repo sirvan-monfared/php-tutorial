@@ -64,9 +64,9 @@
  <div class="col-12">
  <div class="forgot-box mb-4">
  <div class="form-check ps-0 m-0 remember-box">
- <input class="checkbox_animated check-box" type="checkbox"
- id="flexCheckDefault">
- <label class="form-check-label" for="flexCheckDefault">من را به خاطر
+ <input class="checkbox_animated check-box" type="checkbox" name="remember"
+ id="remember" value="1">
+ <label class="form-check-label" for="remember">من را به خاطر
  بسپار</label>
  </div>
  </div>

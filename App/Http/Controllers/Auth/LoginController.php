@@ -19,13 +19,16 @@ class LoginController extends BaseController
     {
         $phone = $_POST['phone'];
         $password = $_POST['password'];
-
+        $remember = !! $_POST['remember'];
 
         $form = new LoginForm();
 
         if ($form->validate($phone, $password)) {
 
-            if ((new Authenticator)->attempt($phone, $password)) {
+            if ((new Authenticator)->attempt($phone, $password, $remember)) {
+
+
+
                 redirectTo('/');
             } else {
                 $form->error('phone', 'شماره تلفن و رمزعبور ارسال شده مطابقت ندارند');

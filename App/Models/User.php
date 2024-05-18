@@ -8,9 +8,12 @@ class User extends Model
 
     public function byPhone(string $phone): static
     {
-        return $this->db->prepare("SELECT * FROM `{$this->table}` WHERE phone=:phone", [
-            'phone' => $phone
-        ], __CLASS__)->find();
+        return $this->where('phone', $phone);
+    }
+
+    public function byToken($token)
+    {
+        return $this->where('token', $token);
     }
 
     public function insert(array $data): ?User
@@ -24,6 +27,20 @@ class User extends Model
             'address' => $data['address'] ?? null,
             'created_at' => now(),
             'updated_at' => now()
+        ]);
+    }
+
+    public function setRememberToken(string $token): User
+    {
+        return $this->update([
+           'token' => $token
+        ]);
+    }
+
+    public function deleteToken(): User
+    {
+        return $this->update([
+            'token' => null
         ]);
     }
 }
