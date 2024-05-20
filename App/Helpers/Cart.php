@@ -69,4 +69,11 @@ class Cart
     {
         Session::put('cart', $this->all());
     }
+
+    public function delete(int $id): void
+    {
+        $this->items = cart()->all()->reject(fn($item) => $item['id'] === $id);
+
+        $this->syncSession();
+    }
 }

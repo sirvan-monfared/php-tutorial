@@ -12,6 +12,9 @@ require BASE_PATH . "vendor/autoload.php";
 
 session_start();
 
+$dotenv = Dotenv\Dotenv::createImmutable(BASE_PATH);
+$dotenv->load();
+
 require BASE_PATH . "functions.php";
 
 $cart = new Cart;

@@ -15,6 +15,7 @@ $router->get('/product/[i:id]', [ProductController::class, 'show'], 'products.sh
 
 $router->get('/cart', [CartController::class, 'index'], 'cart.index');
 $router->post('/cart', [CartController::class, 'store'], 'cart.store');
+$router->delete('/cart/[i:id]', [CartController::class, 'delete'], 'cart.delete');
 
 $router->get('/checkout', [CheckoutController::class, 'pay'], 'checkout.pay')->only('auth');
 $router->post('/callback', [CheckoutController::class, 'callback'], 'checkout.callback')->only('auth');

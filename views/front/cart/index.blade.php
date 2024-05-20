@@ -37,64 +37,78 @@
                         <div class="table-responsive-xl">
                             <table class="table">
                                 <tbody>
-                                    @foreach($items as $item)
-                                        <tr class="product-box-contain">
-                                            <td class="product-detail">
-                                                <div class="product border-0">
-                                                    <a href="{{ route('products.show', ['id' => $item['id']]) }}"
-                                                       class="product-image">
-                                                        <img src="{{ asset('front/images/vegetable/product/1.png') }}"
-                                                             class="img-fluid blur-up lazyload" alt="{{ $item['name'] }}">
-                                                    </a>
-                                                    <div class="product-detail">
-                                                        <ul>
-                                                            <li class="name">
-                                                                <a href="{{ route('products.show', ['id' => $item['id']]) }}">{{ str_limit($item['name'], 25) }}</a>
-                                                            </li>
-                                                        </ul>
+
+                                @if(! $items->count())
+                                    <tr class="product-box-contain">
+                                        <td class="product-detail">
+                                            <div class="product border-0">
+                                                <h3>هیچ آیتمی در سبد خرید شما وجود ندارد</h3>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endif
+
+                                @foreach($items as $item)
+                                    <tr class="product-box-contain">
+                                        <td class="product-detail">
+                                            <div class="product border-0">
+                                                <a href="{{ route('products.show', ['id' => $item['id']]) }}"
+                                                   class="product-image">
+                                                    <img src="{{ asset('front/images/vegetable/product/1.png') }}"
+                                                         class="img-fluid blur-up lazyload" alt="{{ $item['name'] }}">
+                                                </a>
+                                                <div class="product-detail">
+                                                    <ul>
+                                                        <li class="name">
+                                                            <a href="{{ route('products.show', ['id' => $item['id']]) }}">{{ str_limit($item['name'], 25) }}</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <td class="price">
+                                            <h4 class="table-title text-content">قیمت</h4>
+                                            <h5>{{ priceFormat($item['price']) }}
+                                                <del class="text-content">45.680</del>
+                                            </h5>
+                                            <h6 class="theme-color">سود شما : 20.680</h6>
+                                        </td>
+
+                                        <td class="quantity">
+                                            <h4 class="table-title text-content">تعداد</h4>
+                                            <div class="quantity-price">
+                                                <div class="cart_qty">
+                                                    <div class="input-group">
+                                                        <button type="button" class="btn qty-left-minus"
+                                                                data-type="minus" data-field="">
+                                                            <i class="fa fa-minus ms-0"></i>
+                                                        </button>
+                                                        <input class="form-control input-number qty-input" type="text"
+                                                               name="quantity" value="{{ $item['qty'] }}">
+                                                        <button type="button" class="btn qty-right-plus"
+                                                                data-type="plus" data-field="">
+                                                            <i class="fa fa-plus ms-0"></i>
+                                                        </button>
                                                     </div>
                                                 </div>
-                                            </td>
+                                            </div>
+                                        </td>
 
-                                            <td class="price">
-                                                <h4 class="table-title text-content">قیمت</h4>
-                                                <h5>{{ priceFormat($item['price']) }}
-                                                    <del class="text-content">45.680</del>
-                                                </h5>
-                                                <h6 class="theme-color">سود شما : 20.680</h6>
-                                            </td>
+                                        <td class="subtotal">
+                                            <h4 class="table-title text-content">جمع کل</h4>
+                                            <h5>{{ priceFormat($item['qty'] * $item['price']) }}</h5>
+                                        </td>
 
-                                            <td class="quantity">
-                                                <h4 class="table-title text-content">تعداد</h4>
-                                                <div class="quantity-price">
-                                                    <div class="cart_qty">
-                                                        <div class="input-group">
-                                                            <button type="button" class="btn qty-left-minus"
-                                                                    data-type="minus" data-field="">
-                                                                <i class="fa fa-minus ms-0"></i>
-                                                            </button>
-                                                            <input class="form-control input-number qty-input" type="text"
-                                                                   name="quantity" value="{{ $item['qty'] }}">
-                                                            <button type="button" class="btn qty-right-plus"
-                                                                    data-type="plus" data-field="">
-                                                                <i class="fa fa-plus ms-0"></i>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </td>
-
-                                            <td class="subtotal">
-                                                <h4 class="table-title text-content">جمع کل</h4>
-                                                <h5>{{ priceFormat($item['qty'] * $item['price']) }}</h5>
-                                            </td>
-
-                                            <td class="save-remove">
-                                                <h4 class="table-title text-content">عملیات</h4>
-                                                <a class="remove close_button" href="javascript:void(0)">حذف</a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                        <td class="save-remove">
+                                            <h4 class="table-title text-content">عملیات</h4>
+                                            <form action="{{ route('cart.delete', ['id' => $item['id']]) }}" method="POST">
+                                                @method('DELETE')
+                                                <button class="remove close_button">حذف</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -145,13 +159,13 @@
                             <ul>
                                 <li>
                                     <a href="{{ route('checkout.pay') }}"
-                                            class="btn btn-animation proceed-btn fw-bold">پرداخت
+                                       class="btn btn-animation proceed-btn fw-bold">پرداخت
                                     </a>
                                 </li>
 
                                 <li>
                                     <a href="{{ route('home') }}"
-                                            class="btn btn-light shopping-button text-dark">
+                                       class="btn btn-light shopping-button text-dark">
                                         <i class="fa-solid fa-arrow-right-long"></i>بازگشت به فروشگاه
                                     </a>
                                 </li>

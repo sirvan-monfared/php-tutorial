@@ -25,4 +25,11 @@ class CartController extends BaseController
 
         redirectTo($product->viewLink());
     }
+
+    public function delete(int $id): void
+    {
+        cart()->delete($id);
+
+        redirectBack();
+    }
 }

@@ -9,7 +9,7 @@ class Gateway
 
     public function __construct(protected bool $sandbox = false)
     {
-        $this->api_key = '6a7f99eb-7c20-4412-a972-6dfb7cd253a4';
+        $this->api_key = env('IDPAY_API_KEY');
         $this->gateway_code = 1; // 1 = idpay
     }
 

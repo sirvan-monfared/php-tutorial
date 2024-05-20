@@ -11,9 +11,9 @@ class Database
 
     public function __construct()
     {
-        $dsn = "mysql:host=localhost;dbname=tutorial_laracommerce;charset=utf8mb4";
+        $dsn = "mysql:host=". env('DB_HOST') .";dbname=". env('DB_NAME') .";charset=utf8mb4";
 
-        $this->pdo = new PDO($dsn, 'root', '123', [
+        $this->pdo = new PDO($dsn, env('DB_USER'), env('DB_PASS'), [
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
         ]);
     }

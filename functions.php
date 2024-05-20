@@ -130,3 +130,8 @@ function generateRandom($length = 20): string
 {
     return bin2hex(random_bytes($length));
 }
+
+function env(string $key, $default = ''): string
+{
+    return $_ENV[$key] ?? $default;
+}
