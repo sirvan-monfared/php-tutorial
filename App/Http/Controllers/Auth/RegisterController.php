@@ -21,7 +21,7 @@ class RegisterController extends BaseController
     public function store(): void
     {
         $validation = new Validator($_POST, [
-            'phone' => ['required', 'exact:11', 'mobile'],
+            'phone' => ['required', 'mobile'],
             'password' => ['required', 'min:3', 'max:12'],
             'password_confirmation' => ['confirm:password']
         ], [

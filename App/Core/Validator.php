@@ -71,7 +71,9 @@ class Validator
 
     public function mobile(string $value): bool
     {
-        return true;
+        $pattern = "/^09[012349]\d{8}$/";
+        
+        return preg_match($pattern, $value);
     }
 
     public function min(string $value, int $param): bool
