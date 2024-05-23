@@ -28,6 +28,7 @@
     <section class="log-in-section section-b-space">
         <div class="container-fluid-lg w-100">
             <div class="row">
+                @include('partials._alerts')
                 <div class="col-xxl-6 col-xl-5 col-lg-6 d-lg-block d-none ms-auto">
                     <div class="image-contain">
                         <img src="{{ asset('front/images/inner-page/sign-up.png') }}" class="img-fluid" alt="">
@@ -43,6 +44,9 @@
 
                         <div class="input-box">
                             <form method="POST" action="{{ route('auth.register.store') }}" class="row g-4">
+
+                                @include('partials._csrf')
+
                                 <div class="col-12">
                                     <div class="form-floating theme-form-floating">
                                         <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone') }}"

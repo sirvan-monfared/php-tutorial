@@ -36,6 +36,11 @@ class Validator
         return ! $this->passed();
     }
 
+    public function addError($key, $message): void
+    {
+        $this->errors[$key] = $message;
+    }
+
     public function errors(): array
     {
         return $this->errors;

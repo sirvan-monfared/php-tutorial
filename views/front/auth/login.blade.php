@@ -28,6 +28,9 @@
     <!-- log in section start -->
     <section class="log-in-section background-image-2 section-b-space">
         <div class="container-fluid-lg w-100">
+
+            @include('partials._alerts')
+
             <div class="row">
                 <div class="col-xxl-6 col-xl-5 col-lg-6 d-lg-block d-none ms-auto">
                     <div class="image-contain">
@@ -43,6 +46,8 @@
 
                         <div class="input-box">
                             <form action="{{ route('auth.login.store') }}" method="POST" class="row g-4">
+                                @include('partials._csrf')
+
                                 <div class="col-12">
                                     <div class="form-floating theme-form-floating log-in-form">
                                         <input type="text" class="form-control" name="phone" id="phone" value="{{ old('phone') }}"

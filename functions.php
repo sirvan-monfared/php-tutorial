@@ -135,3 +135,27 @@ function env(string $key, $default = ''): string
 {
     return $_ENV[$key] ?? $default;
 }
+
+function httpRequestMethod(): ?string
+{
+    return $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
+}
+
+function csrf_token(): string
+{
+    if (Session::has('csrf')) {
+        return Session::get('csrf');
+    }
+
+    $token = generateRandom(25);
+    Session::put('csrf', $token);
+
+    return $token;
+}
+
+function verify_csrf(): bool
+{
+    $session = Session::get('csrf');
+    Session::unset('csrf');
+    return !empty($session) && $_POST['_token'] === $session;
+}

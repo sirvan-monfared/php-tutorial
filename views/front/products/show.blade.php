@@ -186,6 +186,7 @@
 
                                 <div class="dynamic-checkout">
                                     <form action="{{ route('cart.store') }}" method="POST">
+                                        @include('partials._csrf')
 
                                         <input type="hidden" name="product_id" value="{{ $product->id }}">
 

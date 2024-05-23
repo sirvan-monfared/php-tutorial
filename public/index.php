@@ -28,8 +28,6 @@ $router = new Router();
 
 require(base_path('routes/routes.php'));
 
-$method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
-
-$router->match($method);
+$router->match(httpRequestMethod());
 
 Session::unflash();

@@ -29,12 +29,19 @@ class Session {
         unset($_SESSION['_flash']);
     }
 
-    public static function flush()
+    public static function flush(): void
     {
         $_SESSION = [];
     }
 
-    public static function destroy()
+    public static function unset($key): void
+    {
+        if (Session::has($key)) {
+            unset($_SESSION[$key]);
+        }
+    }
+
+    public static function destroy(): void
     {
         self::flush();
     

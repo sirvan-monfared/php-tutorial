@@ -104,6 +104,7 @@
                                         <td class="save-remove">
                                             <h4 class="table-title text-content">عملیات</h4>
                                             <form action="{{ route('cart.delete', ['id' => $item['id']]) }}" method="POST">
+                                                @include('partials._csrf')
                                                 @method('DELETE')
                                                 <button class="remove close_button">حذف</button>
                                             </form>
@@ -159,9 +160,12 @@
                         <div class="button-group cart-button">
                             <ul>
                                 <li>
-                                    <a href="{{ route('checkout.pay') }}"
-                                       class="btn btn-animation proceed-btn fw-bold">پرداخت
-                                    </a>
+                                    <form action="{{ route('checkout.pay') }}" method="POST">
+                                        @include('partials._csrf')
+
+                                        <button type="submit" class="btn btn-animation proceed-btn fw-bold">پرداخت</button>
+                                    </form>
+
                                 </li>
 
                                 <li>

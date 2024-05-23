@@ -59,8 +59,6 @@ class Router {
 
     public function match($method) 
     {
-        
-
         foreach($this->routes as $route) {
             $this->router->map($route['method'], $route['uri'], [...$route['controller'], $route['middleware']], $route['name']);
         }

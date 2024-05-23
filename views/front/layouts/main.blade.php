@@ -243,6 +243,7 @@
                                                 @endif
                                                 @if (auth()->check())
                                                     <form method="POST" action="{{ route('auth.logout') }}">
+                                                        @include('partials._csrf')
                                                         @method('DELETE')
 
                                                         <button type="submit" class="btn btn-default">خروج</button>

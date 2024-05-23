@@ -9,7 +9,7 @@ use App\Models\OrderItem;
 
 class CheckoutController extends BaseController
 {
-    public function pay()
+    public function pay(): void
     {
         $order = (new Order)->insert(cart()->sum());
 

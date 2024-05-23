@@ -13,6 +13,11 @@ class BaseController {
 
     public function __construct()
     {
+        if (httpRequestMethod() !== 'GET' && ! verify_csrf()) {
+            Session::warning('نشست شما منقضی شده است');
+            redirectBack();
+        }
+
         $this->blade = new BladeOne(base_path('views'), base_path('storage/cache'), BladeOne::MODE_DEBUG);
 
         $this->setComposers();
