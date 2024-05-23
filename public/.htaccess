@@ -1,8 +1,8 @@
-Header append Set-Cookie ;SameSite=None;Secure
+# Header append Set-Cookie ;SameSite=None;Secure
 
-<ifmodule mod_headers.c>
-    Header always edit Set-Cookie ^(.*)$ $1;SameSite=None;Secure
-</ifmodule>
+# <ifmodule mod_headers.c>
+#     Header always edit Set-Cookie ^(.*)$ $1;SameSite=None;Secure
+# </ifmodule>
 
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>

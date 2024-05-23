@@ -36,6 +36,7 @@
                     <div class="cart-table">
                         <div class="table-responsive-xl">
                             <table class="table">
+
                                 <tbody>
 
                                 @if(! $items->count())

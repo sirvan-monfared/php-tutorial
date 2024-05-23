@@ -35,7 +35,12 @@
  <div class="col-xxl-9">
  <div class="cart-table">
  <div class="table-responsive-xl">
+ <form method="POST">
+ <input type='hidden' name='<?php  echo '_token'; ?>' value='<?php echo $this->csrf_token; ?>'/>
+ <button>sub</button>
+ </form>
  <table class="table">
+
  <tbody>
 
  <?php if(! $items->count()): ?>

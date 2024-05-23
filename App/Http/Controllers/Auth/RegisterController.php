@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Core\Authenticator;
 use App\Core\Database;
 use App\Core\Session;
+use App\Core\Validator;
 use App\Http\Controllers\BaseController;
 use App\Http\Forms\LoginForm;
 use App\Http\Forms\RegisterForm;
@@ -19,9 +20,17 @@ class RegisterController extends BaseController
 
     public function store(): void
     {
-        $form = new RegisterForm();
+        $validation = new Validator($_POST, [
+            'phone' => ['required', 'exact:11', 'mobile'],
+            'password' => ['required', 'min:3', 'max:12'],
+            'password_confirmation' => ['confirm:password']
+        ], [
+            'phone' => 'شماره موبایل',
+            'password' => 'رمزعبور',
+            'password_confirmation' => 'تکرار رمز عبور'
+        ]);
 
-        if ($form->validate($_POST)) {
+        if ($validation->passed()) {
 
             $user = (new User)->byPhone($_POST['phone']);
 
@@ -43,7 +52,7 @@ class RegisterController extends BaseController
             redirectTo('/');
         }
 
-        Session::flash('errors', $form->errors());
+        Session::flash('errors', $validation->errors());
         Session::flash('old', [
             'phone' => $_POST['phone']
         ]);

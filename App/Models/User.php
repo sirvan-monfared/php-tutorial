@@ -6,7 +6,7 @@ class User extends Model
 {
     protected string $table = 'users';
 
-    public function byPhone(string $phone): static
+    public function byPhone(string $phone): static|bool
     {
         return $this->where('phone', $phone);
     }
