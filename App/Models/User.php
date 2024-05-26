@@ -43,4 +43,9 @@ class User extends Model
             'token' => null
         ]);
     }
+
+    public function isAdmin(): bool
+    {
+        return $this->is_admin === 1;
+    }
 }

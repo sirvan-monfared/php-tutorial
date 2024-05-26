@@ -2,14 +2,12 @@
 
 namespace App\Core\Middlewares;
 
-use App\Core\Middlewares\Guest;
-use App\Core\Middlewares\Auth;
-
 class Middleware {
 
     const MAP = [
         'guest' => Guest::class,
-        'auth' => Auth::class
+        'auth' => Auth::class,
+        'admin' => Admin::class
     ];
 
 
