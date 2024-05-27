@@ -15,12 +15,18 @@ class Model {
     }
 
 
-    public function all(?int $limit = null)
+    public function all(?int $limit = null, string $order_by = "")
     {
         $sql = "SELECT * FROM `{$this->table}`";
 
         if ($limit) {
             $sql .= " LIMIT {$limit}";
+        }
+
+        if ($order_by) {
+            $sql .= " ORDER BY {$order_by}";
+        } else {
+            $sql .= " ORDER BY `id` DESC";
         }
 
         return $this->db->prepare($sql, class: get_called_class())->all();

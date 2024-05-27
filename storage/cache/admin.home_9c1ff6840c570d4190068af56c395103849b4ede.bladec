@@ -1,8 +1,6 @@
 <?php $_shouldextend[1]=1; ?>
 
 <?php $this->startSection('content'); ?>
- <div class="page-body">
- <div class="container-fluid">
  <div class="row">
  <!-- chart caard section start -->
  <div class="col-sm-6 col-xxl-3 col-lg-6">
@@ -829,21 +827,6 @@
  <!-- To Do List end-->
 
 
- </div>
- </div>
- <!-- Container-fluid Ends-->
-
- <!-- footer start-->
- <div class="container-fluid">
- <footer class="footer">
- <div class="row">
- <div class="col-md-12 footer-copyright text-center">
- <p class="mb-0">راست چین شده توسط : ایلان ماسک</p>
- </div>
- </div>
- </footer>
- </div>
- <!-- footer End-->
  </div>
 <?php $this->stopSection(); ?>
 <?php if (isset($_shouldextend[1])) { echo $this->runChild('admin.layouts.main'); } ?>

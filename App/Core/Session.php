@@ -50,12 +50,12 @@ class Session {
         Cookie::delete('PHPSESSID');
     }
 
-    public static function success($text = null): void
+    public static function success($text = 'عملیات با موفقیت انجام شد'): void
     {
         Session::flash('_success', $text);
     }
 
-    public static function warning($text = null): void
+    public static function warning($text = 'لطفا خطاهای ذکرشده را اصلاح کنید'): void
     {
         Session::flash('_warning', $text);
     }
