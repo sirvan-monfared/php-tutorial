@@ -52,7 +52,7 @@
                                             </li>
 
                                             <li>
-                                                <a href="javascript:void(0)">
+                                                <a href="{{ $category->editLink() }}">
                                                     <i class="ri-pencil-line"></i>
                                                 </a>
                                             </li>
