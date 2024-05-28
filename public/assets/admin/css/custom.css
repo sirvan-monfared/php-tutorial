@@ -152,3 +152,12 @@ p {
     content: ' *';
     color: #dc3545;
 }
+
+.btn-delete {
+    background: none;
+    border: none;
+    outline: none;
+}
+.btn-delete i {
+    color: #dc3545;
+}

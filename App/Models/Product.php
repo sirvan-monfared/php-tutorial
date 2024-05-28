@@ -24,4 +24,9 @@ class Product extends Model
     {
         return route('products.show', ['id' => $this->id]);
     }
+
+    public function editLink(): string
+    {
+        return route('admin.product.edit', ['id' => $this->id]);
+    }
 }

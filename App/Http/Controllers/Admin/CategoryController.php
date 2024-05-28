@@ -7,6 +7,7 @@ use App\Core\Validator;
 use App\Http\Controllers\BaseController;
 use App\Models\Category;
 use Exception;
+use PDOException;
 
 class CategoryController extends BaseController
 {
@@ -19,7 +20,11 @@ class CategoryController extends BaseController
 
     public function create(): void
     {
-        $this->view('admin.category.create');
+        $category = new Category();
+
+        $this->view('admin.category.create', [
+            'category' => new Category()
+        ]);
     }
 
     public function store(): void
@@ -66,6 +71,19 @@ class CategoryController extends BaseController
 
 
         Session::success();
+        redirectBack();
+    }
+
+    public function destroy(int $id): void
+    {
+        $category = (new Category)->findOrFail($id);
+        try {
+            $category->delete();
+            Session::success();
+        } catch(PDOException $e) {
+            Session::warning('به دلیل وجود محصولات مرتبط با این دسته، امکان حذف آن وجود ندارد');
+        }
+
         redirectBack();
     }
 }

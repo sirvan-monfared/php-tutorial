@@ -316,6 +316,10 @@
 
 <!-- Theme js -->
 <script src="{{ asset('admin/js/script.js') }}"></script>
+
+
+@yield('scripts')
+
 </body>
 
 

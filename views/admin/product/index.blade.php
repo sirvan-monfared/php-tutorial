@@ -9,10 +9,10 @@
             <div class="card card-table">
                 <div class="card-body">
                     <div class="title-header option-title">
-                        <h5>لیست دسته ها</h5>
+                        <h5>لیست محصولات</h5>
                         <form class="d-inline-flex">
-                            <a href="{{ route('admin.category.create') }}" class="align-items-center btn btn-theme d-flex">
-                                <i data-feather="plus"></i>افزودن دسته جدید
+                            <a href="{{ route('admin.product.create') }}" class="align-items-center btn btn-theme d-flex">
+                                <i data-feather="plus"></i>افزودن محصول جدید
                             </a>
                         </form>
                     </div>
@@ -21,16 +21,19 @@
                         <table class="table all-package theme-table" id="table_id">
                             <thead>
                             <tr>
+                                <td>شناسه</td>
                                 <th>تصویر</th>
-                                <th>نام دسته</th>
-                                <th>نامک</th>
+                                <th>نام محصول</th>
+                                <th>قیمت</th>
+                                <th>تعداد در انبار</th>
                                 <th>عملیات</th>
                             </tr>
                             </thead>
 
                             <tbody>
-                            @foreach($categories as $category)
+                            @foreach($products as $product)
                                 <tr>
+                                    <td>{{ $product->id }}</td>
                                     <td>
                                         <div class="table-image">
                                             <img src="{{ asset('admin/images/users/1.jpg') }}" class="img-fluid"
@@ -40,11 +43,13 @@
 
                                     <td>
                                         <div class="user-name">
-                                            <span>{{ $category->name }}</span>
+                                            <span>{{ str_limit($product->name, 30) }}</span>
                                         </div>
                                     </td>
 
-                                    <td>{{ $category->slug }}</td>
+                                    <td>{{ $product->showPrice() }}</td>
+
+                                    <td>{{ $product->stock }}</td>
 
                                     <td>
                                         <ul>
@@ -55,13 +60,13 @@
                                             </li>
 
                                             <li>
-                                                <a href="{{ $category->editLink() }}">
+                                                <a href="{{ $product->editLink() }}">
                                                     <i class="ri-pencil-line"></i>
                                                 </a>
                                             </li>
 
                                             <li>
-                                                <form method="POST" class="delete-form" action="{{ route('admin.category.destroy', ['id' => $category->id]) }}">
+                                                <form method="POST" class="delete-form" action="{{ route('admin.product.destroy', ['id' => $product->id]) }}">
                                                     @method('DELETE')
                                                     @include('partials._csrf')
 

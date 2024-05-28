@@ -27,6 +27,16 @@ class Router {
         return $this;
     }
 
+    public function resource($base_url, $controller, $name_prefix = null, $middleware = null)
+    {
+        $this->get("$base_url", [$controller, 'index'], "{$name_prefix}.index")->only($middleware);
+        $this->get("$base_url/create",  [$controller, 'create'], "{$name_prefix}.create")->only($middleware);
+        $this->post("$base_url",  [$controller, 'store'], "{$name_prefix}.store")->only($middleware);
+        $this->get("$base_url/[i:id]/edit",  [$controller, 'edit'], "{$name_prefix}.edit")->only($middleware);
+        $this->put("$base_url/[i:id]",  [$controller, 'update'], "{$name_prefix}.update")->only($middleware);
+        $this->delete("$base_url/[i:id]",  [$controller, 'destroy'], "{$name_prefix}.destroy")->only($middleware);
+    }
+
     public function get($uri, $controller, $name = null)
     {
         return $this->add($uri, $controller, 'GET', $name);

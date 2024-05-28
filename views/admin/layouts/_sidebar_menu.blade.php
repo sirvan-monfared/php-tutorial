@@ -21,7 +21,7 @@
                 </a>
                 <ul class="sidebar-submenu">
                     <li>
-                        <a href="products.html">محصولات</a>
+                        <a href="{{ route('admin.product.index') }}">محصولات</a>
                     </li>
 
                     <li>

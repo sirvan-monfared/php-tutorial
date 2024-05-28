@@ -14,6 +14,14 @@ class Model {
         $this->db = new Database();
     }
 
+    public function __get(string $name)
+    {
+        if (! property_exists($this, $name)) {
+            return null;
+        }
+
+        return $this->$name;
+    }
 
     public function all(?int $limit = null, string $order_by = "")
     {
@@ -86,5 +94,14 @@ class Model {
         return $this->db->prepare("SELECT * FROM `{$this->table}` WHERE {$column}=:{$column}", [
             "$column" => $value
         ], get_called_class())->find();
+    }
+
+    public function delete(): void
+    {
+        $sql = "DELETE FROM {$this->table} WHERE `id`=:id";
+
+        $this->db->prepare($sql, [
+            'id' => $this->id
+        ]);
     }
 }
