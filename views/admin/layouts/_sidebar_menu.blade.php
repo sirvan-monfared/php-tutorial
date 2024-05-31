@@ -25,7 +25,7 @@
                     </li>
 
                     <li>
-                        <a href="add-new-product.html">افزودن محصول جدید</a>
+                        <a href="{{ route('admin.product.create') }}">افزودن محصول جدید</a>
                     </li>
                 </ul>
             </li>
@@ -190,9 +190,9 @@
             </li>
 
             <li class="sidebar-list">
-                <a class="sidebar-link sidebar-title link-nav" href="list-page.html">
+                <a class="sidebar-link sidebar-title link-nav" href="{{ route('home') }}">
                     <i class="ri-list-check"></i>
-                    <span>لیست برگه ها</span>
+                    <span>مشاهده سایت</span>
                 </a>
             </li>
         </ul>

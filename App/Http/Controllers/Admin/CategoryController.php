@@ -63,10 +63,7 @@ class CategoryController extends BaseController
         try {
             $category->revise($_POST);
         } catch(Exception $e) {
-            Session::warning('مشکلی در اجرای عملیات بوجود آمد');
-            Session::flash('old', $_POST);
-
-            redirectBack();
+            $this->redirectWithErrors();
         }
 
 

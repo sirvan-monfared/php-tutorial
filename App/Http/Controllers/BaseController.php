@@ -42,6 +42,14 @@ class BaseController {
         redirectBack();
     }
 
+    public function redirectWithErrors(): void
+    {
+        Session::flash('old', $_POST);
+        Session::warning('مشکلی در اجرای عملیات پیش آمده است');
+
+        redirectBack();
+    }
+
     protected function setComposers(): void
     {
         $this->blade->composer('front.layouts._top_categories', CategoriesComposer::class);

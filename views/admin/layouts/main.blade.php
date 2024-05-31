@@ -17,40 +17,42 @@
 
 
     <!-- Linear Icon css -->
-    <link rel="stylesheet" href="{{ asset('admin/css/linearicon.css') }}">
+    <link rel="stylesheet" href="<?= asset('admin/css/linearicon.css') ?>">
 
     <!-- fontawesome css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/vendors/font-awesome.css') }}">
+    <link rel="stylesheet" type="text/css" href="<?= asset('admin/css/vendors/font-awesome.css') ?>">
 
     <!-- Themify icon css-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/vendors/themify.css') }}">
+    <link rel="stylesheet" type="text/css" href="<?= asset('admin/css/vendors/themify.css') ?>">
 
     <!-- ratio css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/ratio.css') }}">
+    <link rel="stylesheet" type="text/css" href="<?= asset('admin/css/ratio.css') ?>">
 
     <!-- remixicon css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/remixicon.css') }}">
+    <link rel="stylesheet" type="text/css" href="<?= asset('admin/css/remixicon.css') ?>">
 
     <!-- Feather icon css-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/vendors/feather-icon.css') }}">
+    <link rel="stylesheet" type="text/css" href="<?= asset('admin/css/vendors/feather-icon.css') ?>">
 
     <!-- Plugins css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/vendors/scrollbar.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/vendors/animate.css') }}">
+    <link rel="stylesheet" type="text/css" href="<?= asset('admin/css/vendors/scrollbar.css') ?>">
+    <link rel="stylesheet" type="text/css" href="<?= asset('admin/css/vendors/animate.css') ?>">
 
     <!-- Bootstrap css-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/vendors/bootstrap.css') }}">
+    <link rel="stylesheet" type="text/css" href="<?= asset('admin/css/vendors/bootstrap.css') ?>">
 
     <!-- vector map css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/vector-map.css') }}">
+    <link rel="stylesheet" type="text/css" href="<?= asset('admin/css/vector-map.css') ?>">
 
     <!-- Slick Slider Css -->
-    <link rel="stylesheet" href="{{ asset('admin/css/vendors/slick.css') }}">
+    <link rel="stylesheet" href="<?= asset('admin/css/vendors/slick.css') ?>">
+
+    @yield('css')
 
     <!-- App css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/style.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/font.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/custom.css') }}">
+    <link rel="stylesheet" type="text/css" href="<?= asset('admin/css/style.css') ?>">
+    <link rel="stylesheet" type="text/css" href="<?= asset('admin/css/font.css') ?>">
+    <link rel="stylesheet" type="text/css" href="<?= asset('admin/css/custom.css') ?>">
 </head>
 
 <body>
@@ -266,59 +268,43 @@
         </div>
     </div>
 </div>
-<!-- Modal End -->
 
 <!-- latest js -->
-<script src="{{ asset('admin/js/jquery-3.6.0.min.js') }}"></script>
+<script src="<?= asset('admin/js/jquery-3.6.0.min.js') ?>"></script>
 
 <!-- Bootstrap js -->
-<script src="{{ asset('admin/js/bootstrap/bootstrap.bundle.min.js') }}"></script>
+<script src="<?= asset('admin/js/bootstrap/bootstrap.bundle.min.js') ?>"></script>
 
 <!-- feather icon js -->
-<script src="{{ asset('admin/js/icons/feather-icon/feather.min.js') }}"></script>
-<script src="{{ asset('admin/js/icons/feather-icon/feather-icon.js') }}"></script>
+<script src="<?= asset('admin/js/icons/feather-icon/feather.min.js') ?>"></script>
+<script src="<?= asset('admin/js/icons/feather-icon/feather-icon.js') ?>"></script>
 
 <!-- scrollbar simplebar js -->
-<script src="{{ asset('admin/js/scrollbar/simplebar.js') }}"></script>
-<script src="{{ asset('admin/js/scrollbar/custom.js') }}"></script>
+<script src="<?= asset('admin/js/scrollbar/simplebar.js') ?>"></script>
+<script src="<?= asset('admin/js/scrollbar/custom.js') ?>"></script>
 
 <!-- Sidebar jquery -->
-<script src="{{ asset('admin/js/config.js') }}"></script>
+<script src="<?= asset('admin/js/config.js') ?>"></script>
 
-<!-- tooltip init js -->
-<script src="{{ asset('admin/js/tooltip-init.js') }}"></script>
+<!-- 1111 tooltip init js -->
+<script src="<?= asset('admin/js/tooltip-init.js') ?>"></script>
 
 <!-- Plugins JS -->
-<script src="{{ asset('admin/js/sidebar-menu.js') }}"></script>
-{{--<script src="{{ asset('admin/js/notify/bootstrap-notify.min.js') }}"></script>--}}
-<script src="{{ asset('admin/js/notify/index.js') }}"></script>
+<script src="<?= asset('admin/js/sidebar-menu.js') ?>"></script>
 
-<!-- Apexchar js -->
-<script src="{{ asset('admin/js/chart/apex-chart/apex-chart1.js') }}"></script>
-<script src="{{ asset('admin/js/chart/apex-chart/moment.min.js') }}"></script>
-<script src="{{ asset('admin/js/chart/apex-chart/apex-chart.js') }}"></script>
-<script src="{{ asset('admin/js/chart/apex-chart/stock-prices.js') }}"></script>
-<script src="{{ asset('admin/js/chart/apex-chart/chart-custom1.js') }}"></script>
-
-
-<!-- slick slider js -->
-<script src="{{ asset('admin/js/slick.min.js') }}"></script>
-<script src="{{ asset('admin/js/custom-slick.js') }}"></script>
 
 <!-- customizer js -->
-<script src="{{ asset('admin/js/customizer.js') }}"></script>
-
-<!-- ratio js -->
-<script src="{{ asset('admin/js/ratio.js') }}"></script>
-
-<!-- sidebar effect -->
-<script src="{{ asset('admin/js/sidebareffect.js') }}"></script>
-
-<!-- Theme js -->
-<script src="{{ asset('admin/js/script.js') }}"></script>
-
+<script src="<?= asset('admin/js/customizer.js') ?>"></script>
 
 @yield('scripts')
+
+<!-- sidebar effect -->
+<script src="<?= asset('admin/js/sidebareffect.js') ?>"></script>
+
+<!-- Theme js -->
+<script src="<?= asset('admin/js/script.js') ?>"></script>
+
+@yield('js')
 
 </body>
 

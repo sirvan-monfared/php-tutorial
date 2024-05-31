@@ -27,14 +27,14 @@ class Model {
     {
         $sql = "SELECT * FROM `{$this->table}`";
 
-        if ($limit) {
-            $sql .= " LIMIT {$limit}";
-        }
-
         if ($order_by) {
             $sql .= " ORDER BY {$order_by}";
         } else {
             $sql .= " ORDER BY `id` DESC";
+        }
+
+        if ($limit) {
+            $sql .= " LIMIT {$limit}";
         }
 
         return $this->db->prepare($sql, class: get_called_class())->all();
