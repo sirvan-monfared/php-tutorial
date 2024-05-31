@@ -59,7 +59,7 @@ class Product extends Model
         ]);
     }
 
-    public function revise(array $data): Product
+    public function revise(array $data, ?string $image_name = ''): Product
     {
         return $this->update([
             'name' => $data['name'],
@@ -68,7 +68,27 @@ class Product extends Model
             'price' => $data['price'],
             'prev_price' => $data['prev_price'],
             'stock' => $data['stock'],
-            'description' => $data['description']
+            'description' => $data['description'],
+            'featured_image' => $image_name
         ]);
+    }
+
+    public function featuredImage(): string
+    {
+        if (! $this->featured_image) return '';
+
+        return asset("uploads/$this->featured_image");
+    }
+
+    public function featuredImagePath(): string
+    {
+        if (! $this->featured_image) return '';
+
+        return base_path('public/assets/uploads/') . $this->featured_image;
+    }
+
+    public function hasFeaturedImage(): bool
+    {
+        return ($this->featuredImage() && $this->featuredImagePath() && is_file($this->featuredImagePath()));
     }
 }

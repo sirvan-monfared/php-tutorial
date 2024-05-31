@@ -88,20 +88,14 @@
             <h5>تصویر محصول</h5>
         </div>
 
-        <div class="mb-4 row align-items-center">
-            <label
-                    class="col-sm-3 col-form-label form-label-title">تصاویر</label>
-            <div class="col-sm-9">
-                <input class="form-control form-choose" type="file" id="formFile" multiple>
-            </div>
-        </div>
-
         <div class="row align-items-center">
-            <label class="col-sm-3 col-form-label form-label-title">تصویر شاخص</label>
+            <label for="image" class="col-sm-3 col-form-label form-label-title">تصویر شاخص</label>
             <div class="col-sm-9">
-                <input class="form-control form-choose" type="file" id="formFileMultiple1"
-                       multiple>
+                <input type="file" class="form-control form-choose" name="image" id="image">
             </div>
+            @if($product->hasFeaturedImage())
+                <img src="{{ $product->featuredImage() }}" alt="" height="200" style="width: auto">
+            @endif
         </div>
     </div>
 </div>

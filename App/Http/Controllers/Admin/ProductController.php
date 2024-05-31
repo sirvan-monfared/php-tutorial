@@ -65,7 +65,15 @@ class ProductController extends BaseController
         }
 
         try {
-            $product->revise($_POST);
+            if ($_FILES['image']['name']) {
+                $image_name = uploadImage('image');
+
+                if ($product->hasFeaturedImage()) {
+                    unlink($product->featuredImagePath());
+                }
+            }
+
+            $product->revise($_POST, $image_name);
             Session::success();
 
             redirectBack();

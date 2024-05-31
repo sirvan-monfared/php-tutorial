@@ -159,3 +159,34 @@ function verify_csrf(): bool
     Session::unset('csrf');
     return !empty($session) && $_POST['_token'] === $session;
 }
+
+function uploadImage($field_name): bool|string
+{
+    $file = $_FILES[$field_name];
+
+    $error = $file['error'];
+
+//    if ($error === UPLOAD_ERR_NO_FILE) {
+//        dd('هیچ فایلی آپلود نشده است');
+//    }
+
+    if ($error !== UPLOAD_ERR_OK) {
+        dd('مشکلی در آپلود به وجود آمده است');
+    }
+
+    $info = pathinfo($file['name']);
+    $extension = $info['extension'];
+
+    if (! in_array($extension, ['jpg', 'jpeg', 'png', 'avif']) || ! getimagesize($file['tmp_name'])) {
+        dd('فقط میتوانید تصویر آپلود کنید');
+    }
+
+    $new_name = time() . rand(500, 10000) . '.' . $extension;
+    $path = base_path('public/assets/uploads/') . $new_name;
+
+    if (move_uploaded_file($_FILES['image']['tmp_name'], $path)) {
+        return $new_name;
+    }
+
+    return false;
+}
