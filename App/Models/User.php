@@ -6,17 +6,31 @@ class User extends Model
 {
     protected string $table = 'users';
 
-    const RULES = [
-        'phone' => ['required', 'mobile'],
-        'password' => ['required', 'min:3', 'max:12'],
-        'password_confirmation' => ['confirm:password']
-    ];
-
     const NAMES = [
         'phone' => 'شماره موبایل',
         'password' => 'رمزعبور',
         'password_confirmation' => 'تکرار رمز عبور'
     ];
+
+    public function rules(bool $with_passwords = true): array
+    {
+        $rules = [
+            'phone' => ['required', 'mobile', "unique:users,phone"],
+            'password' => ['required', 'min:3', 'max:12'],
+            'password_confirmation' => ['confirm:password']
+        ];
+
+        if (! routeIs('admin.user.store')) {
+            $rules['phone'] = ['required', 'mobile', "unique:users,phone,{$this->id}"];
+        }
+
+        if (! $with_passwords) {
+            unset($rules['password']);
+            unset($rules['password_confirmation']);
+        }
+
+        return $rules;
+    }
 
     public function byPhone(string $phone): static|bool
     {

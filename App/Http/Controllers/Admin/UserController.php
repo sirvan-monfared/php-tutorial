@@ -26,7 +26,7 @@ class UserController extends BaseController
 
     public function store(): void
     {
-        $validation = new Validator($_POST, User::RULES, User::NAMES);
+        $validation = new Validator($_POST, (new User)->rules(), User::NAMES);
 
         if ($validation->failed()) {
             $this->redirectToForm($validation);
@@ -49,7 +49,6 @@ class UserController extends BaseController
 
     public function edit(int $id)
     {
-
         $user = (new User)->findOrFail($id);
 
         $this->view('admin.user.edit', [
@@ -61,11 +60,8 @@ class UserController extends BaseController
     {
         $user = (new User)->findOrFail($id);
 
-        $rules = User::RULES;
-        if (! $_POST['password']) {
-            unset($rules['password']);
-            unset($rules['password_confirmation']);
-        }
+        $rules = $user->rules($_POST['password']);
+
         $validation = new Validator($_POST, $rules, User::NAMES);
 
         if ($validation->failed()) {

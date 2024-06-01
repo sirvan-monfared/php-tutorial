@@ -60,7 +60,8 @@ class Validator
             'mobile' => "{$field} وارد شده معتبر نمی باشد",
             'min' => "{$field} باید بیش از {$param} کاراکتر باشد",
             'max' => "{$field} باید حداکثر از {$param} کاراکتر باشد",
-            'confirm' => "فیلدهای {$field} و تکرار {$field} مطابقت ندارند"
+            'confirm' => "فیلدهای {$field} و تکرار {$field} مطابقت ندارند",
+            'unique' => "{$field} قبلا در سایت ثبت شده است "
         };
     }
 
@@ -95,4 +96,21 @@ class Validator
     {
         return $value === $this->data[$param];
     }
+
+    public function unique($value, string $param): bool
+    {
+        [$table, $column, $except] = explode(',', $param);
+
+        $db = new Database();
+        $found = $db->prepare("SELECT `id` FROM {$table} WHERE {$column}=:{$column} LIMIT 1", [
+            "{$column}" => $value
+        ])->find();
+
+        if ($found && $except && $found['id'] === (int) $except) {
+            return true;
+        }
+
+        return ! $found;
+    }
+
 }
