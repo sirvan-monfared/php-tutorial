@@ -43,9 +43,10 @@
                                         <div class="product-main no-arrow">
                                             <div>
                                                 <div class="slider-image">
-                                                    <img src="{{ asset('front/images/fashion/product/23.jpg') }}"
+
+                                                    <img src="{{ $product->featuredImageOrDefault() }}"
                                                          id="img-1"
-                                                         data-zoom-image="{{ asset('front/images/fashion/product/23.jpg') }}"
+                                                         data-zoom-image="{{ $product->featuredImageOrDefault() }}"
                                                          class="
                                                         img-fluid image_zoom_cls-0 blur-up lazyload" alt="">
                                                 </div>

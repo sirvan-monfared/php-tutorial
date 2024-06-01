@@ -69,10 +69,10 @@
                 </a>
                 <ul class="sidebar-submenu">
                     <li>
-                        <a href="all-users.html">نمایش کاربران</a>
+                        <a href="{{ route('admin.user.index') }}">لیست کاربران</a>
                     </li>
                     <li>
-                        <a href="add-new-user.html">افزودن کاربر جدید</a>
+                        <a href="{{ route('admin.user.create') }}">افزودن کاربر جدید</a>
                     </li>
                 </ul>
             </li>

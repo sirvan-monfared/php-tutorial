@@ -160,6 +160,11 @@ function verify_csrf(): bool
     return !empty($session) && $_POST['_token'] === $session;
 }
 
+function routeIs(string $route_name): bool
+{
+    return route($route_name) === currentUrl();
+}
+
 function uploadImage($field_name): bool|string
 {
     $file = $_FILES[$field_name];

@@ -6,6 +6,18 @@ class User extends Model
 {
     protected string $table = 'users';
 
+    const RULES = [
+        'phone' => ['required', 'mobile'],
+        'password' => ['required', 'min:3', 'max:12'],
+        'password_confirmation' => ['confirm:password']
+    ];
+
+    const NAMES = [
+        'phone' => 'شماره موبایل',
+        'password' => 'رمزعبور',
+        'password_confirmation' => 'تکرار رمز عبور'
+    ];
+
     public function byPhone(string $phone): static|bool
     {
         return $this->where('phone', $phone);
@@ -25,8 +37,7 @@ class User extends Model
             'password' => password_hash($data['password'], PASSWORD_BCRYPT),
             'email' => $data['email'] ?? null,
             'address' => $data['address'] ?? null,
-            'created_at' => now(),
-            'updated_at' => now()
+            'is_admin' => 0
         ]);
     }
 
@@ -47,5 +58,43 @@ class User extends Model
     public function isAdmin(): bool
     {
         return $this->is_admin === 1;
+    }
+
+    public function viewLink(): string
+    {
+        return route('user.show', ['id' => $this->id]);
+    }
+
+    public function editLink(): string
+    {
+        return route('admin.user.edit', ['id' => $this->id]);
+    }
+
+    public function makeAdmin(): User
+    {
+        return $this->update([
+            'is_admin' => 1
+        ]);
+    }
+
+    public function makeRegularUser(): User
+    {
+        return $this->update([
+            'is_admin' => 0
+        ]);
+    }
+
+    public function revise(array $data)
+    {
+        $password = $data['password'] ? password_hash($data['password'], PASSWORD_BCRYPT) : $this->password;
+
+        return $this->update([
+            'name' => $data['name'] ?? null,
+            'last_name' => $data['last_name'] ?? null,
+            'phone' => $data['phone'],
+            'password' => $password,
+            'email' => $data['email'] ?? null,
+            'address' => $data['address'] ?? null
+        ]);
     }
 }

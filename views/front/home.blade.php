@@ -359,7 +359,7 @@
                                 <div class="product-box product-box-bg wow fadeInUp">
                                     <div class="product-image">
                                         <a href="{{ $product->viewLink() }}">
-                                            <img src="{{ asset('front/images/cake/product/1.png') }}"
+                                            <img src="{{ $product->featuredImageOrDefault() }}"
                                                  class="img-fluid blur-up lazyload" alt="">
                                         </a>
                                         <ul class="product-option">

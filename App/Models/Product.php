@@ -53,7 +53,7 @@ class Product extends Model
             'slug' => $data['slug'],
             'category_id' => $data['category_id'],
             'price' => $data['price'],
-            'prev_price' => $data['prev_price'],
+            'prev_price' => $data['prev_price'] ?: null,
             'stock' => $data['stock'],
             'description' => $data['description']
         ]);
@@ -66,7 +66,7 @@ class Product extends Model
             'slug' => $data['slug'],
             'category_id' => $data['category_id'],
             'price' => $data['price'],
-            'prev_price' => $data['prev_price'],
+            'prev_price' => $data['prev_price'] ?: null,
             'stock' => $data['stock'],
             'description' => $data['description'],
             'featured_image' => $image_name
@@ -77,7 +77,12 @@ class Product extends Model
     {
         if (! $this->featured_image) return '';
 
-        return asset("uploads/$this->featured_image");
+        return  asset("uploads/$this->featured_image");
+    }
+
+    public function featuredImageOrDefault(): string
+    {
+        return $this->featuredImage() ?: $this->defaultFeaturedImage();
     }
 
     public function featuredImagePath(): string
@@ -85,6 +90,11 @@ class Product extends Model
         if (! $this->featured_image) return '';
 
         return base_path('public/assets/uploads/') . $this->featured_image;
+    }
+
+    public function defaultFeaturedImage(): string
+    {
+        return asset('front/images/cake/product/1.png');
     }
 
     public function hasFeaturedImage(): bool
