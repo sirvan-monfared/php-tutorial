@@ -90,11 +90,11 @@
             </div>
 
             <div class="d-flex justify-content-between align-items-center">
-                @if($prev_link)
-                    <a class="btn btn-primary" href="{{ $prev_link }}">صفحه قبل</a>
+                @if($paginator->hasPrevPage())
+                    <a class="btn btn-primary" href="{{ $paginator->prevUrl() }}">صفحه قبل</a>
                 @endif
-                @if($next_link && $current_page < $last_page)
-                    <a class="btn btn-primary" href="{{ $next_link }}">صفحه بعد</a>
+                @if($paginator->hasNextPage())
+                    <a class="btn btn-primary" href="{{ $paginator->nextUrl() }}">صفحه بعد</a>
                 @endif
             </div>
         </div>

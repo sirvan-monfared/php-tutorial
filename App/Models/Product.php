@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Core\Paginator;
+
 class Product extends Model
 {
     protected string $table = 'products';
@@ -103,12 +105,16 @@ class Product extends Model
         return ($this->featuredImage() && $this->featuredImagePath() && is_file($this->featuredImagePath()));
     }
 
-    public function paginate($per_page = 10, $page_no = 1)
+    public function paginate(): object
     {
-        $offset = ($page_no - 1) * $per_page;
+        $total = count((new Product)->all());
+        $paginator = new Paginator(5, $total);
 
-        $sql = "SELECT * FROM {$this->table} LIMIT {$per_page} OFFSET {$offset}";
+        $sql = "SELECT * FROM {$this->table} LIMIT {$paginator->perPage()} OFFSET {$paginator->offset()}";
 
-        return $this->db->prepare($sql, [], Product::class)->all();
+        return (object) [
+            'items' => $this->db->prepare($sql, [], Product::class)->all(),
+            'paginator' => $paginator
+        ];
     }
 }

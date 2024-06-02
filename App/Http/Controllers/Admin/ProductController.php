@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Core\Paginator;
 use App\Core\Session;
 use App\Core\Validator;
 use App\Http\Controllers\BaseController;
@@ -13,22 +14,11 @@ class ProductController extends BaseController
 {
     public function index(): void
     {
-        $currentPage = (int) $_GET['page'] ?: 1;
-        $per_page = 5;
-        $total = count((new Product)->all());
-        $last_page = ceil($total / $per_page);
-
-        $prev_url = ($currentPage > 1) ? currentUrl() . "?page=" . $currentPage - 1 : '';
-        $next_url = currentUrl() . "?page=" . $currentPage + 1;
-
-        $products = (new Product)->paginate($per_page, $currentPage);
+        $paginated = (new Product)->paginate();
 
         $this->view('admin.product.index', [
-            'products' => $products,
-            'prev_link' => $prev_url,
-            'next_link' => $next_url,
-            'last_page' => $last_page,
-            'current_page' => $currentPage
+            'products' => $paginated->items,
+            'paginator' => $paginated->paginator
         ]);
     }
 
