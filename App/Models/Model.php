@@ -40,7 +40,7 @@ class Model {
         return $this->db->prepare($sql, class: get_called_class())->all();
     }
 
-    public function findOrFail($id)
+    public function findOrFail($id): ?static
     {
         return $this->db->prepare("SELECT * FROM `{$this->table}` WHERE id=:id", ['id' => $id], get_called_class())->findOrFail();
 

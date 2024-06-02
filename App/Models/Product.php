@@ -46,7 +46,7 @@ class Product extends Model
         return route('admin.product.edit', ['id' => $this->id]);
     }
 
-    public function insert(array $data): ?Product
+    public function insert(array $data, ?string $image_name = ''): ?Product
     {
         return $this->create([
             'name' => $data['name'],
@@ -55,7 +55,8 @@ class Product extends Model
             'price' => $data['price'],
             'prev_price' => $data['prev_price'] ?: null,
             'stock' => $data['stock'],
-            'description' => $data['description']
+            'description' => $data['description'],
+            'featured_image' => $image_name
         ]);
     }
 
@@ -94,11 +95,20 @@ class Product extends Model
 
     public function defaultFeaturedImage(): string
     {
-        return asset('front/images/cake/product/1.png');
+        return asset('front/images/default-product.jpg');
     }
 
     public function hasFeaturedImage(): bool
     {
         return ($this->featuredImage() && $this->featuredImagePath() && is_file($this->featuredImagePath()));
+    }
+
+    public function paginate($per_page = 10, $page_no = 1)
+    {
+        $offset = ($page_no - 1) * $per_page;
+
+        $sql = "SELECT * FROM {$this->table} LIMIT {$per_page} OFFSET {$offset}";
+
+        return $this->db->prepare($sql, [], Product::class)->all();
     }
 }

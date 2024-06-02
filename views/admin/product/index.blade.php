@@ -11,7 +11,8 @@
                     <div class="title-header option-title">
                         <h5>لیست محصولات</h5>
                         <form class="d-inline-flex">
-                            <a href="{{ route('admin.product.create') }}" class="align-items-center btn btn-theme d-flex">
+                            <a href="{{ route('admin.product.create') }}"
+                               class="align-items-center btn btn-theme d-flex">
                                 <i data-feather="plus"></i>افزودن محصول جدید
                             </a>
                         </form>
@@ -36,7 +37,7 @@
                                     <td>{{ $product->id }}</td>
                                     <td>
                                         <div class="table-image">
-                                            <img src="{{ asset('admin/images/users/1.jpg') }}" class="img-fluid"
+                                            <img src="{{ $product->featuredImageOrDefault() }}" class="img-fluid"
                                                  alt="">
                                         </div>
                                     </td>
@@ -66,7 +67,8 @@
                                             </li>
 
                                             <li>
-                                                <form method="POST" class="delete-form" action="{{ route('admin.product.destroy', ['id' => $product->id]) }}">
+                                                <form method="POST" class="delete-form"
+                                                      action="{{ route('admin.product.destroy', ['id' => $product->id]) }}">
                                                     @method('DELETE')
                                                     @include('partials._csrf')
 
@@ -86,6 +88,15 @@
                     </div>
                 </div>
             </div>
+
+            <div class="d-flex justify-content-between align-items-center">
+                @if($prev_link)
+                    <a class="btn btn-primary" href="{{ $prev_link }}">صفحه قبل</a>
+                @endif
+                @if($next_link && $current_page < $last_page)
+                    <a class="btn btn-primary" href="{{ $next_link }}">صفحه بعد</a>
+                @endif
+            </div>
         </div>
     </div>
 @endsection
@@ -95,7 +106,7 @@
     <script>
         const forms = document.querySelectorAll('.delete-form');
 
-        forms.forEach(function(form) {
+        forms.forEach(function (form) {
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
 

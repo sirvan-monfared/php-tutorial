@@ -13,8 +13,22 @@ class ProductController extends BaseController
 {
     public function index(): void
     {
+        $currentPage = (int) $_GET['page'] ?: 1;
+        $per_page = 5;
+        $total = count((new Product)->all());
+        $last_page = ceil($total / $per_page);
+
+        $prev_url = ($currentPage > 1) ? currentUrl() . "?page=" . $currentPage - 1 : '';
+        $next_url = currentUrl() . "?page=" . $currentPage + 1;
+
+        $products = (new Product)->paginate($per_page, $currentPage);
+
         $this->view('admin.product.index', [
-            'products' => (new Product)->all()
+            'products' => $products,
+            'prev_link' => $prev_url,
+            'next_link' => $next_url,
+            'last_page' => $last_page,
+            'current_page' => $currentPage
         ]);
     }
 
@@ -33,8 +47,13 @@ class ProductController extends BaseController
         if ($validation->failed()) {
             $this->redirectToForm($validation);
         }
+
         try {
-            $product = (new Product)->insert($_POST);
+            if ($_FILES['image']['name']) {
+                $image_name = uploadImage('image');
+            }
+
+            $product = (new Product)->insert($_POST, $image_name);
             Session::success();
 
             redirectTo($product->editLink());
@@ -88,6 +107,9 @@ class ProductController extends BaseController
 
         try {
             $product->delete();
+            if ($product->hasFeaturedImage()) {
+                unlink($product->featuredImagePath());
+            }
             Session::success();
         } catch(Exception $e) {
             Session::warning();

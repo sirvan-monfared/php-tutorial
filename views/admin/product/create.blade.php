@@ -12,7 +12,7 @@
                 @include('partials._alerts')
 
                 <div class="col-sm-8 m-auto">
-                    <form action="{{ route('admin.product.store') }}" method="POST" class="theme-form theme-form-2 mega-form">
+                    <form action="{{ route('admin.product.store') }}" enctype="multipart/form-data" method="POST" class="theme-form theme-form-2 mega-form">
 
                         @include('partials._csrf')
 
