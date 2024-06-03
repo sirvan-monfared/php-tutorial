@@ -9,6 +9,7 @@ class Order extends Model
     protected string $table = 'orders';
 
     protected array $order_items = [];
+    protected ?User $user = null;
 
     const NOT_PAID = 1;
     const PAID = 2;
@@ -78,5 +79,42 @@ class Order extends Model
     public function isPaid(): bool
     {
         return $this->status === Order::PAID;
+    }
+
+    public function editLink(): string
+    {
+        return route('admin.order.edit', ['id' => $this->id]);
+    }
+
+    public function status(): string
+    {
+        return match($this->status) {
+            self::NOT_PAID => '<span class="badge badge-warning">در انتظار پرداخت</span>',
+            self::PAID => '<span class="badge badge-success">پرداخت شده</span>',
+            self::FAILED => '<span class="badge badge-danger">پرداخت ناموفق</span>',
+        };
+    }
+
+    public function updateStatus(array $data): Order
+    {
+        return $this->update([
+            'status' => $data['status'],
+            'payment_order_id' => $data['payment_order_id'],
+            'track_id' => $data['track_id']
+        ]);
+    }
+
+    public function hasShipment(): bool
+    {
+        return !! $this->shipment_id;
+    }
+
+    public function user(): ?User
+    {
+        if (! $this->user) {
+            $this->user = (new User)->find($this->user_id);
+        }
+
+        return $this->user;
     }
 }

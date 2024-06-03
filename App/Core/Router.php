@@ -33,6 +33,7 @@ class Router {
         $this->get("$base_url/create",  [$controller, 'create'], "{$name_prefix}.create")->only($middleware);
         $this->post("$base_url",  [$controller, 'store'], "{$name_prefix}.store")->only($middleware);
         $this->get("$base_url/[i:id]/edit",  [$controller, 'edit'], "{$name_prefix}.edit")->only($middleware);
+        $this->get("$base_url/[i:id]",  [$controller, 'show'], "{$name_prefix}.show")->only($middleware);
         $this->put("$base_url/[i:id]",  [$controller, 'update'], "{$name_prefix}.update")->only($middleware);
         $this->delete("$base_url/[i:id]",  [$controller, 'destroy'], "{$name_prefix}.destroy")->only($middleware);
     }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UserController;
 
@@ -12,3 +13,5 @@ $router->resource('/admlara/category', CategoryController::class, 'admin.categor
 $router->resource('/admlara/product', ProductController::class, 'admin.product', 'admin');
 
 $router->resource('/admlara/users', UserController::class, 'admin.user', 'admin');
+
+$router->resource('/admlara/order', OrderController::class, 'admin.order', 'admin');

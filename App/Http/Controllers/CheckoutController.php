@@ -6,6 +6,7 @@ use App\Core\Session;
 use App\Helpers\Gateway;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\Shipment;
 
 class CheckoutController extends BaseController
 {
@@ -62,9 +63,23 @@ class CheckoutController extends BaseController
 
             $order->changeStatusToPaid($result->payment->track_id);
 
+            // TODO :: force user to fill address before payment
+            // TODO :: refactor to model
+            $shipment = (new Shipment)->create([
+                'user_id' => auth()->user()->id,
+                'address' => auth()->user()->address ?: 'تهران',
+                'status' => Shipment::PROCESSING
+            ]);
+
+            $order->update([
+                'shipment_id' => $shipment->id
+            ]);
+
             cart()->clear();
         } else {
             Session::warning('متاسفانه مشکلی در عملیات پرداخت شما بوجود آمد');
+
+
 
             $order->changeStatusToFailed($_POST['track_id']);
         }

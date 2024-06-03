@@ -195,3 +195,8 @@ function uploadImage($field_name): bool|string
 
     return false;
 }
+
+function shamsi($date, $format = 'Y/m/d')
+{
+    return jdate($date)->format($format);
+}

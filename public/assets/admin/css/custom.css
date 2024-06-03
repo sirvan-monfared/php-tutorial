@@ -161,3 +161,12 @@ p {
 .btn-delete i {
     color: #dc3545;
 }
+
+.badge-success {
+    background: #39da8a;
+    border-color: #39da8a;
+}
+.badge-danger {
+    background: #dc3545;
+    border-color: #dc3545;
+}

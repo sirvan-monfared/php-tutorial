@@ -14,7 +14,8 @@ class BaseController {
 
     public function __construct()
     {
-        if (httpRequestMethod() !== 'GET' && ! verify_csrf()) {
+        // TODO :: extract a csrf class with exception routes
+        if (httpRequestMethod() !== 'GET' && ! verify_csrf() && ! routeIs('checkout.callback')) {
             Session::warning('نشست شما منقضی شده است');
             redirectBack();
         }
