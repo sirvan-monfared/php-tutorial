@@ -10,6 +10,7 @@ class Order extends Model
 
     protected array $order_items = [];
     protected ?User $user = null;
+    protected ?Shipment $shipment = null;
 
     const NOT_PAID = 1;
     const PAID = 2;
@@ -116,5 +117,16 @@ class Order extends Model
         }
 
         return $this->user;
+    }
+
+    public function shipment()
+    {
+        if (! $this->hasShipment()) return null;
+
+        if (! $this->shipment) {
+            $this->shipment = (new Shipment)->find($this->shipment_id);
+        }
+
+        return $this->shipment;
     }
 }

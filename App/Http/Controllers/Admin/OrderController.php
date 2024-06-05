@@ -67,4 +67,30 @@ class OrderController extends BaseController
             $this->redirectWithErrors();
         }
     }
+
+    public function updateShipment(int $id)
+    {
+        $order = (new Order())->findOrFail($id);
+
+        $shipment = $order->shipment();
+
+        if (! $shipment || ! $order->isPaid()) {
+            abort();
+        }
+
+        $validation = new Validator($_POST, ['status' => ['required']], ['status' => 'وضعیت ارسال']);
+
+        if ($validation->failed()) {
+            $this->redirectToForm($validation);
+        }
+
+        // TODO :: refactor to model
+        $shipment->update([
+            'status' => $_POST['status'],
+            'address' => $_POST['address']
+        ]);
+
+        Session::success();
+        redirectBack();
+    }
 }

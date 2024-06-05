@@ -1,6 +1,9 @@
 <?php $_shouldextend[1]=1; ?>
 
 <?php $this->startSection('content'); ?>
+ <?php if($order->isPaid()): ?>
+ <?php echo $this->runChild('admin.order._shipment_tracking'); ?>
+ <?php endif; ?>
 
  <?php echo $this->runChild('admin.order._order_details'); ?>
 <?php $this->stopSection(); ?>

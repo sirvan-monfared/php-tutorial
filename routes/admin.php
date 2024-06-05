@@ -15,3 +15,4 @@ $router->resource('/admlara/product', ProductController::class, 'admin.product',
 $router->resource('/admlara/users', UserController::class, 'admin.user', 'admin');
 
 $router->resource('/admlara/order', OrderController::class, 'admin.order', 'admin');
+$router->put('/admlara/order/[i:id]/update-shipment', [OrderController::class, 'updateShipment'], 'admin.order.update_shipment')->only('admin');
