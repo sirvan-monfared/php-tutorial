@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Core\Database;
 use App\Core\Paginator;
 use App\Core\Session;
 use App\Core\Validator;
@@ -14,12 +15,18 @@ class ProductController extends BaseController
 {
     public function index(): void
     {
-        $paginated = (new Product)->paginate();
-
         $this->view('admin.product.index', [
-            'products' => $paginated->items,
-            'paginator' => $paginated->paginator
+            'products' => (new Product)->filtered($_GET),
+            'categories' => (new Category)->all()
         ]);
+
+
+//        $paginated = (new Product)->paginate();
+
+//        $this->view('admin.product.index', [
+//            'products' => $paginated->items,
+//            'paginator' => $paginated->paginator
+//        ]);
     }
 
     public function create(): void

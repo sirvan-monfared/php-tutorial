@@ -170,3 +170,8 @@ p {
     background: #dc3545;
     border-color: #dc3545;
 }
+.btn-info {
+    color: #fff;
+    background-color: #17a2b8 !important;
+    border-color: #17a2b8 !important;
+}

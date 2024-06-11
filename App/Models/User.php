@@ -111,4 +111,11 @@ class User extends Model
             'address' => $data['address'] ?? null
         ]);
     }
+
+    public function updateAddress(string $address): User
+    {
+        return $this->update([
+            'address' => $address
+        ]);
+    }
 }

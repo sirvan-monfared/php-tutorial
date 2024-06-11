@@ -86,6 +86,10 @@ class Model {
 
         $this->db->prepare($sql, $data);
 
+        foreach ($data as $key => $value) {
+            $this->$key = $value;
+        }
+
         return $this;
     }
 

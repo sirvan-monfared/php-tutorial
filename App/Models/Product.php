@@ -117,4 +117,37 @@ class Product extends Model
             'paginator' => $paginator
         ];
     }
+
+    public function filtered(array $data): array
+    {
+        $sql = "SELECT * FROM {$this->table} WHERE 1";
+        $values = [];
+
+        if ($data['name'] ?? false) {
+            $sql .= " AND `name` LIKE :name";
+            $values['name'] = '%'.$data['name'].'%';
+        }
+        if ($data['price_from'] ?? false) {
+            $sql .= " AND `price` >= :price_from";
+            $values['price_from'] = $data['price_from'];
+        }
+        if ($data['price_to'] ?? false) {
+            $sql .= " AND `price` <= :price_to";
+            $values['price_to'] = $data['price_to'];
+        }
+        if ($data['stock_from'] ?? false) {
+            $sql .= " AND `stock` >= :stock_from";
+            $values['stock_from'] = $data['stock_from'];
+        }
+        if ($data['stock_to'] ?? false) {
+            $sql .= " AND `stock` <= :stock_to";
+            $values['stock_to'] = $data['stock_to'];
+        }
+        if ($data['category_id'] ?? false) {
+            $sql .= " AND `category_id`=:category_id";
+            $values['category_id'] = $data['category_id'];
+        }
+
+        return $this->db->prepare($sql, $values)->all(__CLASS__);
+    }
 }

@@ -64,4 +64,3 @@
     </table>
 
 @endsection
-

@@ -5,6 +5,7 @@
         <div class="container-fluid-lg">
             <div class="row">
                 @include('partials._alerts')
+
                 <div class="col-12">
                     <div class="breadcrumb-contain breadcrumb-order">
                         <div class="order-box">
@@ -177,6 +178,8 @@
                             </div>
                         </div>
 
+                        @if($order->isPaid())
+
                         <div class="col-lg-12 col-sm-6">
                             <div class="summery-box">
                                 <div class="summery-header d-block">
@@ -185,24 +188,11 @@
 
                                 <ul class="summery-contain pb-0 border-bottom-0">
                                     <li class="d-block">
-                                        <h4>تهران برج میلاد</h4>
-                                        <h4 class="mt-2">طبقه سوم</h4>
-                                    </li>
-
-                                    <li class="pb-0">
-                                        <h4>تاریخ تحویل :</h4>
-                                        <h4 class="price theme-color">
-                                            <a href="order-tracking.html" class="text-danger">پیگیری سفارش</a>
-                                        </h4>
-                                    </li>
-                                </ul>
-
-                                <ul class="summery-total">
-                                    <li class="list-total border-top-0 pt-2">
-                                        <h4 class="fw-bold">21 اردیبهشت 1400</h4>
+                                        <h4>{{ $order->shipment()?->address }}</h4>
                                     </li>
                                 </ul>
                             </div>
+                            @endif
                         </div>
                     </div>
                 </div>

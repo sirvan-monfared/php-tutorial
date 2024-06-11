@@ -119,63 +119,68 @@
 
                 <div class="col-xxl-3">
                     <div class="summery-box p-sticky">
-                        <div class="summery-header">
-                            <h3>صورت حساب</h3>
-                        </div>
-
-                        <div class="summery-contain">
-                            <div class="coupon-cart">
-                                <h6 class="text-content mb-2">کد تخفیف</h6>
-                                <div class="mb-3 coupon-box input-group">
-                                    <input type="email" class="form-control" id="exampleFormControlInput1"
-                                           placeholder="کد تخفیف را وارد کنید">
-                                    <button class="btn-apply">ثبت</button>
-                                </div>
+                        <form action="{{ route('checkout.pay') }}" method="POST">
+                            @include('partials._csrf')
+                            <div class="summery-header">
+                                <h3>صورت حساب</h3>
                             </div>
-                            <ul>
-                                <li>
-                                    <h4>جمع کل</h4>
-                                    <h4 class="price">{{ priceFormat(cart()->sum()) }}</h4>
-                                </li>
 
-                                <li>
-                                    <h4>کد تخفیف</h4>
-                                    <h4 class="price">(-) 0.00</h4>
-                                </li>
+                            <div class="summery-contain">
+                                <div class="coupon-cart">
+                                    <h6 class="text-content mb-2">کد تخفیف</h6>
+                                    <div class="mb-3 coupon-box input-group">
+                                        <input type="email" class="form-control" id="exampleFormControlInput1"
+                                               placeholder="کد تخفیف را وارد کنید">
+                                        <button class="btn-apply">ثبت</button>
+                                    </div>
+                                </div>
+                                <ul>
+                                    <li>
+                                        <h4>جمع کل</h4>
+                                        <h4 class="price">{{ priceFormat(cart()->sum()) }}</h4>
+                                    </li>
 
-                                <li class="align-items-start">
-                                    <h4>هزینه پست</h4>
-                                    <h4 class="price text-end">0 تومان</h4>
-                                </li>
-                            </ul>
-                        </div>
+                                    <li>
+                                        <h4>کد تخفیف</h4>
+                                        <h4 class="price">(-) 0.00</h4>
+                                    </li>
 
-                        <ul class="summery-total">
-                            <li class="list-total border-top-0">
-                                <h4>جمع نهایی</h4>
-                                <h4 class="price theme-color">{{ priceFormat(cart()->sum()) }} </h4>
-                            </li>
-                        </ul>
+                                    <li class="align-items-start">
+                                        <h4>هزینه پست</h4>
+                                        <h4 class="price text-end">0 تومان</h4>
+                                    </li>
+                                    @if(auth()->check())
+                                        <li class="d-block">
+                                            <label for="address">آدرس ارسال</label>
+                                            <textarea name="address" id="address" class="form-control" rows="5">{{ old('address', auth()->user()->address) }}</textarea>
+                                            <p class="help-block fs-6 text-danger">{{ $errors['address'] ?? null }}</p>
+                                        </li>
+                                    @endif
+                                </ul>
+                            </div>
 
-                        <div class="button-group cart-button">
-                            <ul>
-                                <li>
-                                    <form action="{{ route('checkout.pay') }}" method="POST">
-                                        @include('partials._csrf')
-
-                                        <button type="submit" class="btn btn-animation proceed-btn fw-bold">پرداخت</button>
-                                    </form>
-
-                                </li>
-
-                                <li>
-                                    <a href="{{ route('home') }}"
-                                       class="btn btn-light shopping-button text-dark">
-                                        <i class="fa-solid fa-arrow-right-long"></i>بازگشت به فروشگاه
-                                    </a>
+                            <ul class="summery-total">
+                                <li class="list-total border-top-0">
+                                    <h4>جمع نهایی</h4>
+                                    <h4 class="price theme-color">{{ priceFormat(cart()->sum()) }} </h4>
                                 </li>
                             </ul>
-                        </div>
+
+                            <div class="button-group cart-button">
+                                <ul>
+                                    <li>
+                                       <button type="submit" class="btn btn-animation proceed-btn fw-bold">پرداخت</button>
+                                    </li>
+
+                                    <li>
+                                        <a href="{{ route('home') }}"
+                                           class="btn btn-light shopping-button text-dark">
+                                            <i class="fa-solid fa-arrow-right-long"></i>بازگشت به فروشگاه
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

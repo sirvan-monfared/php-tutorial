@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Composers\CategoriesComposer;
+use App\Core\CSRF;
 use App\Core\Session;
 use App\Core\Validator;
 use App\Models\Category;
@@ -15,7 +16,7 @@ class BaseController {
     public function __construct()
     {
         // TODO :: extract a csrf class with exception routes
-        if (httpRequestMethod() !== 'GET' && ! verify_csrf() && ! routeIs('checkout.callback')) {
+        if (httpRequestMethod() !== 'GET' && ! CSRF::verify()) {
             Session::warning('نشست شما منقضی شده است');
             redirectBack();
         }

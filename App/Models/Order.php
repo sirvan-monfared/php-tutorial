@@ -129,4 +129,17 @@ class Order extends Model
 
         return $this->shipment;
     }
+
+    public function createNewShipment(): Order
+    {
+        $shipment = (new Shipment)->create([
+            'user_id' => $this->user_id,
+            'address' => $this->user()?->address ?: ' ',
+            'status' => Shipment::PROCESSING
+        ]);
+
+        return $this->update([
+            'shipment_id' => $shipment->id
+        ]);
+    }
 }

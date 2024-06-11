@@ -1,5 +1,9 @@
 @extends('admin.layouts.main')
 
+@section('css')
+    <link rel="stylesheet" href="<?= asset('admin/css/vendors/slick.css') ?>">
+@endsection
+
 @section('content')
     <div class="row">
         <!-- chart caard section start -->
@@ -93,7 +97,7 @@
                         <div>
                             <div class="dashboard-category">
                                 <a href="javascript:void(0)" class="category-image">
-                                    <img src="assets/svg/vegetable.svg" class="img-fluid" alt="">
+                                    <img src="{{ asset('admin/svg/vegetable.svg') }}" class="img-fluid" alt="">
                                 </a>
                                 <a href="javascript:void(0)" class="category-name">
                                     <h6>سبزیجات و میوه جات</h6>
@@ -104,7 +108,7 @@
                         <div>
                             <div class="dashboard-category">
                                 <a href="javascript:void(0)" class="category-image">
-                                    <img src="assets/svg/cup.svg" class="img-fluid" alt="">
+                                    <img src="{{ asset('admin/svg/cup.svg') }}" class="img-fluid" alt="">
                                 </a>
                                 <a href="javascript:void(0)" class="category-name">
                                     <h6>نوشیدنی ها</h6>
@@ -115,7 +119,7 @@
                         <div>
                             <div class="dashboard-category">
                                 <a href="javascript:void(0)" class="category-image">
-                                    <img src="assets/svg/meats.svg" class="img-fluid" alt="">
+                                    <img src="{{ asset('admin/svg/meats.svg') }}" class="img-fluid" alt="">
                                 </a>
                                 <a href="javascript:void(0)" class="category-name">
                                     <h6>گوشت و غذاهای دریایی</h6>
@@ -126,7 +130,7 @@
                         <div>
                             <div class="dashboard-category">
                                 <a href="javascript:void(0)" class="category-image">
-                                    <img src="assets/svg/breakfast.svg" class="img-fluid" alt="">
+                                    <img src="{{ asset('admin/svg/breakfast.svg') }}" class="img-fluid" alt="">
                                 </a>
                                 <a href="javascript:void(0)" class="category-name">
                                     <h6>صبحانه</h6>
@@ -137,7 +141,7 @@
                         <div>
                             <div class="dashboard-category">
                                 <a href="javascript:void(0)" class="category-image">
-                                    <img src="assets/svg/frozen.svg" class="img-fluid" alt="">
+                                    <img src="{{ asset('admin/svg/frozen.svg') }}" class="img-fluid" alt="">
                                 </a>
                                 <a href="javascript:void(0)" class="category-name">
                                     <h6>غذای یخ زده</h6>
@@ -148,7 +152,7 @@
                         <div>
                             <div class="dashboard-category">
                                 <a href="javascript:void(0)" class="category-image">
-                                    <img src="assets/svg/milk.svg" class="img-fluid" alt="">
+                                    <img src="{{ asset('admin/svg/milk.svg') }}" class="img-fluid" alt="">
                                 </a>
                                 <a href="javascript:void(0)" class="category-name">
                                     <h6>شیر و لبنیات</h6>
@@ -159,7 +163,7 @@
                         <div>
                             <div class="dashboard-category">
                                 <a href="javascript:void(0)" class="category-image">
-                                    <img src="assets/svg/pet.svg" class="img-fluid" alt="">
+                                    <img src="{{ asset('admin/svg/pet.svg') }}" class="img-fluid" alt="">
                                 </a>
                                 <a href="javascript:void(0)" class="category-name">
                                     <h6>مواد غذایی حیوان خانگی</h6>
@@ -170,7 +174,7 @@
                         <div>
                             <div class="dashboard-category">
                                 <a href="javascript:void(0)" class="category-image">
-                                    <img src="assets/svg/vegetable.svg" class="img-fluid" alt="">
+                                    <img src="{{ asset('admin/svg/vegetable.svg') }}" class="img-fluid" alt="">
                                 </a>
                                 <a href="javascript:void(0)" class="category-name">
                                     <h6>سبزیجات و میوه جات</h6>
@@ -181,7 +185,7 @@
                         <div>
                             <div class="dashboard-category">
                                 <a href="javascript:void(0)" class="category-image">
-                                    <img src="assets/svg/cup.svg" class="img-fluid" alt="">
+                                    <img src="{{ asset('admin/svg/cup.svg') }}" class="img-fluid" alt="">
                                 </a>
                                 <a href="javascript:void(0)" class="category-name">
                                     <h6>نوشیدنی ها</h6>
@@ -192,7 +196,7 @@
                         <div>
                             <div class="dashboard-category">
                                 <a href="javascript:void(0)" class="category-image">
-                                    <img src="assets/svg/meats.svg" class="img-fluid" alt="">
+                                    <img src="{{ asset('admin/svg/meats.svg') }}" class="img-fluid" alt="">
                                 </a>
                                 <a href="javascript:void(0)" class="category-name">
                                     <h6>گوشت و غذاهای دریایی</h6>
@@ -203,7 +207,7 @@
                         <div>
                             <div class="dashboard-category">
                                 <a href="javascript:void(0)" class="category-image">
-                                    <img src="assets/svg/breakfast.svg" class="img-fluid" alt="">
+                                    <img src="{{ asset('admin/svg/breakfast.svg') }}" class="img-fluid" alt="">
                                 </a>
                                 <a href="javascript:void(0)" class="category-name">
                                     <h6>صبحانه</h6>
@@ -214,7 +218,7 @@
                         <div>
                             <div class="dashboard-category">
                                 <a href="javascript:void(0)" class="category-image">
-                                    <img src="assets/svg/frozen.svg" class="img-fluid" alt="">
+                                    <img src="{{ asset('admin/svg/frozen.svg') }}" class="img-fluid" alt="">
                                 </a>
                                 <a href="javascript:void(0)" class="category-name">
                                     <h6>غذای یخ زده</h6>
@@ -225,7 +229,7 @@
                         <div>
                             <div class="dashboard-category">
                                 <a href="javascript:void(0)" class="category-image">
-                                    <img src="assets/svg/milk.svg" class="img-fluid" alt="">
+                                    <img src="{{ asset('admin/svg/milk.svg') }}" class="img-fluid" alt="">
                                 </a>
                                 <a href="javascript:void(0)" class="category-name">
                                     <h6>شیر و لبنیات</h6>
@@ -236,7 +240,7 @@
                         <div>
                             <div class="dashboard-category">
                                 <a href="javascript:void(0)" class="category-image">
-                                    <img src="assets/svg/pet.svg" class="img-fluid" alt="">
+                                    <img src="{{ asset('admin/svg/pet.svg') }}" class="img-fluid" alt="">
                                 </a>
                                 <a href="javascript:void(0)" class="category-name">
                                     <h6>غذای حیوانات</h6>
@@ -301,7 +305,7 @@
                                     <td>
                                         <div class="best-product-box">
                                             <div class="product-image">
-                                                <img src="assets/images/product/1.png"
+                                                <img src="{{ asset('admin/images/product/1.png') }}"
                                                      class="img-fluid" alt="Product">
                                             </div>
                                             <div class="product-name">
@@ -344,7 +348,7 @@
                                     <td>
                                         <div class="best-product-box">
                                             <div class="product-image">
-                                                <img src="assets/images/product/2.png"
+                                                <img src="{{ asset('admin/images/product/2.png') }}"
                                                      class="img-fluid" alt="Product">
                                             </div>
                                             <div class="product-name">
@@ -387,7 +391,7 @@
                                     <td>
                                         <div class="best-product-box">
                                             <div class="product-image">
-                                                <img src="assets/images/product/3.png"
+                                                <img src="{{ asset('admin/images/product/3.png') }}"
                                                      class="img-fluid" alt="Product">
                                             </div>
                                             <div class="product-name">
@@ -828,4 +832,9 @@
 
 
     </div>
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('admin/js/slick.min.js') }}"></script>
+    <script src="{{ asset('admin/js/custom-slick.js') }}"></script>
 @endsection

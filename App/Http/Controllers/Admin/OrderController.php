@@ -7,6 +7,7 @@ use App\Core\Validator;
 use App\Http\Controllers\BaseController;
 use App\Models\Order;
 use App\Models\Shipment;
+use Exception;
 
 class OrderController extends BaseController
 {
@@ -35,7 +36,7 @@ class OrderController extends BaseController
         ]);
     }
 
-    public function update(int $id)
+    public function update(int $id): void
     {
         $order = (new Order())->findOrFail($id);
 
@@ -48,27 +49,18 @@ class OrderController extends BaseController
         try {
             $order->updateStatus($_POST);
 
-            // TODO :: refactor to model
-            if ((int) $_POST['status'] === Order::PAID && ! $order->hasShipment()) {
-                $shipment = (new Shipment)->create([
-                    'user_id' => $order->user_id,
-                    'address' => $order->user()?->address ?: 'تهران',
-                    'status' => Shipment::PROCESSING
-                ]);
-
-                $order->update([
-                    'shipment_id' => $shipment->id
-                ]);
+            if ($order->isPaid() && ! $order->hasShipment()) {
+                $order->createNewShipment();
             }
 
             Session::success();
             redirectBack();
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->redirectWithErrors();
         }
     }
 
-    public function updateShipment(int $id)
+    public function updateShipment(int $id): void
     {
         $order = (new Order())->findOrFail($id);
 
@@ -84,13 +76,13 @@ class OrderController extends BaseController
             $this->redirectToForm($validation);
         }
 
-        // TODO :: refactor to model
-        $shipment->update([
-            'status' => $_POST['status'],
-            'address' => $_POST['address']
-        ]);
+        try {
+            $shipment->revise($_POST);
 
-        Session::success();
-        redirectBack();
+            Session::success();
+            redirectBack();
+        } catch(Exception $e) {
+            $this->redirectWithErrors();
+        }
     }
 }

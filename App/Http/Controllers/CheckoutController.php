@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Core\Session;
+use App\Core\Validator;
 use App\Helpers\Gateway;
 use App\Models\Order;
 use App\Models\OrderItem;
@@ -12,6 +13,15 @@ class CheckoutController extends BaseController
 {
     public function pay(): void
     {
+        $validation = new Validator($_POST, ['address' => ['required']], ['address' => 'آدرس ارسال']);
+
+        if ($validation->failed()) {
+            $this->redirectToForm($validation);
+        }
+
+        auth()->user()->updateAddress($_POST['address']);
+
+
         $order = (new Order)->insert(cart()->sum());
 
         if (! $order) {

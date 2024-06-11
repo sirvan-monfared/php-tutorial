@@ -10,9 +10,12 @@
                 <div class="card-body">
                     <div class="title-header option-title">
                         <h5>{{ $title }}</h5>
-                        <a href="{{ $create_route }}" class="align-items-center btn btn-theme d-flex">
-                            <i data-feather="plus"></i>افزودن
-                        </a>
+                        <div class="d-flex align-items-center gap-2">
+                            <a id="filters-handler" class="text-primary" href="#">فیلترها</a>
+                            <a href="{{ $create_route }}" class="align-items-center btn btn-theme d-flex">
+                                <i data-feather="plus"></i>افزودن
+                            </a>
+                        </div>
                     </div>
 
                     <div class="table-responsive table-product">
@@ -24,11 +27,22 @@
     </div>
 @endsection
 
-@section('scripts')
+@section('js')
     <script>
+
+        const filter_handler = document.getElementById('filters-handler');
+        const filters = document.getElementById('filters');
+
+        filter_handler.addEventListener('click', (e) => {
+            e.preventDefault();
+            filters.classList.toggle('d-none');
+        });
+
+
+
         const forms = document.querySelectorAll('.delete-form');
 
-        forms.forEach(function(form) {
+        forms.forEach(function (form) {
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
 
@@ -39,5 +53,8 @@
                 }
             })
         })
+
+
     </script>
 @endsection
+

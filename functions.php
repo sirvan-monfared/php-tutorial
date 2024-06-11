@@ -1,6 +1,7 @@
 <?php
 
 use App\Core\Authenticator;
+use App\Core\CSRF;
 use App\Core\Request;
 use App\Core\Session;
 use App\Helpers\Cart;
@@ -143,21 +144,7 @@ function httpRequestMethod(): ?string
 
 function csrf_token(): string
 {
-    if (Session::has('csrf')) {
-        return Session::get('csrf');
-    }
-
-    $token = generateRandom(25);
-    Session::put('csrf', $token);
-
-    return $token;
-}
-
-function verify_csrf(): bool
-{
-    $session = Session::get('csrf');
-    Session::unset('csrf');
-    return !empty($session) && $_POST['_token'] === $session;
+    return CSRF::token();
 }
 
 function routeIs(string $route_name): bool
