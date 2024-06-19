@@ -21,7 +21,7 @@ class BaseController {
             redirectBack();
         }
 
-        $this->blade = new BladeOne(base_path('views'), base_path('storage/cache'), BladeOne::MODE_DEBUG);
+        $this->blade = blade();
 
         $this->setComposers();
     }

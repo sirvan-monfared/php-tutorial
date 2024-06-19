@@ -59,4 +59,23 @@ class Database
     {
         return (int) $this->pdo->lastInsertId();
     }
+
+    public function countFromSQL($sql, $values, $class = null): int
+    {
+        $count_sql = str_replace("SELECT * FROM", "SELECT COUNT(`id`) AS count FROM", $sql);
+
+        return $this->prepare($count_sql, $values, $class)->find()->count;
+    }
+
+    public function paginate($sql, $values = [], $class = null, $per_page = 10): object
+    {
+        $paginator = new Paginator($per_page, $this->countFromSQL($sql, $values, $class));
+        
+        $sql .= " LIMIT {$paginator->perPage()} OFFSET {$paginator->offset()}";
+
+        return (object) [
+            'items' => $this->prepare($sql, $values, $class)->all(),
+            'paginator' => $paginator
+        ];
+    }
 }

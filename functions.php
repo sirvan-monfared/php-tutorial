@@ -5,10 +5,10 @@ use App\Core\CSRF;
 use App\Core\Request;
 use App\Core\Session;
 use App\Helpers\Cart;
+use eftec\bladeone\BladeOne;
 
 function currentUrl()
 {
-
     $url = parse_url($_SERVER['REQUEST_URI']);
 
     return $url['path'];
@@ -183,7 +183,12 @@ function uploadImage($field_name): bool|string
     return false;
 }
 
-function shamsi($date, $format = 'Y/m/d')
+function shamsi($date, $format = 'Y/m/d'): string
 {
     return jdate($date)->format($format);
+}
+
+function blade(): BladeOne
+{
+    return new BladeOne(base_path('views'), base_path('storage/cache'), BladeOne::MODE_DEBUG);
 }

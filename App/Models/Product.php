@@ -105,20 +105,7 @@ class Product extends Model
         return ($this->featuredImage() && $this->featuredImagePath() && is_file($this->featuredImagePath()));
     }
 
-    public function paginate(): object
-    {
-        $total = count((new Product)->all());
-        $paginator = new Paginator(5, $total);
-
-        $sql = "SELECT * FROM {$this->table} LIMIT {$paginator->perPage()} OFFSET {$paginator->offset()}";
-
-        return (object) [
-            'items' => $this->db->prepare($sql, [], Product::class)->all(),
-            'paginator' => $paginator
-        ];
-    }
-
-    public function filtered(array $data): array
+    public function filtered(array $data): object
     {
         $sql = "SELECT * FROM {$this->table} WHERE 1";
         $values = [];
@@ -148,6 +135,6 @@ class Product extends Model
             $values['category_id'] = $data['category_id'];
         }
 
-        return $this->db->prepare($sql, $values)->all(__CLASS__);
+        return $this->db->paginate($sql, $values, __CLASS__);
     }
 }

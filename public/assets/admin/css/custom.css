@@ -175,3 +175,11 @@ p {
     background-color: #17a2b8 !important;
     border-color: #17a2b8 !important;
 }
+.pagination .page-link {
+    color: var(--theme-color);
+}
+.pagination .active .page-link{
+    background-color: var(--theme-color);
+    border-color: var(--theme-color);
+    color: white;
+}

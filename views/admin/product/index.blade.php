@@ -75,14 +75,7 @@
         </tbody>
     </table>
 
-{{--    <div class="d-flex justify-content-between align-items-center">--}}
-{{--        @if($paginator->hasPrevPage())--}}
-{{--            <a class="btn btn-primary" href="{{ $paginator->prevUrl() }}">صفحه قبل</a>--}}
-{{--        @endif--}}
-{{--        @if($paginator->hasNextPage())--}}
-{{--            <a class="btn btn-primary" href="{{ $paginator->nextUrl() }}">صفحه بعد</a>--}}
-{{--        @endif--}}
-{{--    </div>--}}
+    {!! $paginator->render() !!}
 
 @endsection
 

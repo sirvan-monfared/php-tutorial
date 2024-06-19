@@ -15,8 +15,11 @@ class ProductController extends BaseController
 {
     public function index(): void
     {
+        $paginated = (new Product)->filtered($_GET);
+
         $this->view('admin.product.index', [
-            'products' => (new Product)->filtered($_GET),
+            'products' => $paginated->items,
+            'paginator' => $paginated->paginator,
             'categories' => (new Category)->all()
         ]);
 
