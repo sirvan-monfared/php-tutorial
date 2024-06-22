@@ -391,3 +391,14 @@ header .offcanvas:not(.offcanvas-end):not(.offcanvas-bottom) , [dir=rtl] .banner
 .order-failed .star {
     fill: #dc3545 !important;
 }
+.user-dashboard-section .dashboard-right-sidebar .dashboard-bg-box {
+    width: 100% !important;
+}
+.user-dashboard-section .dashboard-right-sidebar .dashboard-order .order-contain {
+    flex-direction: column !important;
+}
+.user-dashboard-section .dashboard-right-sidebar .dashboard-order .order-contain .order-box .product-order-detail .order-image img {
+    width: 100px;
+    height: auto;
+    max-height: 100px;
+}

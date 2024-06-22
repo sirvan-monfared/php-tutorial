@@ -1,7 +1,7 @@
 <ul class="category-list">
     @foreach($categories as $category)
         <li class="onhover-category-list">
-            <a href="javascript:void(0)" class="category-name">
+            <a href="{{ $category->viewLink() }}" class="category-name">
                 <img src="{{ asset('front/svg/1/vegetable.svg') }}" alt="">
                 <h6>{{ $category->name }}</h6>
                 <i class="fa-solid fa-angle-left"></i>

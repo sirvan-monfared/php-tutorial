@@ -38,4 +38,9 @@ class Category extends Model
     {
         return route('admin.category.edit', ['id' => $this->id]);
     }
+
+    public function viewLink(): string
+    {
+        return route('category.show', ['slug' => $this->slug]);
+    }
 }

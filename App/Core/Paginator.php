@@ -63,7 +63,7 @@ class Paginator
 
     public function getQueryStrings(): array
     {
-        $queries = parse_url($_SERVER['REQUEST_URI'])['query'];
+        $queries = parse_url($_SERVER['REQUEST_URI'])['query'] ?? '';
         parse_str($queries, $query_array);
 
         return array_filter($query_array);

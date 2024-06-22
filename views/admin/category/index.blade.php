@@ -49,7 +49,7 @@
                                     <td>
                                         <ul>
                                             <li>
-                                                <a href="order-detail.html">
+                                                <a href="{{ $category->viewLink() }}">
                                                     <i class="ri-eye-line"></i>
                                                 </a>
                                             </li>

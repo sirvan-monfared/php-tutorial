@@ -8,13 +8,15 @@
             </li>
         @endif
 
-        @for($i = 1; $i <= $paginator->lastPage(); $i++)
-            <li @class(['active' => $paginator->isCurrentPage($i)])>
-                <a class="page-link" href="{{ $paginator->generateUrl($i) }}">
-                    {{ $i }}
-                </a>
-            </li>
-        @endfor
+        @if($paginator->lastPage() > 1)
+            @for($i = 1; $i <= $paginator->lastPage(); $i++)
+                <li @class(['active' => $paginator->isCurrentPage($i)])>
+                    <a class="page-link" href="{{ $paginator->generateUrl($i) }}">
+                        {{ $i }}
+                    </a>
+                </li>
+            @endfor
+        @endif
 
         @if($paginator->hasNextPage())
             <li class="page-item d-flex align-items-center justify-content-center">

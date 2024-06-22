@@ -7,6 +7,8 @@ class OrderItem extends Model
     protected string $table = 'order_items';
     protected bool $timestamps = false;
 
+    protected ?Product $product = null;
+
     public function insert(int $order_id, array $item)
     {
         return $this->create([
@@ -27,5 +29,14 @@ class OrderItem extends Model
         return $this->db->prepare($sql, [
             'order_id' => $order_id
         ], __CLASS__)->all();
+    }
+
+    public function product(): ?Product
+    {
+        if (! $this->product) {
+            $this->product = (new Product())->find($this->product_id);
+        }
+
+        return $this->product;
     }
 }

@@ -137,4 +137,13 @@ class Product extends Model
 
         return $this->db->paginate($sql, $values, __CLASS__);
     }
+
+    public function forCategory($category_id): object
+    {
+        $sql = "SELECT * FROM {$this->table} WHERE category_id=:category_id ORDER BY `id` DESC";
+
+        return $this->db->paginate($sql, [
+            'category_id' => $category_id
+        ], __CLASS__);
+    }
 }

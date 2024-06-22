@@ -118,4 +118,9 @@ class User extends Model
             'address' => $address
         ]);
     }
+
+    public function paidOrders(): array
+    {
+        return (new Order)->paidForUser($this->id);
+    }
 }

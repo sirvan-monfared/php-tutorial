@@ -94,6 +94,6 @@ class CheckoutController extends BaseController
             $order->changeStatusToFailed($_POST['track_id']);
         }
 
-        redirectTo(route('order.show', ['id' => $order->id]));
+        redirectTo(route('dashboard.order.show', ['id' => $order->id]));
     }
 }

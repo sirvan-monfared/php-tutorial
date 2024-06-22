@@ -41,7 +41,12 @@ class Database
 
     public function find()
     {
-        return $this->statement->fetch();
+        $result = $this->statement->fetch();
+        if (! $result) {
+            return null;
+        }
+
+        return $result;
     }
 
     public function findOrFail() 

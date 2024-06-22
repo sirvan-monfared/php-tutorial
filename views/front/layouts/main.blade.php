@@ -242,6 +242,12 @@
                                                 </li>
                                                 @endif
                                                 @if (auth()->check())
+
+                                                    <li class="product-box-contain">
+                                                        <i></i>
+                                                        <a href="{{ route('dashboard.order.index') }}">سفارش های من</a>
+                                                    </li>
+
                                                     <form method="POST" action="{{ route('auth.logout') }}">
                                                         @include('partials._csrf')
                                                         @method('DELETE')

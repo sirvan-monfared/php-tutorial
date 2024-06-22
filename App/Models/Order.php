@@ -142,4 +142,19 @@ class Order extends Model
             'shipment_id' => $shipment->id
         ]);
     }
+
+    public function paidForUser(int $id): array
+    {
+        $sql = "SELECT * FROM {$this->table} WHERE user_id=:user_id AND status=:status";
+
+        return $this->db->prepare($sql, [
+            'user_id' => $id,
+            'status' => Order::PAID
+        ], __CLASS__)->all();
+    }
+
+    public function viewLink(): string
+    {
+        return route('dashboard.order.show', ['id' => $this->id]);
+    }
 }
