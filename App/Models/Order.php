@@ -119,7 +119,7 @@ class Order extends Model
         return $this->user;
     }
 
-    public function shipment()
+    public function shipment(): ?Shipment
     {
         if (! $this->hasShipment()) return null;
 
@@ -156,5 +156,36 @@ class Order extends Model
     public function viewLink(): string
     {
         return route('dashboard.order.show', ['id' => $this->id]);
+    }
+
+    public function totalIncome()
+    {
+        $sql = "SELECT SUM(`amount`) AS total FROM {$this->table} WHERE status=:status LIMIT 1";
+
+        return $this->db->prepare($sql, [
+            'status' => ORDER::PAID
+        ], __CLASS__)->find()->total;
+    }
+
+    public function totalOrders()
+    {
+        $sql = "SELECT COUNT(`id`) AS count FROM {$this->table} WHERE status=:status LIMIT 1";
+
+        return $this->db->prepare($sql, [
+            'status' => ORDER::PAID
+        ], __CLASS__)->find()->count;
+    }
+
+    public function mostPurchased($limit = 3)
+    {
+        $sql = "
+            SELECT oi.product_id,SUM(oi.quantity) AS sum, SUM(oi.unit_price) AS total_price FROM orders AS o
+            LEFT JOIN order_items AS oi
+                ON oi.order_id=o.id
+            GROUP BY oi.product_id
+            ORDER BY sum DESC LIMIT {$limit}
+        ";
+
+        return $this->db->prepare($sql, [], OrderItem::class)->all();
     }
 }

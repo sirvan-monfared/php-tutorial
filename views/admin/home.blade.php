@@ -13,7 +13,7 @@
                     <div class="media align-items-center static-top-widget">
                         <div class="media-body p-0">
                             <span class="m-0">درامد کل</span>
-                            <h4 class="mb-0 counter">580 تومان
+                            <h4 class="mb-0 counter">{{ number_format($totalIncome) }} <small>تومان</small>
                                 <span class="badge badge-light-primary grow">
                                                     <i data-feather="trending-up"></i>8.5%</span>
                             </h4>
@@ -32,7 +32,7 @@
                     <div class="media static-top-widget">
                         <div class="media-body p-0">
                             <span class="m-0">کل سفارشات</span>
-                            <h4 class="mb-0 counter">9856
+                            <h4 class="mb-0 counter">{{ number_format($totalOrders) }}
                                 <span class="badge badge-light-danger grow">
                                                     <i data-feather="trending-down"></i>8.5%</span>
                             </h4>
@@ -51,7 +51,7 @@
                     <div class="media static-top-widget">
                         <div class="media-body p-0">
                             <span class="m-0">مجموع محصولات</span>
-                            <h4 class="mb-0 counter">893
+                            <h4 class="mb-0 counter"> {{ number_format($totalProducts) }}
                                 <a href="add-new-product.html" class="badge badge-light-secondary grow">
                                     افزودن محصول جدید</a>
                             </h4>
@@ -71,7 +71,7 @@
                     <div class="media static-top-widget">
                         <div class="media-body p-0">
                             <span class="m-0">کاربران شما</span>
-                            <h4 class="mb-0 counter">4.6k
+                            <h4 class="mb-0 counter"> {{ number_format($totalUsers) }}
                                 <span class="badge badge-light-success grow">
                                                     <i data-feather="trending-down"></i>8.5%</span>
                             </h4>
@@ -84,190 +84,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="col-12">
-            <div class="card o-hidden card-hover">
-                <div class="card-header border-0 pb-1">
-                    <div class="card-header-title p-0">
-                        <h4>دسته ها</h4>
-                    </div>
-                </div>
-                <div class="card-body p-0">
-                    <div class="category-slider no-arrow">
-                        <div>
-                            <div class="dashboard-category">
-                                <a href="javascript:void(0)" class="category-image">
-                                    <img src="{{ asset('admin/svg/vegetable.svg') }}" class="img-fluid" alt="">
-                                </a>
-                                <a href="javascript:void(0)" class="category-name">
-                                    <h6>سبزیجات و میوه جات</h6>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="dashboard-category">
-                                <a href="javascript:void(0)" class="category-image">
-                                    <img src="{{ asset('admin/svg/cup.svg') }}" class="img-fluid" alt="">
-                                </a>
-                                <a href="javascript:void(0)" class="category-name">
-                                    <h6>نوشیدنی ها</h6>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="dashboard-category">
-                                <a href="javascript:void(0)" class="category-image">
-                                    <img src="{{ asset('admin/svg/meats.svg') }}" class="img-fluid" alt="">
-                                </a>
-                                <a href="javascript:void(0)" class="category-name">
-                                    <h6>گوشت و غذاهای دریایی</h6>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="dashboard-category">
-                                <a href="javascript:void(0)" class="category-image">
-                                    <img src="{{ asset('admin/svg/breakfast.svg') }}" class="img-fluid" alt="">
-                                </a>
-                                <a href="javascript:void(0)" class="category-name">
-                                    <h6>صبحانه</h6>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="dashboard-category">
-                                <a href="javascript:void(0)" class="category-image">
-                                    <img src="{{ asset('admin/svg/frozen.svg') }}" class="img-fluid" alt="">
-                                </a>
-                                <a href="javascript:void(0)" class="category-name">
-                                    <h6>غذای یخ زده</h6>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="dashboard-category">
-                                <a href="javascript:void(0)" class="category-image">
-                                    <img src="{{ asset('admin/svg/milk.svg') }}" class="img-fluid" alt="">
-                                </a>
-                                <a href="javascript:void(0)" class="category-name">
-                                    <h6>شیر و لبنیات</h6>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="dashboard-category">
-                                <a href="javascript:void(0)" class="category-image">
-                                    <img src="{{ asset('admin/svg/pet.svg') }}" class="img-fluid" alt="">
-                                </a>
-                                <a href="javascript:void(0)" class="category-name">
-                                    <h6>مواد غذایی حیوان خانگی</h6>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="dashboard-category">
-                                <a href="javascript:void(0)" class="category-image">
-                                    <img src="{{ asset('admin/svg/vegetable.svg') }}" class="img-fluid" alt="">
-                                </a>
-                                <a href="javascript:void(0)" class="category-name">
-                                    <h6>سبزیجات و میوه جات</h6>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="dashboard-category">
-                                <a href="javascript:void(0)" class="category-image">
-                                    <img src="{{ asset('admin/svg/cup.svg') }}" class="img-fluid" alt="">
-                                </a>
-                                <a href="javascript:void(0)" class="category-name">
-                                    <h6>نوشیدنی ها</h6>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="dashboard-category">
-                                <a href="javascript:void(0)" class="category-image">
-                                    <img src="{{ asset('admin/svg/meats.svg') }}" class="img-fluid" alt="">
-                                </a>
-                                <a href="javascript:void(0)" class="category-name">
-                                    <h6>گوشت و غذاهای دریایی</h6>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="dashboard-category">
-                                <a href="javascript:void(0)" class="category-image">
-                                    <img src="{{ asset('admin/svg/breakfast.svg') }}" class="img-fluid" alt="">
-                                </a>
-                                <a href="javascript:void(0)" class="category-name">
-                                    <h6>صبحانه</h6>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="dashboard-category">
-                                <a href="javascript:void(0)" class="category-image">
-                                    <img src="{{ asset('admin/svg/frozen.svg') }}" class="img-fluid" alt="">
-                                </a>
-                                <a href="javascript:void(0)" class="category-name">
-                                    <h6>غذای یخ زده</h6>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="dashboard-category">
-                                <a href="javascript:void(0)" class="category-image">
-                                    <img src="{{ asset('admin/svg/milk.svg') }}" class="img-fluid" alt="">
-                                </a>
-                                <a href="javascript:void(0)" class="category-name">
-                                    <h6>شیر و لبنیات</h6>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="dashboard-category">
-                                <a href="javascript:void(0)" class="category-image">
-                                    <img src="{{ asset('admin/svg/pet.svg') }}" class="img-fluid" alt="">
-                                </a>
-                                <a href="javascript:void(0)" class="category-name">
-                                    <h6>غذای حیوانات</h6>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- chart card section End -->
-
-
-        <!-- Earning chart star-->
-        <div class="col-xl-6">
-            <div class="card o-hidden card-hover">
-                <div class="card-header border-0 pb-1">
-                    <div class="card-header-title">
-                        <h4>گزارش درآمد</h4>
-                    </div>
-                </div>
-                <div class="card-body p-0">
-                    <div id="report-chart"></div>
-                </div>
-            </div>
-        </div>
-        <!-- Earning chart  end-->
 
 
         <!-- Best Selling Product Start -->
@@ -301,134 +117,51 @@
                                             w-image
                                             w-image table border-0">
                                 <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="best-product-box">
-                                            <div class="product-image">
-                                                <img src="{{ asset('admin/images/product/1.png') }}"
-                                                     class="img-fluid" alt="Product">
+                                @foreach($mostPurchased as $orderItem)
+                                    <tr>
+                                        <td>
+                                            <div class="best-product-box">
+                                                <div class="product-image">
+                                                    <img src="{{ $orderItem->product()->featuredImageOrDefault() }}"
+                                                         class="img-fluid" alt="Product">
+                                                </div>
+                                                <div class="product-name">
+                                                    <h5>{{ $orderItem->product()->name }}</h5>
+                                                </div>
                                             </div>
-                                            <div class="product-name">
-                                                <h5>بیسکویت عطا</h5>
-                                                <h6>26 اردیبهشت 1402</h6>
+                                        </td>
+
+                                        <td>
+                                            <div class="product-detail-box">
+                                                <h6>قیمت</h6>
+                                                <h5>{{ $orderItem->product()->showPrice() }}</h5>
                                             </div>
-                                        </div>
-                                    </td>
+                                        </td>
 
-                                    <td>
-                                        <div class="product-detail-box">
-                                            <h6>قیمت</h6>
-                                            <h5>29.000 تومان</h5>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <div class="product-detail-box">
-                                            <h6>سفارشات</h6>
-                                            <h5>62</h5>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <div class="product-detail-box">
-                                            <h6>موجودی</h6>
-                                            <h5>510</h5>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <div class="product-detail-box">
-                                            <h6>جمع کل</h6>
-                                            <h5>17.850 تومان</h5>
-                                        </div>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>
-                                        <div class="best-product-box">
-                                            <div class="product-image">
-                                                <img src="{{ asset('admin/images/product/2.png') }}"
-                                                     class="img-fluid" alt="Product">
+                                        <td>
+                                            <div class="product-detail-box">
+                                                <h6>سفارشات</h6>
+                                                <h5>{{ $orderItem->sum }}</h5>
                                             </div>
-                                            <div class="product-name">
-                                                <h5>دلستر</h5>
-                                                <h6>26 اردیبهشت 1402</h6>
+                                        </td>
+
+                                        <td>
+                                            <div class="product-detail-box">
+                                                <h6>موجودی</h6>
+                                                <h5>{{ $orderItem->product()->stock }}</h5>
                                             </div>
-                                        </div>
-                                    </td>
+                                        </td>
 
-                                    <td>
-                                        <div class="product-detail-box">
-                                            <h6>قیمت</h6>
-                                            <h5>29.000 تومان</h5>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <div class="product-detail-box">
-                                            <h6>سفارشات</h6>
-                                            <h5>62</h5>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <div class="product-detail-box">
-                                            <h6>موجودی</h6>
-                                            <h5>510</h5>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <div class="product-detail-box">
-                                            <h6>جمع کل</h6>
-                                            <h5>17.850 تومان</h5>
-                                        </div>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>
-                                        <div class="best-product-box">
-                                            <div class="product-image">
-                                                <img src="{{ asset('admin/images/product/3.png') }}"
-                                                     class="img-fluid" alt="Product">
+                                        <td>
+                                            <div class="product-detail-box">
+                                                <h6>جمع کل</h6>
+                                                <h5>{{ priceFormat($orderItem->total_price) }}</h5>
                                             </div>
-                                            <div class="product-name">
-                                                <h5>کیک</h5>
-                                                <h6>26 اردیبهشت 1402</h6>
-                                            </div>
-                                        </div>
-                                    </td>
+                                        </td>
+                                    </tr>
 
-                                    <td>
-                                        <div class="product-detail-box">
-                                            <h6>قیمت</h6>
-                                            <h5>29.000 تومان</h5>
-                                        </div>
-                                    </td>
+                                @endforeach
 
-                                    <td>
-                                        <div class="product-detail-box">
-                                            <h6>سفارشات</h6>
-                                            <h5>62</h5>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <div class="product-detail-box">
-                                            <h6>موجودی</h6>
-                                            <h5>510</h5>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <div class="product-detail-box">
-                                            <h6>جمع کل</h6>
-                                            <h5>17.850 تومان</h5>
-                                        </div>
-                                    </td>
-                                </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -468,164 +201,46 @@
                         <div class="table-responsive">
                             <table class="best-selling-table table border-0">
                                 <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="best-product-box">
-                                            <div class="product-name">
-                                                <h5>بیسکویت عطا</h5>
-                                                <h6>#64548</h6>
-                                            </div>
-                                        </div>
-                                    </td>
+                                    @foreach($recentOrderItems as $orderItem)
+                                        <tr>
+                                            <td>
+                                                <div class="best-product-box">
+                                                    <div class="product-name">
+                                                        <h5>{{ $orderItem->product()->name }}</h5>
+                                                        <h6>#{{ $orderItem->product()->id }}</h6>
+                                                    </div>
+                                                </div>
+                                            </td>
 
-                                    <td>
-                                        <div class="product-detail-box">
-                                            <h6>تاریخ انتشار</h6>
-                                            <h5>5 اردیبهشت 1400</h5>
-                                        </div>
-                                    </td>
+                                            <td>
+                                                <div class="product-detail-box">
+                                                    <h6>تاریخ ثبت سفارش</h6>
+                                                    <h5>{{ shamsi($orderItem->order()->create_at) }}</h5>
+                                                </div>
+                                            </td>
 
-                                    <td>
-                                        <div class="product-detail-box">
-                                            <h6>قیمت</h6>
-                                            <h5>250.000 تومان</h5>
-                                        </div>
-                                    </td>
+                                            <td>
+                                                <div class="product-detail-box">
+                                                    <h6>قیمت</h6>
+                                                    <h5>{{ priceFormat($orderItem->unit_price) }}</h5>
+                                                </div>
+                                            </td>
 
-                                    <td>
-                                        <div class="product-detail-box">
-                                            <h6>وضعیت سفارش</h6>
-                                            <h5>تکمیل شده</h5>
-                                        </div>
-                                    </td>
+                                            <td>
+                                                <div class="product-detail-box">
+                                                    <h6>وضعیت پرداخت</h6>
+                                                    <h5>{!! $orderItem->order()->status() !!}</h5>
+                                                </div>
+                                            </td>
 
-                                    <td>
-                                        <div class="product-detail-box">
-                                            <h6>وضعیت پرداخت</h6>
-                                            <h5 class="text-danger">پرداخت نشده</h5>
-                                        </div>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>
-                                        <div class="best-product-box">
-                                            <div class="product-name">
-                                                <h5>دلستر سیب</h5>
-                                                <h6>#64546</h6>
-                                            </div>
-                                        </div>
-                                    </td>
-
-
-                                    <td>
-                                        <div class="product-detail-box">
-                                            <h6>تاریخ انتشار</h6>
-                                            <h5>5 اردیبهشت 1400</h5>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <div class="product-detail-box">
-                                            <h6>قیمت</h6>
-                                            <h5>250.000 تومان</h5>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <div class="product-detail-box">
-                                            <h6>وضعیت سفارش</h6>
-                                            <h5>تکمیل شده</h5>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <div class="product-detail-box">
-                                            <h6>وضعیت پرداخت</h6>
-                                            <h5 class="theme-color">پرداخت شده</h5>
-                                        </div>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>
-                                        <div class="best-product-box">
-                                            <div class="product-name">
-                                                <h5>دلستر لیمو</h5>
-                                                <h6>#645465</h6>
-                                            </div>
-                                        </div>
-                                    </td>
-
-
-                                    <td>
-                                        <div class="product-detail-box">
-                                            <h6>تاریخ انتشار</h6>
-                                            <h5>5 اردیبهشت 1400</h5>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <div class="product-detail-box">
-                                            <h6>قیمت</h6>
-                                            <h5>250.000 تومان</h5>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <div class="product-detail-box">
-                                            <h6>وضعیت سفارش</h6>
-                                            <h5>تکمیل شده</h5>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <div class="product-detail-box">
-                                            <h6>وضعیت پرداخت</h6>
-                                            <h5 class="theme-color">پرداخت شده</h5>
-                                        </div>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>
-                                        <div class="best-product-box">
-                                            <div class="product-name">
-                                                <h5>سی انرژی</h5>
-                                                <h6>#65648</h6>
-                                            </div>
-                                        </div>
-                                    </td>
-
-
-                                    <td>
-                                        <div class="product-detail-box">
-                                            <h6>تاریخ انتشار</h6>
-                                            <h5>5 اردیبهشت 1400</h5>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <div class="product-detail-box">
-                                            <h6>قیمت</h6>
-                                            <h5>250.000 تومان</h5>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <div class="product-detail-box">
-                                            <h6>وضعیت سفارش</h6>
-                                            <h5>تکمیل شده</h5>
-                                        </div>
-                                    </td>
-
-                                    <td>
-                                        <div class="product-detail-box">
-                                            <h6>وضعیت پرداخت</h6>
-                                            <h5 class="theme-color">پرداخت شده</h5>
-                                        </div>
-                                    </td>
-                                </tr>
+                                            <td>
+                                                <div class="product-detail-box">
+                                                    <h6>وضعیت سفارش</h6>
+                                                    <h5 class="text-danger">{{ $orderItem->order()->shipment()?->status() }}</h5>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -633,202 +248,6 @@
                 </div>
             </div>
         </div>
-        <!-- Recent orders end-->
-
-        <!-- Earning chart star-->
-        <div class="col-xl-6">
-            <div class="card o-hidden card-hover">
-                <div class="card-header border-0 mb-0">
-                    <div class="card-header-title">
-                        <h4>درآمد</h4>
-                    </div>
-                </div>
-                <div class="card-body p-0">
-                    <div id="bar-chart-earning"></div>
-                </div>
-            </div>
-        </div>
-        <!-- Earning chart end-->
-
-
-        <!-- Transactions start-->
-        <div class="col-xxl-4 col-md-6">
-            <div class="card o-hidden card-hover">
-                <div class="card-header border-0">
-                    <div class="card-header-title">
-                        <h4>میانگین حساب</h4>
-                    </div>
-                </div>
-
-                <div class="card-body pt-0">
-                    <div>
-                        <div class="table-responsive">
-                            <table class="user-table transactions-table table border-0">
-                                <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="transactions-icon">
-                                            <i class="ri-shield-line"></i>
-                                        </div>
-                                        <div class="transactions-name">
-                                            <h6>کیف پول</h6>
-                                            <p>استارباکس</p>
-                                        </div>
-                                    </td>
-
-                                    <td class="lost">740.000 تومان</td>
-                                </tr>
-                                <tr>
-                                    <td class="td-color-1">
-                                        <div class="transactions-icon">
-                                            <i class="ri-check-line"></i>
-                                        </div>
-                                        <div class="transactions-name">
-                                            <h6>حواله بانکی</h6>
-                                            <p>بانک ملی</p>
-                                        </div>
-                                    </td>
-
-                                    <td class="success">125.000 تومان</td>
-                                </tr>
-                                <tr>
-                                    <td class="td-color-2">
-                                        <div class="transactions-icon">
-                                            <i class="ri-exchange-dollar-line"></i>
-                                        </div>
-                                        <div class="transactions-name">
-                                            <h6>پی پل</h6>
-                                            <p>حساب آنلاین</p>
-                                        </div>
-                                    </td>
-
-                                    <td class="lost">50.000 تومان</td>
-                                </tr>
-                                <tr>
-                                    <td class="td-color-3">
-                                        <div class="transactions-icon">
-                                            <i class="ri-bank-card-line"></i>
-                                        </div>
-                                        <div class="transactions-name">
-                                            <h6>مسترکارت</h6>
-                                            <p>حساب شما</p>
-                                        </div>
-                                    </td>
-
-                                    <td class="lost">40.000 تومان</td>
-                                </tr>
-                                <tr>
-                                    <td class="td-color-4 pb-0">
-                                        <div class="transactions-icon">
-                                            <i class="ri-bar-chart-grouped-line"></i>
-                                        </div>
-                                        <div class="transactions-name">
-                                            <h6>حواله</h6>
-                                            <p>بازپرداخت</p>
-                                        </div>
-                                    </td>
-
-                                    <td class="success pb-0">90.000 تومان</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Transactions end-->
-
-        <!-- visitors chart start-->
-        <div class="col-xxl-4 col-md-6">
-            <div class="h-100">
-                <div class="card o-hidden card-hover">
-                    <div class="card-header border-0">
-                        <div class="d-flex align-items-center justify-content-between">
-                            <div class="card-header-title">
-                                <h4>بازدید کنندگان</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body pt-0">
-                        <div class="pie-chart">
-                            <div id="pie-chart-visitors"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- visitors chart end-->
-
-
-        <!-- To Do List start-->
-        <div class="col-xxl-4 col-md-6">
-            <div class="card o-hidden card-hover">
-                <div class="card-header border-0">
-                    <div class="card-header-title">
-                        <h4></h4>
-                    </div>
-                </div>
-
-                <div class="card-body pt-0">
-                    <ul class="to-do-list">
-                        <li class="to-do-item">
-                            <div class="form-check user-checkbox">
-                                <input class="checkbox_animated check-it" type="checkbox" value=""
-                                       id="flexCheckDefault">
-                            </div>
-                            <div class="to-do-list-name">
-                                <strong>بچه ها را از مدرسه ببرید</strong>
-                                <p>8 ساعت</p>
-                            </div>
-                        </li>
-                        <li class="to-do-item">
-                            <div class="form-check user-checkbox">
-                                <input class="checkbox_animated check-it" type="checkbox" value=""
-                                       id="flexCheckDefault1">
-                            </div>
-                            <div class="to-do-list-name">
-                                <strong>ارائه خدمات فروش</strong>
-                                <p>8 ساعت</p>
-                            </div>
-                        </li>
-                        <li class="to-do-item">
-                            <div class="form-check user-checkbox">
-                                <input class="checkbox_animated check-it" type="checkbox" value=""
-                                       id="flexCheckDefault2">
-                            </div>
-                            <div class="to-do-list-name">
-                                <strong>ایجاد فاکتور</strong>
-                                <p>8 ساعت</p>
-                            </div>
-                        </li>
-                        <li class="to-do-item">
-                            <div class="form-check user-checkbox">
-                                <input class="checkbox_animated check-it" type="checkbox" value=""
-                                       id="flexCheckDefault3">
-                            </div>
-                            <div class="to-do-list-name">
-                                <strong>حساب کاربری جدید</strong>
-                                <p>8 ساعت</p>
-                            </div>
-                        </li>
-
-                        <li class="to-do-item">
-                            <form class="row g-2">
-                                <div class="col-8">
-                                    <input type="text" class="form-control" id="name"
-                                           placeholder="افزودن یادداشت جدید">
-                                </div>
-                                <div class="col-4">
-                                    <button type="submit" class="btn btn-primary w-100 h-100">افزودن</button>
-                                </div>
-                            </form>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!-- To Do List end-->
 
 
     </div>

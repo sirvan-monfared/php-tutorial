@@ -130,4 +130,11 @@ class User extends Model
             'password' => password_hash($password, PASSWORD_BCRYPT)
         ]);
     }
+
+    public function total()
+    {
+        $sql = "SELECT COUNT(`id`) AS count FROM {$this->table} LIMIT 1";
+
+        return $this->db->prepare($sql, [], __CLASS__)->find()->count;
+    }
 }

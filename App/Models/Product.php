@@ -138,12 +138,26 @@ class Product extends Model
         return $this->db->paginate($sql, $values, __CLASS__);
     }
 
-    public function forCategory($category_id): object
+    public function forCategory($category_id, $except_id = 0, $randomOrder = false): object
     {
-        $sql = "SELECT * FROM {$this->table} WHERE category_id=:category_id ORDER BY `id` DESC";
+        $sql = "SELECT * FROM {$this->table} WHERE category_id=:category_id AND id!=:except_id";
+
+        if ($randomOrder) {
+            $sql .= " ORDER BY RAND()";
+        } else {
+            $sql .= " ORDER BY `id` DESC";
+        }
 
         return $this->db->paginate($sql, [
-            'category_id' => $category_id
+            'category_id' => $category_id,
+            'except_id' => $except_id
         ], __CLASS__);
+    }
+
+    public function total()
+    {
+        $sql = "SELECT COUNT(`id`) AS count FROM {$this->table} LIMIT 1";
+
+        return $this->db->prepare($sql, [], __CLASS__)->find()->count;
     }
 }

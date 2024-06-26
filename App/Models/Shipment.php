@@ -19,4 +19,15 @@ class Shipment extends Model
             'address' => $_POST['address']
         ]);
     }
+
+    public function status(): string
+    {
+        return match ($this->status) {
+            self::PROCESSING => 'پردازش سفارش',
+            self::INVOICE => 'صدور فاکتور',
+            self::PREPARATION => 'آماده سازی',
+            self::SENT => 'ارسال شده',
+            self::DELIVERED => 'تحویل داده شده',
+        };
+    }
 }

@@ -8,6 +8,7 @@ class OrderItem extends Model
     protected bool $timestamps = false;
 
     protected ?Product $product = null;
+    protected ?Order $order = null;
 
     public function insert(int $order_id, array $item)
     {
@@ -34,9 +35,18 @@ class OrderItem extends Model
     public function product(): ?Product
     {
         if (! $this->product) {
-            $this->product = (new Product())->find($this->product_id);
+            $this->product = (new Product)->find($this->product_id);
         }
 
         return $this->product;
+    }
+
+    public function order(): ?Order
+    {
+        if (! $this->order) {
+            $this->order = (new Order)->find($this->order_id);
+        }
+
+        return $this->order;
     }
 }

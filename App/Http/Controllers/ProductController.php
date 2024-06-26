@@ -13,7 +13,8 @@ class ProductController extends BaseController
         $product = (new Product)->findOrFail($id);
 
         $this->view('front.products.show', [
-            'product' => $product
+            'product' => $product,
+            'related_products' => (new Product)->forCategory($product->category_id, $product->id, true)->items
         ]);
     }
 }

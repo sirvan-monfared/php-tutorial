@@ -8,7 +8,7 @@
             <li class="back-btn"></li>
 
             <li class="sidebar-list">
-                <a class="sidebar-link sidebar-title link-nav" href="index.html">
+                <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin.home') }}">
                     <i class="ri-home-line"></i>
                     <span>پیشخوان</span>
                 </a>
