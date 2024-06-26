@@ -123,4 +123,11 @@ class User extends Model
     {
         return (new Order)->paidForUser($this->id);
     }
+
+    public function updatePassword(string $password): User
+    {
+        return $this->update([
+            'password' => password_hash($password, PASSWORD_BCRYPT)
+        ]);
+    }
 }
