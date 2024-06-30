@@ -4,9 +4,9 @@
             <label>وضعیت:
                 <select name="status" class="js-example-basic-single w-100">
                     <option value="">همه وضعیت ها</option>
-                    <option value="{{ App\Models\Comment::PENDING }}" @selected((int) $_GET['status'] === App\Models\Comment::PENDING)>در دست بررسی</option>
-                    <option value="{{ App\Models\Comment::ACCEPTED }}" @selected((int) $_GET['status'] === App\Models\Comment::ACCEPTED)>تایید شده</option>
-                    <option value="{{ App\Models\Comment::SPAM }}" @selected((int) $_GET['status'] === App\Models\Comment::SPAM)>هرزنامه</option>
+                    @component('admin.components.comment_status', ['value' => $_GET['status']])
+
+                    @endcomponent
                 </select>
             </label>
             <div type="submit" class=" mt-4 mx-auto d-flex flex-column gap-1">

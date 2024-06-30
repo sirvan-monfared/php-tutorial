@@ -59,4 +59,32 @@ class Comment extends Model
 
         return $this->product;
     }
+
+    public function revise(array $data): Comment
+    {
+        return $this->update([
+            'body' => $data['body'],
+            'rating' => (int) $data['rating'],
+            'status' => (int) $data['status']
+        ]);
+    }
+
+    public function status(): string
+    {
+        return match($this->status) {
+            self::PENDING => '<span class="badge badge-warning">در انتظار بررسی</span>',
+            self::ACCEPTED => '<span class="badge badge-success">تایید شده</span>',
+            self::SPAM => '<span class="badge badge-danger">هرزنامه</span>',
+        };
+    }
+
+    public function forProduct(int $product_id): array
+    {
+        $sql = "SELECT * FROM {$this->table} WHERE `product_id`=:product_id AND `status`=:status";
+
+        return $this->db->prepare($sql, [
+            'product_id' => $product_id,
+            'status' => Comment::ACCEPTED
+        ], __CLASS__)->all();
+    }
 }

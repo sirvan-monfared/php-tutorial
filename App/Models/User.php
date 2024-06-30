@@ -137,4 +137,9 @@ class User extends Model
 
         return $this->db->prepare($sql, [], __CLASS__)->find()->count;
     }
+
+    public function fullName(): string
+    {
+        return "{$this->name} {$this->last_name}";
+    }
 }

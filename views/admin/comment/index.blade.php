@@ -40,7 +40,7 @@
 
                     <td>{{ $comment->body }}</td>
 
-                    <td>{{ $comment->status }}</td>
+                    <td>{!! $comment->status() !!}</td>
 
                     <td>
                         <ul>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Core\Session;
 use App\Http\Controllers\BaseController;
 use App\Models\Comment;
 
@@ -17,13 +18,32 @@ class CommentController extends BaseController
         ]);
     }
 
-    public function update(int $id)
+    public function edit(int $id): void
     {
+        $comment = (new Comment)->findOrFail($id);
 
+        $this->view('admin.comment.edit', [
+            'comment' => $comment
+        ]);
     }
 
-    public function delete(int $id)
+    public function update(int $id): void
     {
+        $comment = (new Comment)->findOrFail($id);
 
+        $comment->revise($_POST);
+
+        Session::success();
+        redirectBack();
+    }
+
+    public function destroy(int $id): void
+    {
+        $comment = (new Comment)->findOrFail($id);
+
+        $comment->delete();
+
+        Session::success();
+        redirectBack();
     }
 }

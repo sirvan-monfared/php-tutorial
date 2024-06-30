@@ -171,4 +171,8 @@ class Product extends Model
         (new CustomField())->clearForProduct($this->id);
     }
 
+    public function comments(): bool|array
+    {
+        return (new Comment)->forProduct($this->id);
+    }
 }
