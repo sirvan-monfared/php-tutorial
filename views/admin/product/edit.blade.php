@@ -35,3 +35,15 @@
     <script src="{{ asset('admin/js/select2.min.js') }}"></script>
     <script src="{{ asset('admin/js/select2-custom.js') }}"></script>
 @endsection
+
+@section('js')
+    <script>
+        const custom_fields_placeholder = document.getElementById('custom-fields-placeholder');
+        const template = document.getElementById('custom-fields-template');
+        const add_custom_field_button = document.getElementById('add-custom-fields');
+
+        add_custom_field_button.addEventListener('click', () => {
+            custom_fields_placeholder.append(document.importNode(template.content, true));
+        })
+    </script>
+@endsection

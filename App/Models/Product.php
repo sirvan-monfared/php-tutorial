@@ -160,4 +160,14 @@ class Product extends Model
 
         return $this->db->prepare($sql, [], __CLASS__)->find()->count;
     }
+
+    public function customFields(): bool|array
+    {
+        return (new CustomField())->forProduct($this->id);
+    }
+
+    public function clearCustomFields(): void
+    {
+        (new CustomField())->clearForProduct($this->id);
+    }
 }

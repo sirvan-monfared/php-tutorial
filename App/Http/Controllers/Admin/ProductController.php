@@ -8,6 +8,7 @@ use App\Core\Session;
 use App\Core\Validator;
 use App\Http\Controllers\BaseController;
 use App\Models\Category;
+use App\Models\CustomField;
 use App\Models\Product;
 use Exception;
 
@@ -54,6 +55,10 @@ class ProductController extends BaseController
             }
 
             $product = (new Product)->insert($_POST, $image_name);
+
+            $this->handleCustomFields($product->id);
+
+
             Session::success();
 
             redirectTo($product->editLink());
@@ -75,6 +80,7 @@ class ProductController extends BaseController
 
     public function update(int $id)
     {
+
         $product = (new Product)->findOrFail($id);
 
         $validation = new Validator($_POST, Product::RULES, Product::NAMES);
@@ -93,6 +99,10 @@ class ProductController extends BaseController
             }
 
             $product->revise($_POST, $image_name);
+
+            $product->clearCustomFields();
+            $this->handleCustomFields($product->id);
+
             Session::success();
 
             redirectBack();
@@ -116,5 +126,20 @@ class ProductController extends BaseController
         }
 
         redirectBack();
+    }
+
+    private function handleCustomFields($product_id): void
+    {
+        $custom_fields = array_combine($_POST['custom_field_key'] ?? [], $_POST['custom_field_value'] ?? []);
+
+        foreach ($custom_fields as $key => $value) {
+            if (!trim($key) || !trim($value)) continue;
+
+            (new CustomField)->create([
+                'product_id' => $product_id,
+                'name' => $key,
+                'value' => $value
+            ]);
+        }
     }
 }

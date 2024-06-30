@@ -100,6 +100,13 @@ class Model {
         ], get_called_class())->find();
     }
 
+    public function whereAll($column, $value): array|bool
+    {
+        return $this->db->prepare("SELECT * FROM `{$this->table}` WHERE {$column}=:{$column}", [
+            "$column" => $value
+        ], get_called_class())->all();
+    }
+
     public function delete(): void
     {
         $sql = "DELETE FROM {$this->table} WHERE `id`=:id";

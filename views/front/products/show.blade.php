@@ -258,11 +258,13 @@
                                 </button>
                             </li>
 
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="info-tab" data-bs-toggle="tab" data-bs-target="#info"
-                                        type="button" role="tab">اطلاعات محصول
-                                </button>
-                            </li>
+                            @if($product->customFields())
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="info-tab" data-bs-toggle="tab" data-bs-target="#info"
+                                            type="button" role="tab">اطلاعات محصول
+                                    </button>
+                                </li>
+                            @endif
 
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="care-tab" data-bs-toggle="tab" data-bs-target="#care"
@@ -284,38 +286,23 @@
                                 </div>
                             </div>
 
-                            <div class="tab-pane fade" id="info" role="tabpanel">
-                                <div class="table-responsive">
-                                    <table class="table info-table">
-                                        <tbody>
-                                        <tr>
-                                            <td>سازنده</td>
-                                            <td>ایلان ماسک</td>
-                                        </tr>
-                                        <tr>
-                                            <td>میزان قند</td>
-                                            <td>100 گرم</td>
-                                        </tr>
-                                        <tr>
-                                            <td>نوشته روی کیک</td>
-                                            <td>امین تولدت مبارک</td>
-                                        </tr>
-                                        <tr>
-                                            <td>میزان چربی</td>
-                                            <td>120 گرم</td>
-                                        </tr>
-                                        <tr>
-                                            <td>نوع خمیر</td>
-                                            <td>تهیه شده با آرد معمولی</td>
-                                        </tr>
-                                        <tr>
-                                            <td>نوع خامه</td>
-                                            <td>شکلاتی</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
+                            @if($product->customFields())
+                                <div class="tab-pane fade" id="info" role="tabpanel">
+                                    <div class="table-responsive">
+                                        <table class="table info-table">
+                                            <tbody>
+                                                @foreach($product->customFields() as $field)
+                                                   <tr>
+                                                        <td>{{ $field->name }}</td>
+                                                        <td>{{ $field->value }}</td>
+                                                    </tr>
+
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
 
                             <div class="tab-pane fade" id="care" role="tabpanel">
                                 <div class="information-box">

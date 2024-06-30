@@ -5,6 +5,4 @@
                placeholder="{{ $placeholder ?? null }}">
         <div class="help-block text-danger fs-7 ">{{ $errors[$name] ?? null  }}</div>
     </div>
-
-
 </div>

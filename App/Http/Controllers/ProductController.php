@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Core\Session;
 use App\Helpers\Cart;
+use App\Models\CustomField;
 use App\Models\Product;
 
 class ProductController extends BaseController
