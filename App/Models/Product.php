@@ -170,4 +170,5 @@ class Product extends Model
     {
         (new CustomField())->clearForProduct($this->id);
     }
+
 }

@@ -27,6 +27,10 @@
                     <li>
                         <a href="{{ route('admin.product.create') }}">افزودن محصول جدید</a>
                     </li>
+
+                    <li>
+                        <a href="{{ route('admin.comment.index') }}">دیدگاه ها</a>
+                    </li>
                 </ul>
             </li>
 

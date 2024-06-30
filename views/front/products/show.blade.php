@@ -291,13 +291,13 @@
                                     <div class="table-responsive">
                                         <table class="table info-table">
                                             <tbody>
-                                                @foreach($product->customFields() as $field)
-                                                   <tr>
-                                                        <td>{{ $field->name }}</td>
-                                                        <td>{{ $field->value }}</td>
-                                                    </tr>
+                                            @foreach($product->customFields() as $field)
+                                                <tr>
+                                                    <td>{{ $field->name }}</td>
+                                                    <td>{{ $field->value }}</td>
+                                                </tr>
 
-                                                @endforeach
+                                            @endforeach
                                             </tbody>
                                         </table>
                                     </div>
@@ -336,79 +336,14 @@
                                         <div class="col-xl-5">
                                             <div class="product-rating-box">
                                                 <div class="row">
-                                                    <div class="col-xl-12">
-                                                        <div class="product-main-rating">
-                                                            <h2>3.40
-                                                                <i data-feather="star"></i>
-                                                            </h2>
-
-                                                            <h5>از 5</h5>
+                                                    @if(auth()->check())
+                                                        @include('front.partials._comment')
+                                                    @else
+                                                        <div class="col-xs-12">
+                                                            <p>برای ارسال دیدگاه باید وارد حساب کاربری خود شوید</p>
+                                                            <a href="{{ route('auth.login') }}" class="btn btn-xs fw-bold text-light theme-bg-color">ورود به حساب کاربری</a>
                                                         </div>
-                                                    </div>
-
-                                                    <div class="col-xl-12">
-                                                        <ul class="product-rating-list">
-                                                            <li>
-                                                                <div class="rating-product">
-                                                                    <h5>5<i data-feather="star"></i></h5>
-                                                                    <div class="progress">
-                                                                        <div class="progress-bar" style="width: 40%;">
-                                                                        </div>
-                                                                    </div>
-                                                                    <h5 class="total">2</h5>
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="rating-product">
-                                                                    <h5>4<i data-feather="star"></i></h5>
-                                                                    <div class="progress">
-                                                                        <div class="progress-bar" style="width: 20%;">
-                                                                        </div>
-                                                                    </div>
-                                                                    <h5 class="total">1</h5>
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="rating-product">
-                                                                    <h5>3<i data-feather="star"></i></h5>
-                                                                    <div class="progress">
-                                                                        <div class="progress-bar" style="width: 0%;">
-                                                                        </div>
-                                                                    </div>
-                                                                    <h5 class="total">0</h5>
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="rating-product">
-                                                                    <h5>2<i data-feather="star"></i></h5>
-                                                                    <div class="progress">
-                                                                        <div class="progress-bar" style="width: 20%;">
-                                                                        </div>
-                                                                    </div>
-                                                                    <h5 class="total">1</h5>
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="rating-product">
-                                                                    <h5>1<i data-feather="star"></i></h5>
-                                                                    <div class="progress">
-                                                                        <div class="progress-bar" style="width: 20%;">
-                                                                        </div>
-                                                                    </div>
-                                                                    <h5 class="total">1</h5>
-                                                                </div>
-                                                            </li>
-
-                                                        </ul>
-
-                                                        <div class="review-title-2">
-                                                            <h4 class="fw-bold">بازخورد این محصول</h4>
-                                                            <p>با ثبت بازخورد خود در خرید دیگران راهنمایی خوبی باشید</p>
-                                                            <button class="btn" type="button" data-bs-toggle="modal"
-                                                                    data-bs-target="#writereview">ثبت دیدگاه جدید
-                                                            </button>
-                                                        </div>
-                                                    </div>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>

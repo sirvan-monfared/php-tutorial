@@ -61,43 +61,49 @@ class Validator
             'min' => "{$field} باید بیش از {$param} کاراکتر باشد",
             'max' => "{$field} باید حداکثر از {$param} کاراکتر باشد",
             'confirm' => "فیلدهای {$field} و تکرار {$field} مطابقت ندارند",
-            'unique' => "{$field} قبلا در سایت ثبت شده است "
+            'unique' => "{$field} قبلا در سایت ثبت شده است ",
+            'int' => "{$field} باید از نوع عددی باشد"
         };
     }
 
-    public function required(string $value): bool
+    public function required(mixed $value): bool
     {
         return !empty(trim($value));
     }
 
-    public function exact(string $value,int $param): bool
+    public function exact(mixed $value,int $param): bool
     {
         return strlen($value) === $param;
     }
 
-    public function mobile(string $value): bool
+    public function mobile(mixed $value): bool
     {
         $pattern = "/^09[012349]\d{8}$/";
         
         return preg_match($pattern, $value);
     }
 
-    public function min(string $value, int $param): bool
+    public function min(mixed $value, int $param): bool
     {
         return strlen($value) >= $param;
     }
 
-    public function max(string $value, int $param): bool
+    public function max(mixed $value, int $param): bool
     {
         return strlen($value) <= $param;
     }
 
-    public function confirm($value, string $param): bool
+    public function int(mixed $value): bool
+    {
+        return is_numeric($value);
+    }
+
+    public function confirm(mixed $value, string $param): bool
     {
         return $value === $this->data[$param];
     }
 
-    public function unique($value, string $param): bool
+    public function unique(mixed $value, string $param): bool
     {
         [$table, $column, $except] = explode(',', $param);
 
