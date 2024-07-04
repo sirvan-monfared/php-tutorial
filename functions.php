@@ -161,7 +161,6 @@ function uploadImage($field_name): bool|string
 //    if ($error === UPLOAD_ERR_NO_FILE) {
 //        dd('هیچ فایلی آپلود نشده است');
 //    }
-
     if ($error !== UPLOAD_ERR_OK) {
         dd('مشکلی در آپلود به وجود آمده است');
     }

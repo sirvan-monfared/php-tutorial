@@ -45,32 +45,6 @@
                 </div>
             </div>
 
-            <div class="grid-option grid-option-2">
-                <ul>
-                    <li class="three-grid">
-                        <a href="javascript:void(0)">
-                            <img src="{{ asset('front/svg/grid-3.svg') }}" class="blur-up lazyload" alt="">
-                        </a>
-                    </li>
-                    <li class="grid-btn five-grid d-xxl-inline-block d-none">
-                        <a href="javascript:void(0)">
-                            <img src="{{ asset('front/svg/grid-4.svg') }}"
-                                 class="blur-up lazyload d-lg-inline-block d-none" alt="">
-                        </a>
-                    </li>
-                    <li class="five-grid d-xxl-inline-block d-none active">
-                        <a href="javascript:void(0)">
-                            <img src="{{ asset('front/svg/grid-5.svg') }}"
-                                 class="blur-up lazyload d-lg-inline-block d-none" alt="">
-                        </a>
-                    </li>
-                    <li class="list-btn">
-                        <a href="javascript:void(0)">
-                            <img src="{{ asset('front/svg/list.svg') }}" class="blur-up lazyload" alt="">
-                        </a>
-                    </li>
-                </ul>
-            </div>
         </div>
     </div>
 </div>

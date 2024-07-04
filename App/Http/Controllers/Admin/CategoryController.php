@@ -35,10 +35,19 @@ class CategoryController extends BaseController
             $this->redirectToForm($validation);
         }
 
-        $category = (new Category)->insert($_POST);
+        try {
+            if ($_FILES['image']['name']) {
+                $image_name = uploadImage('image');
+            }
 
-        Session::success();
-        redirectTo($category->editLink());
+            $category = (new Category)->insert($_POST, $image_name);
+
+            Session::success();
+            redirectTo($category->editLink());
+
+        }catch (Exception $e) {
+            $this->redirectWithErrors();
+        }
     }
 
     public function edit(int $id): void
@@ -61,14 +70,22 @@ class CategoryController extends BaseController
         }
 
         try {
-            $category->revise($_POST);
+            if ($_FILES['image']['name']) {
+
+                $image_name = uploadImage('image');
+
+                if ($category->hasFeaturedImage()) {
+                    unlink($category->featuredImagePath());
+                }
+            }
+
+            $category->revise($_POST, $image_name);
+
+            Session::success();
+            redirectBack();
         } catch(Exception $e) {
             $this->redirectWithErrors();
         }
-
-
-        Session::success();
-        redirectBack();
     }
 
     public function destroy(int $id): void

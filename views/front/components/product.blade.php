@@ -63,26 +63,17 @@
                 </h6>
             </div>
 
-            <div class="add-to-cart-box bg-white">
-                <button class="btn btn-add-cart addcart-button">افزودن
-                    <span class="add-icon bg-light-orange">
-                                                    <i class="fa-solid fa-plus"></i>
-                                                </span>
-                </button>
-                <div class="cart_qty qty-box">
-                    <div class="input-group">
-                        <button type="button" class="qty-left-minus" data-type="minus"
-                                data-field="">
-                            <i class="fa fa-minus"></i>
-                        </button>
-                        <input class="form-control input-number qty-input" type="text"
-                               name="quantity" value="0">
-                        <button type="button" class="qty-right-plus" data-type="plus"
-                                data-field="">
-                            <i class="fa fa-plus"></i>
-                        </button>
-                    </div>
-                </div>
+            <div class="dynamic-checkout mt-3">
+
+                <form action="{{ route('cart.store') }}" method="POST">
+                    @include('partials._csrf')
+
+                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+
+                    <button class="border-theme-color btn btn-md scroll-button" type="submit">
+                        <div><i class="ri-shopping-cart-line me-1"></i> افزودن به سبد خرید</div>
+                    </button>
+                </form>
             </div>
         </div>
     </div>

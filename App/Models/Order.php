@@ -188,4 +188,19 @@ class Order extends Model
 
         return $this->db->prepare($sql, [], OrderItem::class)->all();
     }
+
+    public function topPurchasedProducts(int $limit)
+    {
+        $sql = "
+            SELECT p.*, oi.product_id, SUM(oi.quantity) AS sum FROM orders AS o
+            LEFT JOIN order_items AS oi
+                ON oi.order_id=o.id
+            LEFT JOIN products AS p
+                ON p.id=oi.product_id
+            GROUP BY oi.product_id
+            ORDER BY sum DESC LIMIT {$limit}
+        ";
+
+        return $this->db->prepare($sql, [], Product::class)->all();
+    }
 }

@@ -33,7 +33,7 @@
                                 <tr>
                                     <td>
                                         <div class="table-image">
-                                            <img src="{{ asset('admin/images/users/1.jpg') }}" class="img-fluid"
+                                            <img src="{{ $category->featuredImageOrDefault() }}" class="img-fluid"
                                                  alt="">
                                         </div>
                                     </td>

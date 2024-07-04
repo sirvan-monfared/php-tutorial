@@ -5,24 +5,19 @@
  <div class="col-12">
  <div class="row">
  <div class="col-sm-8 m-auto">
- <div class="card">
- <div class="card-body">
- <div class="card-header-2">
- <h5>ویرایش دسته</h5>
- </div>
-
  <?php echo $this->runChild('partials._alerts'); ?>
 
+ <form method="POST" action="<?php echo \htmlentities(route('admin.category.update', ['id' => $category->id])??'', ENT_QUOTES, 'UTF-8', false); ?>"
+ enctype="multipart/form-data" class="theme-form theme-form-2 mega-form">
 
- <form method="POST" action="<?php echo \htmlentities(route('admin.category.update', ['id' => $category->id])??'', ENT_QUOTES, 'UTF-8', false); ?>" class="theme-form theme-form-2 mega-form">
  <input type='hidden' name='_method' value='<?php echo 'PUT'; ?>'/>
  <?php echo $this->runChild('partials._csrf'); ?>
 
- <?php echo $this->runChild('admin.category._form'); ?>
+ <?php echo $this->runChild('admin.category._form',[
+ 'title' => 'ویرایش دسته'
+ ]); ?>
 
  </form>
- </div>
- </div>
  </div>
  </div>
  </div>

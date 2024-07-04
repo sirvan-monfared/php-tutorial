@@ -12,7 +12,8 @@
                 @include('partials._alerts')
 
                 <div class="col-sm-8 m-auto">
-                    <form action="{{ route('admin.product.update', ['id' => $product->id]) }}" method="POST" enctype="multipart/form-data" class="theme-form theme-form-2 mega-form">
+                    <form action="{{ route('admin.product.update', ['id' => $product->id]) }}" method="POST"
+                          enctype="multipart/form-data" class="theme-form theme-form-2 mega-form">
                         @method('PUT')
                         @include('partials._csrf')
 

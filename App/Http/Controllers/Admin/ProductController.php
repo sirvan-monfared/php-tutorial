@@ -23,14 +23,6 @@ class ProductController extends BaseController
             'paginator' => $paginated->paginator,
             'categories' => (new Category)->all()
         ]);
-
-
-//        $paginated = (new Product)->paginate();
-
-//        $this->view('admin.product.index', [
-//            'products' => $paginated->items,
-//            'paginator' => $paginated->paginator
-//        ]);
     }
 
     public function create(): void

@@ -360,7 +360,6 @@
 
                         @foreach($related_products as $related_product)
                             @component('front.components.product', ['product' => $related_product])
-
                             @endcomponent
                         @endforeach
 

@@ -114,94 +114,18 @@
             <div class="row">
                 <div class="col-12">
                     <div class="slider-9">
-                        <div>
-                            <a href="shop-left-sidebar.html" class="category-box category-box-2 category-dark">
-                                <div>
-                                    <img src="{{ asset('front/svg/2/1.svg') }}" class="blur-up lazyload" alt="">
-                                    <h5>کیک</h5>
-                                </div>
-                            </a>
-                        </div>
+                        @foreach($categories as $category)
+                            <div>
+                                <a href="{{ $category->viewLink() }}" class="category-box category-box-2 category-dark">
+                                    <div>
+                                        <img src="{{ $category->featuredImageOrDefault() }}" class="blur-up lazyload"
+                                             alt="">
+                                        <h5>{{ $category->name }}</h5>
+                                    </div>
+                                </a>
+                            </div>
+                        @endforeach
 
-                        <div>
-                            <a href="shop-left-sidebar.html" class="category-box category-box-2 category-dark"
-                               data-wow-delay="0.2s">
-                                <div>
-                                    <img src="{{ asset('front/svg/2/2.svg') }}" class="blur-up lazyload" alt="">
-                                    <h5>ساندویچ</h5>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div>
-                            <a href="shop-left-sidebar.html" class="category-box category-box-2 category-dark"
-                               data-wow-delay="0.3s">
-                                <div>
-                                    <img src="{{ asset('front/svg/2/3.svg') }}" class="blur-up lazyload" alt="">
-                                    <h5>بیسکوییت</h5>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div>
-                            <a href="shop-left-sidebar.html" class="category-box category-box-2 category-dark"
-                               data-wow-delay="0.4s">
-                                <div>
-                                    <img src="{{ asset('front/svg/2/4.svg') }}" class="blur-up lazyload" alt="">
-                                    <h5>کیک</h5>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div>
-                            <a href="shop-left-sidebar.html" class="category-box category-box-2 category-dark"
-                               data-wow-delay="0.5s">
-                                <div>
-                                    <img src="{{ asset('front/svg/2/5.svg') }}" class="blur-up lazyload" alt="">
-                                    <h5>نان</h5>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div>
-                            <a href="shop-left-sidebar.html" class="category-box category-box-2 category-dark"
-                               data-wow-delay="0.6s">
-                                <div>
-                                    <img src="{{ asset('front/svg/2/6.svg') }}" class="blur-up lazyload" alt="">
-                                    <h5>بیسکوییت</h5>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div>
-                            <a href="shop-left-sidebar.html" class="category-box category-box-2 category-dark"
-                               data-wow-delay="0.7s">
-                                <div>
-                                    <img src="{{ asset('front/svg/2/7.svg') }}" class="blur-up lazyload" alt="">
-                                    <h5>شیرینی</h5>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div>
-                            <a href="shop-left-sidebar.html" class="category-box category-box-2 category-dark"
-                               data-wow-delay="0.8s">
-                                <div>
-                                    <img src="{{ asset('front/svg/2/8.svg') }}" class="blur-up lazyload" alt="">
-                                    <h5>شیرینی های رولتی</h5>
-                                </div>
-                            </a>
-                        </div>
-
-                        <div>
-                            <a href="shop-left-sidebar.html" class="category-box category-box-2 category-dark"
-                               data-wow-delay="0.9s">
-                                <div>
-                                    <img src="{{ asset('front/svg/2/9.svg') }}" class="blur-up lazyload" alt="">
-                                    <h5>کیک کوچک</h5>
-                                </div>
-                            </a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -209,243 +133,77 @@
     </section>
     <!-- Category Section End -->
 
-    <!-- Discount Section Start -->
-    <section>
-        <div class="container-fluid-lg">
-            <div class="row">
-                <div class="col-12">
-                    <div class="banner-contain hover-effect">
-                        <img src="{{ asset('front/images/cake/banner/4.jpg') }}" class="bg-img blur-up lazyload" alt="">
-                        <div class="banner-details p-center p-sm-4 p-3 text-white text-center">
-                            <div>
-                                <h3 class="lh-base fw-bold text-white">
-                                    دریافت 30 درصد تخفیف برای خرید بالای 300 تومان
-                                </h3>
-                                <h6 class="coupon-code code-2">کد تخفیف : GROCERY1920</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Discount Section End -->
-
-    <!-- Banner Section Start -->
-    <section class="ratio_60">
-        <div class="container-fluid-lg">
-            <div class="row g-3">
-                <div class="col-xxl-3 col-sm-6">
-                    <a href="shop-left-sidebar.html" class="banner-contain-2 hover-effect">
-                        <img src="{{ asset('front/images/cake/banner/5.jpg') }}" class="bg-img blur-up lazyload" alt="">
-                        <div class="banner-detail p-top-left">
-                            <div>
-                                <div class="banner-detail-box mb-md-3 mb-1">
-                                    <h6 class="text-danger">5% تخفیف</h6>
-                                    <h4 class="mt-2">محصولات جدید</h4>
-                                    <h6 class="mt-2 text-content">ملزومات روزانه</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-xxl-3 col-sm-6">
-                    <a href="shop-left-sidebar.html" class="banner-contain-2 hover-effect">
-                        <img src="{{ asset('front/images/cake/banner/6.jpg') }}" class="bg-img blur-up lazyload" alt="">
-                        <div class="banner-detail p-top-left">
-                            <div>
-                                <div class="banner-detail-box mb-md-3 mb-1">
-                                    <h6 class="text-danger">5% تخفیف</h6>
-                                    <h4 class="mt-2">سود بیشتر</h4>
-                                    <h6 class="mt-2 text-content">نان تست سوخاری شده</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-xxl-3 col-sm-6">
-                    <a href="shop-left-sidebar.html" class="banner-contain-2 hover-effect">
-                        <img src="{{ asset('front/images/cake/banner/7.jpg') }}" class="bg-img blur-up lazyload" alt="">
-                        <div class="banner-detail p-top-left">
-                            <div>
-                                <div class="banner-detail-box mb-md-3 mb-1">
-                                    <h6 class="text-danger">5% تخفیف</h6>
-                                    <h4 class="mt-2">هر روز تازه!</h4>
-                                    <h6 class="mt-2 text-content">تحویل فوری</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-xxl-3 col-sm-6">
-                    <a href="shop-left-sidebar.html" class="banner-contain-2 hover-effect">
-                        <img src="{{ asset('front/images/cake/banner/8.jpg') }}" class="bg-img blur-up lazyload" alt="">
-                        <div class="banner-detail p-top-left">
-                            <div>
-                                <div class="banner-detail-box mb-md-3 mb-1">
-                                    <h6 class="text-danger">5% تخفیف</h6>
-                                    <h4 class="mt-2">پروفروش</h4>
-                                    <h6 class="mt-2 text-content">کیک های خوشمزه</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Banner Section End -->
 
     <!-- Product Section Start -->
     <section>
         <div class="container-fluid-lg">
             <div class="row g-3">
                 <div class="col-xxl-9 col-xl-8">
-                    <div class="title title-flex">
-                        <div>
-                            <h2>محصولات ویژه امروز</h2>
-                            <span class="title-leaf">
-                                <svg class="icon-width">
-                                    <use xlink:href="assets/svg/leaf.svg#cake"></use>
-                                </svg>
-                            </span>
-                        </div>
-                        <div class="timing-box">
-                            <div class="timing theme-bg-color">
-                                <i data-feather="clock"></i>
-                                <h6 class="name">اتمام در :</h6>
-                                <div class="time" id="clockdiv-1" data-hours="1" data-minutes="2" data-seconds="3">
-                                    <ul>
-                                        <li>
-                                            <div class="counter">
-                                                <div class="seconds">
-                                                    <h6></h6>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="counter">
-                                                <div class="minutes">
-                                                    <h6></h6>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="counter">
-                                                <div class="hours">
-                                                    <h6></h6>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="counter">
-                                                <div class="days">
-                                                    <h6></h6>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
+
+                    <div class="row g-3 mb-5">
+                        <div class="title title-flex">
+                            <div>
+                                <h2>محصولات ویژه امروز</h2>
+                                <span class="title-leaf">
+                                    <svg class="icon-width">
+                                        <use xlink:href="{{ asset('front/svg/leaf.svg#cake')}}"></use>
+                                    </svg>
+                                </span>
                             </div>
+
+                        </div>
+
+                        <div class="product-box-slider-2 no-arrow">
+                            @foreach($products as $product)
+                                @component('front.components.product', ['product' => $product])
+                                @endcomponent
+                            @endforeach
+
                         </div>
                     </div>
 
-                    <div class="product-box-slider-2 no-arrow">
-                        @foreach($products as $product)
+                    <div class="row g-3 mb-5">
+                        <div class="title title-flex">
                             <div>
-                                <div class="product-box product-box-bg wow fadeInUp">
-                                    <div class="product-image">
-                                        <a href="{{ $product->viewLink() }}">
-                                            <img src="{{ $product->featuredImageOrDefault() }}"
-                                                 class="img-fluid blur-up lazyload" alt="">
-                                        </a>
-                                        <ul class="product-option">
-                                            <li data-bs-toggle="tooltip" data-bs-placement="top" title="نمایش">
-                                                <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#view">
-                                                    <i data-feather="eye"></i>
-                                                </a>
-                                            </li>
-
-                                            <li data-bs-toggle="tooltip" data-bs-placement="top" title="مقایسه">
-                                                <a href="compare.html">
-                                                    <i data-feather="refresh-cw"></i>
-                                                </a>
-                                            </li>
-
-                                            <li data-bs-toggle="tooltip" data-bs-placement="top" title="لیست علاقه‌مندی">
-                                                <a href="wishlist.html" class="notifi-wishlist">
-                                                    <i data-feather="heart"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="product-detail">
-                                        <a href="{{ $product->viewLink() }}">
-                                            <h6 class="name">
-                                                {{ $product->name }}
-                                            </h6>
-                                        </a>
-
-                                        <h5 class="sold text-content">
-                                            <span class="theme-color price">{{ $product->showPrice() }} </span>
-                                            @if($product->prev_price)
-                                                <del>{{ number_format($product->prev_price) }}</del>
-                                            @endif
-                                        </h5>
-
-                                        <div class="product-rating mt-2">
-                                            <ul class="rating">
-                                                <li>
-                                                    <i data-feather="star" class="fill"></i>
-                                                </li>
-                                                <li>
-                                                    <i data-feather="star" class="fill"></i>
-                                                </li>
-                                                <li>
-                                                    <i data-feather="star" class="fill"></i>
-                                                </li>
-                                                <li>
-                                                    <i data-feather="star" class="fill"></i>
-                                                </li>
-                                                <li>
-                                                    <i data-feather="star"></i>
-                                                </li>
-                                            </ul>
-
-                                            <h6 class="theme-color">
-                                                {{ $product->stock > 0 ? 'موجود در ابنار' : 'ناموجود' }}
-                                            </h6>
-                                        </div>
-
-                                        <div class="add-to-cart-box bg-white">
-                                            <button class="btn btn-add-cart addcart-button">افزودن
-                                                <span class="add-icon bg-light-orange">
-                                                    <i class="fa-solid fa-plus"></i>
-                                                </span>
-                                            </button>
-                                            <div class="cart_qty qty-box">
-                                                <div class="input-group">
-                                                    <button type="button" class="qty-left-minus" data-type="minus"
-                                                            data-field="">
-                                                        <i class="fa fa-minus"></i>
-                                                    </button>
-                                                    <input class="form-control input-number qty-input" type="text"
-                                                           name="quantity" value="0">
-                                                    <button type="button" class="qty-right-plus" data-type="plus"
-                                                            data-field="">
-                                                        <i class="fa fa-plus"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <h2>پرفروش ترین ها</h2>
+                                <span class="title-leaf">
+                                    <svg class="icon-width">
+                                        <use xlink:href="{{ asset('front/svg/leaf.svg#cake')}}"></use>
+                                    </svg>
+                                </span>
                             </div>
-                        @endforeach
 
+                        </div>
+
+                        <div class="product-box-slider-2 no-arrow">
+                            @foreach($top_purchased as $product)
+                                @component('front.components.product', ['product' => $product])
+                                @endcomponent
+                            @endforeach
+
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mb-5">
+                        <div class="title title-flex">
+                            <div>
+                                <h2>تازه ترین ها</h2>
+                                <span class="title-leaf">
+                                    <svg class="icon-width">
+                                        <use xlink:href="{{ asset('front/svg/leaf.svg#cake')}}"></use>
+                                    </svg>
+                                </span>
+                            </div>
+
+                        </div>
+
+                        <div class="product-box-slider-2 no-arrow">
+                            @foreach($products as $product)
+                                @component('front.components.product', ['product' => $product])
+                                @endcomponent
+                            @endforeach
+
+                        </div>
                     </div>
 
                 </div>

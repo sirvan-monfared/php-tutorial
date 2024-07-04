@@ -23,7 +23,7 @@ class CartController extends BaseController
 
         Session::success('آیتم با موفقیت به سبد خرید اضافه شد');
 
-        redirectTo($product->viewLink());
+        redirectBack();
     }
 
     public function delete(int $id): void

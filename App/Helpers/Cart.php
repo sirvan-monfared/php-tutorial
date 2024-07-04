@@ -3,6 +3,7 @@
 namespace App\Helpers;
 
 use App\Core\Session;
+use App\Models\CartItem;
 use App\Models\Product;
 use Illuminate\Support\Collection;
 
@@ -19,25 +20,25 @@ class Cart
         }
     }
 
-    public function add(Product $product)
+    public function add(Product $product): void
     {
         $result = $this->items->where('id', '=', $product->id)->first();
 
         if ($result) {
-            $this->items = $this->items->map(function($item) use ($product) {
-                if ($product->id === $item['id']) {
-                    $item['qty'] = $item['qty'] + 1;
+            $this->items = $this->items->map(function ($item) use ($product) {
+                if ($product->id === $item->id) {
+                    $item->incrementQuantity();
                 }
 
                 return $item;
             });
         } else {
-            $this->items->push([
-                'id' => $product->id,
-                'name' => $product->name,
-                'price' => $product->price,
-                'qty' => 1
-            ]);
+            $this->items->push(new CartItem(
+                id: $product->id,
+                name: $product->name,
+                price: $product->price,
+                quantity: 1
+            ));
         }
 
         $this->syncSession();
@@ -50,7 +51,7 @@ class Cart
 
     public function sum()
     {
-        return $this->items->sum(fn($item) => $item['price'] * $item['qty']);
+        return $this->items->sum(fn($item) => $item->totalPrice());
     }
 
     public function count()
@@ -72,7 +73,7 @@ class Cart
 
     public function delete(int $id): void
     {
-        $this->items = cart()->all()->reject(fn($item) => $item['id'] === $id);
+        $this->items = cart()->all()->reject(fn($item) => $item->id === $id);
 
         $this->syncSession();
     }

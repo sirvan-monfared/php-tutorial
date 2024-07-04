@@ -53,15 +53,15 @@
                                     <tr class="product-box-contain">
                                         <td class="product-detail">
                                             <div class="product border-0">
-                                                <a href="{{ route('products.show', ['id' => $item['id']]) }}"
+                                                <a href="{{ $item->product()?->viewLink() }}"
                                                    class="product-image">
-                                                    <img src="{{ asset('front/images/vegetable/product/1.png') }}"
-                                                         class="img-fluid blur-up lazyload" alt="{{ $item['name'] }}">
+                                                    <img src="{{ $item->product()?->featuredImageOrDefault() }}"
+                                                         class="img-fluid blur-up lazyload" alt="{{ $item->name }}">
                                                 </a>
                                                 <div class="product-detail">
                                                     <ul>
                                                         <li class="name">
-                                                            <a href="{{ route('products.show', ['id' => $item['id']]) }}">{{ str_limit($item['name'], 25) }}</a>
+                                                            <a href="{{ $item->product()?->viewLink() }}">{{ str_limit($item->name, 25) }}</a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -70,7 +70,7 @@
 
                                         <td class="price">
                                             <h4 class="table-title text-content">قیمت</h4>
-                                            <h5>{{ priceFormat($item['price']) }}
+                                            <h5>{{ priceFormat($item->price) }}
                                                 <del class="text-content">45.680</del>
                                             </h5>
                                             <h6 class="theme-color">سود شما : 20.680</h6>
@@ -86,7 +86,7 @@
                                                             <i class="fa fa-minus ms-0"></i>
                                                         </button>
                                                         <input class="form-control input-number qty-input" type="text"
-                                                               name="quantity" value="{{ $item['qty'] }}">
+                                                               name="quantity" value="{{ $item->quantity }}">
                                                         <button type="button" class="btn qty-right-plus"
                                                                 data-type="plus" data-field="">
                                                             <i class="fa fa-plus ms-0"></i>
@@ -98,12 +98,12 @@
 
                                         <td class="subtotal">
                                             <h4 class="table-title text-content">جمع کل</h4>
-                                            <h5>{{ priceFormat($item['qty'] * $item['price']) }}</h5>
+                                            <h5>{{ priceFormat($item->totalPrice()) }}</h5>
                                         </td>
 
                                         <td class="save-remove">
                                             <h4 class="table-title text-content">عملیات</h4>
-                                            <form action="{{ route('cart.delete', ['id' => $item['id']]) }}" method="POST">
+                                            <form action="{{ route('cart.delete', ['id' => $item->id]) }}" method="POST">
                                                 @include('partials._csrf')
                                                 @method('DELETE')
                                                 <button class="remove close_button">حذف</button>

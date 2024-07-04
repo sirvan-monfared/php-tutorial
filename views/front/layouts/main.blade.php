@@ -57,18 +57,8 @@
                             <div class="notification-slider">
                                 <div>
                                     <div class="timer-notification">
-                                        <h6><strong class="me-1">به   خوش آمدید !</strong>بهترین تجربه خرید را برای شما آرزو میکنیم..<strong class="ms-1">کد تخفیف خرید اول : laraplus
-                                            </strong>
-
-                                        </h6>
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <div class="timer-notification">
-                                        <h6>تا 90 درصد تخفیف برای ابزارآلات کشاورزی !
-                                            <a href="shop-left-sidebar.html" class="text-white">خرید آنلاین
-                                                </a>
+                                        <h6>
+                                            60 درصد تخفیف روی همه محصولات تا آخر هفته
                                         </h6>
                                     </div>
                                 </div>
@@ -77,60 +67,7 @@
                     </div>
 
                     <div class="col-lg-3">
-                        <ul class="about-list right-nav-about">
-                            <li class="right-nav-list">
-                                <div class="dropdown theme-form-select">
-                                    <button class="btn dropdown-toggle" type="button" id="select-language"
-                                        data-bs-toggle="dropdown">
-                                        <img src="{{ asset('front/images/country/united-states.png') }}"
-                                            class="img-fluid blur-up lazyload" alt="">
-                                        <span>انگلیسی</span>
-                                    </button>
-                                    <ul class="dropdown-menu dropdown-menu-end">
-                                        <li>
-                                            <a class="dropdown-item" href="javascript:void(0)" id="english">
-                                                <img src="{{ asset('front/images/country/united-kingdom.png') }}"
-                                                    class="img-fluid blur-up lazyload" alt="">
-                                                <span>انگلیسی</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="javascript:void(0)" id="france">
-                                                <img src="{{ asset('front/images/country/germany.png') }}"
-                                                    class="img-fluid blur-up lazyload" alt="">
-                                                <span>آلمانی</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="javascript:void(0)" id="chinese">
-                                                <img src="{{ asset('front/images/country/turkish.png') }}"
-                                                    class="img-fluid blur-up lazyload" alt="">
-                                                <span>ترکی</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="right-nav-list">
-                                <div class="dropdown theme-form-select">
-                                    <button class="btn dropdown-toggle" type="button" id="select-dollar"
-                                        data-bs-toggle="dropdown">
-                                        <span>دلار</span>
-                                    </button>
-                                    <ul class="dropdown-menu dropdown-menu-end sm-dropdown-menu">
-                                        <li>
-                                            <a class="dropdown-item" id="aud" href="javascript:void(0)">درهم</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" id="eur" href="javascript:void(0)">یورو</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" id="cny" href="javascript:void(0)">تومان</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
+
                     </div>
                 </div>
             </div>
@@ -152,16 +89,6 @@
                             </a>
 
                             <div class="middle-box">
-                                <div class="location-box">
-                                    <button class="btn location-button" data-bs-toggle="modal"
-                                        data-bs-target="#locationModal">
-                                        <span class="location-arrow">
-                                            <i data-feather="map-pin"></i>
-                                        </span>
-                                        <span class="locat-name">آدرس شما</span>
-                                        <i class="fa-solid fa-angle-down"></i>
-                                    </button>
-                                </div>
 
                                 <div class="search-box">
                                     <div class="input-group">
@@ -196,7 +123,7 @@
                                         </div>
                                     </li>
                                     <li class="right-side">
-                                        <a href="contact-us.html" class="delivery-login-box">
+                                        <a href="#" class="delivery-login-box">
                                             <div class="delivery-icon">
                                                 <i data-feather="phone-call"></i>
                                             </div>
@@ -207,7 +134,7 @@
                                         </a>
                                     </li>
                                     <li class="right-side">
-                                        <a href="wishlist.html" class="btn p-0 position-relative header-wishlist">
+                                        <a href="#" class="btn p-0 position-relative header-wishlist">
                                             <i data-feather="heart"></i>
                                         </a>
                                     </li>
@@ -297,392 +224,19 @@
                                     <div class="offcanvas-body">
                                         <ul class="navbar-nav">
                                             <li class="nav-item dropdown">
-                                                <a class="nav-link dropdown-toggle" href="javascript:void(0)"
-                                                    data-bs-toggle="dropdown">خانه</a>
-
-                                                <ul class="dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="index.html">کارت شاپ</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="index-2.html">سوییت شاپ</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="index-3.html">اورگانیک</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="index-4.html">سوپرشاپ</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="index-5.html">کلاسیک</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="index-6.html">مبلمان</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="index-7.html">جستجوگرا</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="index-8.html">دسته بندی شده</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="index-9.html">مد و لباس</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="index-10.html">کتاب</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="index-11.html">دیجیتال</a>
-                                                    </li>
-                                                </ul>
+                                                <a class="nav-link" href="{{ route('home') }}">خانه</a>
                                             </li>
 
                                             <li class="nav-item dropdown">
-                                                <a class="nav-link dropdown-toggle" href="javascript:void(0)"
-                                                    data-bs-toggle="dropdown">فروشگاه</a>
-
-                                                <ul class="dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="shop-category-slider.html">محصولات (اسلایدر دسته بندی)</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="shop-category.html">محصولات (سایدبار دسته بندی )</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="shop-banner.html">محصولات با بنر</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="shop-right-sidebar.html">محصولات (سایدبار راست)</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="shop-list.html">لیست محصولات</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="shop-left-sidebar.html">محصولات (سایدبار چپ)</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="shop-top-filter.html">محصولات (فیلتر بالای محصولات)</a>
-                                                    </li>
-                                                </ul>
+                                                <a class="nav-link" href="{{ route('home') }}">تخفیف ها و پیشنهادها</a>
                                             </li>
 
                                             <li class="nav-item dropdown">
-                                                <a class="nav-link dropdown-toggle" href="javascript:void(0)"
-                                                    data-bs-toggle="dropdown">محصولات</a>
-
-                                                <div class="dropdown-menu dropdown-menu-3 dropdown-menu-2">
-                                                    <div class="row">
-                                                        <div class="col-xl-3">
-                                                            <div class="dropdown-column m-0">
-                                                                <h5 class="dropdown-header">
-                                                                    برگه محصولات </h5>
-                                                                <a class="dropdown-item"
-                                                                    href="product.html">محصولات (دارای تامبنیل)</a>
-                                                                <a class="dropdown-item"
-                                                                    href="product-4-image.html">محصولات (4 تصویر)</a>
-                                                                <a class="dropdown-item"
-                                                                    href="product-slider.html">اسلایدر محصولات</a>
-                                                                <a class="dropdown-item"
-                                                                    href="product-sticky.html">محصولات چسبان</a>
-                                                                <a class="dropdown-item"
-                                                                    href="product-accordion.html">محصولات بازشونده</a>
-                                                                <a class="dropdown-item"
-                                                                    href="product-circle.html">تب محصولات</a>
-                                                                <a class="dropdown-item"
-                                                                    href="product-digital.html">محصولات دیجیتال</a>
-
-                                                                <h5 class="custom-mt dropdown-header">ویژگی محصولات
-                                                                </h5>
-                                                                <a class="dropdown-item"
-                                                                    href="product-circle.html">تخفیف (فروش ویژه)</a>
-                                                                <a class="dropdown-item"
-                                                                    href="product.html">پروفرش ترین ها <label class="menu-label">جدید</label>
-                                                                </a>
-                                                                <a class="dropdown-item"
-                                                                    href="product-sold-out.html">تمام شده</a>
-                                                                <a class="dropdown-item" href="product-circle.html">
-                                                                    فروش ویژه</a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xl-3">
-                                                            <div class="dropdown-column m-0">
-                                                                <h5 class="dropdown-header">
-                                                                    استایل محصولات </h5>
-                                                                <a class="dropdown-item"
-                                                                    href="product-rectangle.html">مستطیل متغیر</a>
-                                                                <a class="dropdown-item"
-                                                                    href="product-circle.html">دایره متغیر <label
-                                                                        class="menu-label">جدید</label></a>
-                                                                <a class="dropdown-item"
-                                                                    href="product-color-image.html">نمونه تصویر متفاوت</a>
-                                                                <a class="dropdown-item"
-                                                                    href="product-color.html">رنگ متفاوت</a>
-                                                                <a class="dropdown-item"
-                                                                    href="product-radio.html">دکمه رادیویی متفاوت</a>
-                                                                <a class="dropdown-item"
-                                                                    href="product-dropdown.html">کشویی متغیر</a>
-                                                                <h5 class="custom-mt dropdown-header">مشخصات محصول
-                                                                </h5>
-                                                                <a class="dropdown-item"
-                                                                    href="product.html">تسویه حساب چسبنده</a>
-                                                                <a class="dropdown-item"
-                                                                    href="product-dynamic.html">پرداخت پویا</a>
-                                                                <a class="dropdown-item"
-                                                                    href="product-sticky.html">پرداخت ایمن</a>
-                                                                <a class="dropdown-item"
-                                                                    href="product-bundle.html">نمای محصول فعال</a>
-                                                                <a class="dropdown-item" href="product-bundle.html">
-                                                                    آخرین سفارشات فعال
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xl-3">
-                                                            <div class="dropdown-column m-0">
-                                                                <h5 class="dropdown-header">
-                                                                    مشخصات محصول </h5>
-                                                                <a class="dropdown-item"
-                                                                    href="product-image.html">محصول ساده</a>
-                                                                <a class="dropdown-item" href="product-rectangle.html">
-                                                                    محصول طبقه بندی شده <label
-                                                                        class="menu-label">جدید</label>
-                                                                </a>
-                                                                <a class="dropdown-item"
-                                                                    href="product-size-chart.html">جدول اندازه ها <label
-                                                                        class="menu-label">جدید</label></a>
-                                                                <a class="dropdown-item"
-                                                                    href="product-size-chart.html">تحویل و برگشت</a>
-                                                                <a class="dropdown-item"
-                                                                    href="product-size-chart.html">بررسی محصول</a>
-                                                                <a class="dropdown-item" href="product-expert.html">از یک متخصص بپرسید</a>
-                                                                <h5 class="custom-mt dropdown-header">مشخصات محصول
-                                                                </h5>
-                                                                <a class="dropdown-item"
-                                                                    href="product-bottom-thumbnail.html">برچسب های محصول</a>
-                                                                <a class="dropdown-item" href="product-image.html">اطلاعات فروشگاه</a>
-                                                                <a class="dropdown-item"
-                                                                    href="product-image.html">شبکه اجتماعی <label
-                                                                        class="menu-label warning-label">جدید</label>
-                                                                </a>
-                                                                <a class="dropdown-item"
-                                                                    href="product.html">محصولات مرتبط
-                                                                    <label class="menu-label warning-label">جدید</label>
-                                                                </a>
-                                                                <a class="dropdown-item"
-                                                                    href="product-right-thumbnail.html">لیست علاقه مندی و مقایسه</a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xl-3 d-xl-block d-none">
-                                                            <div class="dropdown-column m-0">
-                                                                <div class="menu-img-banner">
-                                                                    <a class="text-title" href="product-circle.html">
-                                                                        <img src="{{ asset('front/images/mega-menu.png') }}"
-                                                                            alt="banner">
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-
-                                            <li class="nav-item dropdown dropdown-mega">
-                                                <a class="nav-link dropdown-toggle ps-xl-2 ps-0"
-                                                    href="javascript:void(0)" data-bs-toggle="dropdown">مگامنو</a>
-
-                                                <div class="dropdown-menu dropdown-menu-2">
-                                                    <div class="row">
-                                                        <div class="dropdown-column col-xl-3">
-                                                            <h5 class="dropdown-header">سبزیجات روزانه</h5>
-                                                            <a class="dropdown-item" href="shop-left-sidebar.html">لوبیا</a>
-
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.html">بروکلی</a>
-
-                                                            <a href="shop-left-sidebar.html"
-                                                                class="dropdown-item">فلفل</a>
-
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.html">سبزیجات</a>
-
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.html">کدو و خیار</a>
-
-                                                            <a class="dropdown-item" href="shop-left-sidebar.html">کاهئ و برگ کلم</a>
-
-                                                            <a href="demo-personal-portfolio.html"
-                                                                class="dropdown-item">ریحان</a>
-                                                        </div>
-
-                                                        <div class="dropdown-column col-xl-3">
-                                                            <h5 class="dropdown-header">پرفروش ترین</h5>
-                                                            <a class="dropdown-item" href="shop-left-sidebar.html">لوبیا و برنجال</a>
-
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.html">کلم بروکلی</a>
-
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.html"> فلفل قرمز، سیر </a>
-
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.html">سبزیجات و سالاد</a>
-
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.html">کدو، خیار</a>
-
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.html">ریحان</a>
-
-                                                            <a href="shop-left-sidebar.html" class="dropdown-item">کاهو و برگ</a>
-                                                        </div>
-
-                                                        <div class="dropdown-column col-xl-3">
-                                                            <h5 class="dropdown-header">میوه ها</h5>
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.html">موز شلیل و هلو</a>
-
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.html">هندوانه و خربزه</a>
-
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.html">سیب و انار</a>
-
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.html">میوه های استوایی</a>
-
-                                                            <a class="dropdown-item"
-                                                                href="shop-left-sidebar.html">چیلی</a>
-                                                        </div>
-                                                </div>
+                                                <a class="nav-link" href="{{ route('home') }}">سوالی دارید؟</a>
                                             </li>
 
                                             <li class="nav-item dropdown">
-                                                <a class="nav-link dropdown-toggle" href="javascript:void(0)"
-                                                    data-bs-toggle="dropdown">وبلاگ</a>
-                                                <ul class="dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="blog-detail.html">جزئیات وبلاگ</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="blog-grid.html">آرشیو بلاگ (شبکه ای)</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="blog-list.html">آرشیو وبلاگ (لیست)</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-
-                                            <li class="nav-item dropdown new-nav-item">
-                                                <label class="new-dropdown">جدید</label>
-                                                <a class="nav-link dropdown-toggle" href="javascript:void(0)"
-                                                    data-bs-toggle="dropdown">برگه ها</a>
-                                                <ul class="dropdown-menu">
-                                                    <li class="sub-dropdown-hover">
-                                                        <a class="dropdown-item" href="javascript:void(0)">قالب ایمیل<span class="new-text"><i
-                                                                    class="fa-solid fa-bolt-lightning"></i></span></a>
-                                                        <ul class="sub-menu">
-                                                            <li>
-                                                                <a
-                                                                    href="">یادآوری خرید</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="">ایمیل تخفیف</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="">خرید موفق</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="">بازیابی رمز عبور</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="">خوش آمد گویی</a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="sub-dropdown-hover">
-                                                        <a class="dropdown-item" href="javascript:void(0)">قالب <span class="new-text"><i
-                                                                    class="fa-solid fa-bolt-lightning"></i></span></a>
-                                                        <ul class="sub-menu">
-                                                            <li>
-                                                                <a href="#">قالب فاکتور 1</a>
-                                                            </li>
-
-                                                            <li>
-                                                                <a href="#">قالب فاکتور 2</a>
-                                                            </li>
-
-                                                            <li>
-                                                                <a href="#">قالب فاکتور 3</a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="404.html">برگه 404</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="about-us.html">درباره ما</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="cart.html">سبد خرید</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="contact-us.html">تماس با ما</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="checkout.html">پرداخت نهایی</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="coming-soon.html">بزودی</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="compare.html">مقایسه</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="faq.html">سوالات متداول</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="order-success.html">خرید موفق</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="order-tracking.html">پیگیری سفارشات</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="otp.html">تایید حساب کاربری</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="search.html">جستجو</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="user-dashboard.html">پروفایل کاربری</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="wishlist.html">لیست علاقه مندی ها</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-
-                                            <li class="nav-item dropdown">
-                                                <a class="nav-link dropdown-toggle" href="javascript:void(0)"
-                                                    data-bs-toggle="dropdown">فروشندگان</a>
-                                                <ul class="dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="seller-become.html">فروشنده شوید</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="seller-dashboard.html">داشبورد فروشندگان</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="seller-detail.html">اطلاعات فروشندگان 1</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="seller-detail-2.html">اطلاعات فروشندگان 2</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="seller-grid.html">فروشنده (شبکه ای 1)</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="seller-grid-2.html">فروشنده (شبکه ای 2)</a>
-                                                    </li>
-                                                </ul>
+                                                <a class="nav-link" href="https://laraplus.ir" target="_blank">لاراپلاس</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -1334,9 +888,6 @@
 
     <!-- Auto Height Js -->
     <script src="{{ asset('front/js/auto-height.js') }}"></script>
-
-    <!-- Timer Js -->
-    <script src="{{ asset('front/js/timer1.js') }}"></script>
 
     <!-- Fly Cart Js -->
     <script src="{{ asset('front/js/fly-cart.js') }}"></script>

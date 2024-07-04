@@ -72,7 +72,7 @@ class Product extends Model
             'prev_price' => $data['prev_price'] ?: null,
             'stock' => $data['stock'],
             'description' => $data['description'],
-            'featured_image' => $image_name
+            'featured_image' => $image_name ?: $this->featured_image
         ]);
     }
 
@@ -174,5 +174,10 @@ class Product extends Model
     public function comments(): bool|array
     {
         return (new Comment)->forProduct($this->id);
+    }
+
+    public function topPurchased(int $limit)
+    {
+        return (new Order)->topPurchasedProducts($limit);
     }
 }
