@@ -18,7 +18,6 @@ class CartController extends BaseController
     public function store(): void
     {
         $product = (new Product)->findOrFail($_POST['product_id']);
-
         cart()->add($product);
 
         Session::success('آیتم با موفقیت به سبد خرید اضافه شد');

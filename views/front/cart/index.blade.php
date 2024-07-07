@@ -86,7 +86,7 @@
                                                             <i class="fa fa-minus ms-0"></i>
                                                         </button>
                                                         <input class="form-control input-number qty-input" type="text"
-                                                               name="quantity" value="{{ $item->quantity }}">
+                                                               name="quantity" value="{{ $item->qty }}">
                                                         <button type="button" class="btn qty-right-plus"
                                                                 data-type="plus" data-field="">
                                                             <i class="fa fa-plus ms-0"></i>

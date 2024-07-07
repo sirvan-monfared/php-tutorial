@@ -13,7 +13,7 @@ class HomeController extends BaseController
             'products' => (new Product)->all(limit: 4, order_by: "RAND()"),
             'categories' => (new Category)->all(),
             'top_purchased' => (new Product)->topPurchased(limit: 4),
-            'most_recents' => (new Product)->all(limit: 4, order_by: "id DESC"),
+            'most_recent' => (new Product)->all(limit: 4, order_by: "id DESC"),
         ]);
     }
 }

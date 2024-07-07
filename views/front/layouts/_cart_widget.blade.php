@@ -11,16 +11,16 @@
             @foreach(cart()->all() as $item)
                 <li class="product-box-contain">
                     <div class="drop-cart">
-                        <a href="{{ $item->product()->viewLink() }}" class="drop-image">
-                            <img src="{{ $item->product()->featuredImageOrDefault() }}"
+                        <a href="{{ $item->product()?->viewLink() }}" class="drop-image">
+                            <img src="{{ $item->product()?->featuredImageOrDefault() }}"
                                  class="blur-up lazyload" alt="">
                         </a>
 
                         <div class="drop-contain">
-                            <a href="{{ $item->product()->viewLink() }}">
+                            <a href="{{ route('products.show', ['id' => $item->id]) }}">
                                 <h5>{{ $item->name }}</h5>
                             </a>
-                            <h6><span>{{ $item->quantity }} x</span> {{ priceFormat($item->price) }} </h6>
+                            <h6><span>{{ $item->qty }} x</span> {{ priceFormat($item->price) }} </h6>
                             <button class="close-button close_button">
                                 <i class="fa-solid fa-xmark"></i>
                             </button>

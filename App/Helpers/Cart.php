@@ -3,7 +3,6 @@
 namespace App\Helpers;
 
 use App\Core\Session;
-use App\Models\CartItem;
 use App\Models\Product;
 use Illuminate\Support\Collection;
 
@@ -20,12 +19,12 @@ class Cart
         }
     }
 
-    public function add(Product $product): void
+    public function add(Product $product)
     {
         $result = $this->items->where('id', '=', $product->id)->first();
 
         if ($result) {
-            $this->items = $this->items->map(function ($item) use ($product) {
+            $this->items = $this->items->map(function($item) use ($product) {
                 if ($product->id === $item->id) {
                     $item->incrementQuantity();
                 }
@@ -33,12 +32,14 @@ class Cart
                 return $item;
             });
         } else {
-            $this->items->push(new CartItem(
-                id: $product->id,
-                name: $product->name,
-                price: $product->price,
-                quantity: 1
-            ));
+            $this->items->push(
+                new CartItem(
+                    id: $product->id,
+                    name: $product->name,
+                    price: $product->price,
+                    qty: 1
+                )
+            );
         }
 
         $this->syncSession();

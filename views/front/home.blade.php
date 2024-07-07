@@ -198,7 +198,7 @@
                         </div>
 
                         <div class="product-box-slider-2 no-arrow">
-                            @foreach($products as $product)
+                            @foreach($most_recent as $product)
                                 @component('front.components.product', ['product' => $product])
                                 @endcomponent
                             @endforeach
