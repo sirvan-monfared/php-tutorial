@@ -181,6 +181,13 @@ class Product extends Model
         return (new Order)->topPurchasedProducts($limit);
     }
 
+    public function galleryImages(): bool|array
+    {
+        if (! $this->id) return [];
+
+        return (new Image())->forProduct($this->id);
+    }
+
     public function search(array $data): object
     {
         $sql = "SELECT * FROM {$this->table} WHERE 1 ";
@@ -233,4 +240,10 @@ class Product extends Model
 
         return $this->db->paginate($sql, $values, __CLASS__);
     }
+
+    public function deleteAllGalleryImages()
+    {
+        (new Image)->deleteAllForProduct($this->id);
+    }
+
 }

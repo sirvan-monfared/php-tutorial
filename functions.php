@@ -154,10 +154,8 @@ function routeIs(string $route_name): bool
     return route($route_name) === currentUrl();
 }
 
-function uploadImage($field_name): bool|string
+function uploadImage(array $file): bool|string
 {
-    $file = $_FILES[$field_name];
-
     $error = $file['error'];
 
 //    if ($error === UPLOAD_ERR_NO_FILE) {

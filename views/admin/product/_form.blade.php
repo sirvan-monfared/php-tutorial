@@ -97,6 +97,18 @@
                 <img src="{{ $product->featuredImage() }}" alt="" height="200" style="width: auto">
             @endif
         </div>
+
+
+        <div class="row align-items-center mt-5">
+            <label for="gallery" class="col-sm-3 col-form-label form-label-title">گالری تصاویر</label>
+            <div class="col-sm-9">
+                <input type="file" class="form-control form-choose" name="gallery[]" id="gallery" multiple>
+            </div>
+
+            @foreach($product->galleryImages() as $image)
+                <img src="{{ $image->path() }}" alt="" height="200" style="width: auto">
+            @endforeach
+        </div>
     </div>
 </div>
 

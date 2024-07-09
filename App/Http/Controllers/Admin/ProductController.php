@@ -9,6 +9,7 @@ use App\Core\Validator;
 use App\Http\Controllers\BaseController;
 use App\Models\Category;
 use App\Models\CustomField;
+use App\Models\Image;
 use App\Models\Product;
 use Exception;
 
@@ -43,12 +44,31 @@ class ProductController extends BaseController
 
         try {
             if ($_FILES['image']['name']) {
-                $image_name = uploadImage('image');
+                $image_name = uploadImage($_FILES['image']);
             }
 
             $product = (new Product)->insert($_POST, $image_name);
 
             $this->handleCustomFields($product->id);
+
+            if ($_FILES['gallery']['name'][0] ?? false) {
+                for($i = 0; $i < count($_FILES['gallery']['name']); $i++) {
+                    $upload_info = [
+                        "name" => $_FILES['gallery']['name'][$i],
+                        "full_path" => $_FILES['gallery']['name'][$i],
+                        "type" => $_FILES['gallery']['type'][$i],
+                        "tmp_name" => $_FILES['gallery']['tmp_name'][$i],
+                        "error" => $_FILES['gallery']['error'][$i],
+                        "size" => $_FILES['gallery']['size'][$i]
+                    ];
+
+                    $path = uploadImage($upload_info);
+
+                    if ($path) {
+                        (new Image())->insert($product->id, $path);
+                    }
+                }
+            }
 
 
             Session::success();
@@ -64,6 +84,7 @@ class ProductController extends BaseController
     {
         $product = (new Product)->findOrFail($id);
 
+
         $this->view('admin.product.edit', [
             'categories' => (new Category)->all(order_by: 'name ASC'),
             'product' => $product
@@ -72,7 +93,6 @@ class ProductController extends BaseController
 
     public function update(int $id)
     {
-
         $product = (new Product)->findOrFail($id);
 
         $validation = new Validator($_POST, Product::RULES, Product::NAMES);
@@ -82,11 +102,36 @@ class ProductController extends BaseController
         }
 
         try {
+
             if ($_FILES['image']['name']) {
-                $image_name = uploadImage('image');
+                $image_name = uploadImage($_FILES['image']);
 
                 if ($product->hasFeaturedImage()) {
                     unlink($product->featuredImagePath());
+                }
+            }
+
+            if ($_FILES['gallery']['name'][0] ?? false) {
+
+                if ($product->galleryImages()) {
+                    $product->deleteAllGalleryImages();
+                }
+
+                for($i = 0; $i < count($_FILES['gallery']['name']); $i++) {
+                    $upload_info = [
+                        "name" => $_FILES['gallery']['name'][$i],
+                        "full_path" => $_FILES['gallery']['name'][$i],
+                        "type" => $_FILES['gallery']['type'][$i],
+                        "tmp_name" => $_FILES['gallery']['tmp_name'][$i],
+                        "error" => $_FILES['gallery']['error'][$i],
+                        "size" => $_FILES['gallery']['size'][$i]
+                    ];
+
+                    $path = uploadImage($upload_info);
+
+                    if ($path) {
+                        (new Image())->insert($product->id, $path);
+                    }
                 }
             }
 

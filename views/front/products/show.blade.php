@@ -52,96 +52,42 @@
                                                 </div>
                                             </div>
 
-                                            <div>
-                                                <div class="slider-image">
-                                                    <img src="{{ asset('front/images/fashion/product/24.jpg') }}"
-                                                         data-zoom-image="{{ asset('front/images/fashion/product/24.jpg') }}"
-                                                         class="
-                                                        img-fluid image_zoom_cls-1 blur-up lazyload" alt="">
+                                            @foreach($product->galleryImages() as $image)
+                                                <div>
+                                                    <div class="slider-image">
+                                                        <img src="{{ $image->path() }}"
+                                                             data-zoom-image="{{ $image->path() }}"
+                                                             class="
+                                                            img-fluid image_zoom_cls-1 blur-up lazyload" alt="">
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            @endforeach
 
-                                            <div>
-                                                <div class="slider-image">
-                                                    <img src="{{ asset('front/images/fashion/product/25.jpg') }}"
-                                                         data-zoom-image="{{ asset('front/images/fashion/product/25.jpg') }}"
-                                                         class="
-                                                        img-fluid image_zoom_cls-2 blur-up lazyload" alt="">
-                                                </div>
-                                            </div>
 
-                                            <div>
-                                                <div class="slider-image">
-                                                    <img src="{{ asset('front/images/fashion/product/26.jpg') }}"
-                                                         data-zoom-image="{{ asset('front/images/fashion/product/26.jpg') }}"
-                                                         class="
-                                                        img-fluid image_zoom_cls-3 blur-up lazyload" alt="">
-                                                </div>
-                                            </div>
 
-                                            <div>
-                                                <div class="slider-image">
-                                                    <img src="{{ asset('front/images/fashion/product/23.jpg') }}"
-                                                         data-zoom-image="{{ asset('front/images/fashion/product/23.jpg') }}"
-                                                         class="
-                                                        img-fluid image_zoom_cls-4 blur-up lazyload" alt="">
-                                                </div>
-                                            </div>
 
-                                            <div>
-                                                <div class="slider-image">
-                                                    <img src="{{ asset('front/images/fashion/product/24.jpg') }}"
-                                                         data-zoom-image="{{ asset('front/images/fashion/product/24.jpg') }}"
-                                                         class="
-                                                        img-fluid image_zoom_cls-5 blur-up lazyload" alt="">
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
 
                                     <div class="col-12">
                                         <div class="left-slider-image left-slider no-arrow slick-top">
+
                                             <div>
                                                 <div class="sidebar-image">
-                                                    <img src="{{ asset('front/images/fashion/product/23.jpg') }}"
+                                                    <img src="{{ $product->featuredImageOrDefault() }}"
                                                          class="img-fluid blur-up lazyload" alt="">
                                                 </div>
                                             </div>
 
-                                            <div>
-                                                <div class="sidebar-image">
-                                                    <img src="{{ asset('front/images/fashion/product/24.jpg') }}"
-                                                         class="img-fluid blur-up lazyload" alt="">
-                                                </div>
-                                            </div>
 
-                                            <div>
-                                                <div class="sidebar-image">
-                                                    <img src="{{ asset('front/images/fashion/product/25.jpg') }}"
-                                                         class="img-fluid blur-up lazyload" alt="">
+                                            @foreach($product->galleryImages() as $image)
+                                                <div>
+                                                    <div class="sidebar-image">
+                                                        <img src="{{ $image->path() }}"
+                                                             class="img-fluid blur-up lazyload" alt="">
+                                                    </div>
                                                 </div>
-                                            </div>
-
-                                            <div>
-                                                <div class="sidebar-image">
-                                                    <img src="{{ asset('front/images/fashion/product/26.jpg') }}"
-                                                         class="img-fluid blur-up lazyload" alt="">
-                                                </div>
-                                            </div>
-
-                                            <div>
-                                                <div class="sidebar-image">
-                                                    <img src="{{ asset('front/images/fashion/product/23.jpg') }}"
-                                                         class="img-fluid blur-up lazyload" alt="">
-                                                </div>
-                                            </div>
-
-                                            <div>
-                                                <div class="sidebar-image">
-                                                    <img src="{{ asset('front/images/fashion/product/24.jpg') }}"
-                                                         class="img-fluid blur-up lazyload" alt="">
-                                                </div>
-                                            </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>

@@ -103,6 +103,19 @@
  <img src="<?php echo \htmlentities($product->featuredImage()??'', ENT_QUOTES, 'UTF-8', false); ?>" alt="" height="200" style="width: auto">
  <?php endif; ?>
  </div>
+
+
+ <div class="row align-items-center mt-5">
+ <label for="gallery" class="col-sm-3 col-form-label form-label-title">گالری تصاویر</label>
+ <div class="col-sm-9">
+ <input type="file" class="form-control form-choose" name="gallery[]" id="gallery" multiple>
+ </div>
+
+ <?php $__currentLoopData = $product->galleryImages(); $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $image): $loop = $this->incrementLoopIndices();  ?>
+ <img src="<?php echo \htmlentities($image->path()??'', ENT_QUOTES, 'UTF-8', false); ?>" alt="" height="200" style="width: auto">
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+ </div>
  </div>
 </div>
 
