@@ -9,7 +9,7 @@
  <meta name="keywords" content="laraplus">
  <meta name="author" content="laraplus">
  <link rel="icon" href="assets/images/favicon/2.png" type="image/x-icon">
- <title>دمو دوم - قالب فروشگاهی  </title>
+ <title>دمو دوم - قالب فروشگاهی </title>
 
  <!-- bootstrap css -->
  <link id="rtl-link" rel="stylesheet" type="text/css" href="<?php echo \htmlentities(asset('front/css/vendors/bootstrap.css')??'', ENT_QUOTES, 'UTF-8', false); ?>">
@@ -29,19 +29,19 @@
 
 <body class="theme-color-1" style="--theme-color: #0da487; --theme-color-rgb: #0da487">
 
- <!-- Loader Start -->
- <div class="fullpage-loader">
+<!-- Loader Start -->
+<div class="fullpage-loader">
  <span></span>
  <span></span>
  <span></span>
  <span></span>
  <span></span>
  <span></span>
- </div>
- <!-- Loader End -->
+</div>
+<!-- Loader End -->
 
- <!-- Header Start -->
- <header class="pb-md-4 pb-0">
+<!-- Header Start -->
+<header class="pb-md-4 pb-0">
  <div class="header-top bg-dark">
  <div class="container-fluid-lg">
  <div class="row">
@@ -89,15 +89,17 @@
  </a>
 
  <div class="middle-box">
-
+ <form method="GET" action="<?php echo \htmlentities(route('search')??'', ENT_QUOTES, 'UTF-8', false); ?>">
  <div class="search-box">
  <div class="input-group">
- <input type="search" class="form-control" placeholder="جستجو برای ...">
- <button class="btn search-button-2" type="button" id="button-addon2">
+ <input type="search" name="keyword" class="form-control"
+ placeholder="جستجو برای ..." value="<?php echo \htmlentities($_GET['keyword'] ?? null??'', ENT_QUOTES, 'UTF-8', false); ?>">
+ <button type="submit" class="btn search-button-2" id="button-addon2">
  <i data-feather="search"></i>
  </button>
  </div>
  </div>
+ </form>
  </div>
 
  <div class="rightside-box">
@@ -254,13 +256,13 @@
  </div>
  </div>
  </div>
- </header>
- <!-- Header End -->
+</header>
+<!-- Header End -->
 
- <?php echo $this->yieldContent('content'); ?>
+<?php echo $this->yieldContent('content'); ?>
 
- <!-- Footer Section Start -->
- <footer class="section-t-space">
+<!-- Footer Section Start -->
+<footer class="section-t-space">
  <div class="container-fluid-lg">
  <div class="service-section">
  <div class="row g-3">
@@ -321,7 +323,8 @@
  </div>
 
  <div class="footer-logo-contain">
- <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
+ <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
+ است.</p>
 
  <ul class="address">
  <li>
@@ -453,7 +456,8 @@
  <ul>
  <li class="mb-0">
  <a href="https://play.google.com/store/apps" target="_blank">
- <img src="<?php echo \htmlentities(asset('front/images/playstore.svg')??'', ENT_QUOTES, 'UTF-8', false); ?>" class="blur-up lazyload"
+ <img src="<?php echo \htmlentities(asset('front/images/playstore.svg')??'', ENT_QUOTES, 'UTF-8', false); ?>"
+ class="blur-up lazyload"
  alt="">
  </a>
  </li>
@@ -473,7 +477,7 @@
 
  <div class="sub-footer section-small-space">
  <div class="reserve">
- <h6 class="text-content">فارسی سازی و راست چین شده توسط   </h6>
+ <h6 class="text-content">فارسی سازی و راست چین شده توسط </h6>
  </div>
 
  <div class="payment">
@@ -507,11 +511,11 @@
  </div>
  </div>
  </div>
- </footer>
- <!-- Footer Section End -->
+</footer>
+<!-- Footer Section End -->
 
- <!-- Location Modal Start -->
- <div class="modal location-modal fade theme-modal" id="locationModal" tabindex="-1">
+<!-- Location Modal Start -->
+<div class="modal location-modal fade theme-modal" id="locationModal" tabindex="-1">
  <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
  <div class="modal-content">
  <div class="modal-header">
@@ -607,11 +611,11 @@
  </div>
  </div>
  </div>
- </div>
- <!-- Location Modal End -->
+</div>
+<!-- Location Modal End -->
 
- <!-- Quick View Modal Box Start -->
- <div class="modal fade theme-modal view-modal" id="view" tabindex="-1" aria-labelledby="exampleModalLabel"
+<!-- Quick View Modal Box Start -->
+<div class="modal fade theme-modal view-modal" id="view" tabindex="-1" aria-labelledby="exampleModalLabel"
  aria-hidden="true">
  <div class="modal-dialog modal-dialog-centered modal-xl modal-fullscreen-sm-down">
  <div class="modal-content">
@@ -624,7 +628,8 @@
  <div class="row g-sm-4 g-2">
  <div class="col-lg-6">
  <div class="slider-image">
- <img src="<?php echo \htmlentities(asset('front/images/product/category/1.jpg')??'', ENT_QUOTES, 'UTF-8', false); ?>" class="img-fluid blur-up lazyload"
+ <img src="<?php echo \htmlentities(asset('front/images/product/category/1.jpg')??'', ENT_QUOTES, 'UTF-8', false); ?>"
+ class="img-fluid blur-up lazyload"
  alt="">
  </div>
  </div>
@@ -657,7 +662,10 @@
 
  <div class="product-detail">
  <h4>جزئیات محصول :</h4>
- <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.</p>
+ <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+ گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و
+ برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی
+ می باشد.</p>
  </div>
 
  <ul class="brand-list">
@@ -697,10 +705,12 @@
 
  <div class="modal-button">
  <button onclick="location.href = 'cart.html';"
- class="btn btn-md add-cart-button icon">افزودن به سبد خرید</button>
+ class="btn btn-md add-cart-button icon">افزودن به سبد خرید
+ </button>
  <button onclick="location.href = 'product-left.html';"
  class="btn theme-bg-color view-button icon text-white fw-bold btn-md">
- نمایش جزئیات بیشتر</button>
+ نمایش جزئیات بیشتر
+ </button>
  </div>
  </div>
  </div>
@@ -708,11 +718,11 @@
  </div>
  </div>
  </div>
- </div>
- <!-- Quick View Modal Box End -->
+</div>
+<!-- Quick View Modal Box End -->
 
- <!-- Deal Box Modal Start -->
- <div class="modal fade theme-modal deal-modal" id="deal-box" tabindex="-1">
+<!-- Deal Box Modal Start -->
+<div class="modal fade theme-modal deal-modal" id="deal-box" tabindex="-1">
  <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
  <div class="modal-content">
  <div class="modal-header">
@@ -730,13 +740,16 @@
  <li class="list-1">
  <div class="deal-offer-contain">
  <a href="shop-left-sidebar.html" class="deal-image">
- <img src="<?php echo \htmlentities(asset('front/images/vegetable/product/10.png')??'', ENT_QUOTES, 'UTF-8', false); ?>" class="blur-up lazyload"
+ <img src="<?php echo \htmlentities(asset('front/images/vegetable/product/10.png')??'', ENT_QUOTES, 'UTF-8', false); ?>"
+ class="blur-up lazyload"
  alt="">
  </a>
 
  <a href="shop-left-sidebar.html" class="deal-contain">
  <h5>قهوه فوری مخلوط 50 گرم</h5>
- <h6>52.720 تومان <del>55.720</del> <span>500 گرم</span></h6>
+ <h6>52.720 تومان
+ <del>55.720</del>
+ <span>500 گرم</span></h6>
  </a>
  </div>
  </li>
@@ -744,13 +757,16 @@
  <li class="list-2">
  <div class="deal-offer-contain">
  <a href="shop-left-sidebar.html" class="deal-image">
- <img src="<?php echo \htmlentities(asset('front/images/vegetable/product/11.png')??'', ENT_QUOTES, 'UTF-8', false); ?>" class="blur-up lazyload"
+ <img src="<?php echo \htmlentities(asset('front/images/vegetable/product/11.png')??'', ENT_QUOTES, 'UTF-8', false); ?>"
+ class="blur-up lazyload"
  alt="">
  </a>
 
  <a href="shop-left-sidebar.html" class="deal-contain">
  <h5>قهوه فوری مخلوط 50 گرم</h5>
- <h6>52.720 تومان <del>55.720</del> <span>500 گرم</span></h6>
+ <h6>52.720 تومان
+ <del>55.720</del>
+ <span>500 گرم</span></h6>
  </a>
  </div>
  </li>
@@ -758,13 +774,16 @@
  <li class="list-3">
  <div class="deal-offer-contain">
  <a href="shop-left-sidebar.html" class="deal-image">
- <img src="<?php echo \htmlentities(asset('front/images/vegetable/product/12.png')??'', ENT_QUOTES, 'UTF-8', false); ?>" class="blur-up lazyload"
+ <img src="<?php echo \htmlentities(asset('front/images/vegetable/product/12.png')??'', ENT_QUOTES, 'UTF-8', false); ?>"
+ class="blur-up lazyload"
  alt="">
  </a>
 
  <a href="shop-left-sidebar.html" class="deal-contain">
  <h5>قهوه فوری مخلوط 50 گرم</h5>
- <h6>52.720 تومان <del>55.720</del> <span>500 گرم</span></h6>
+ <h6>52.720 تومان
+ <del>55.720</del>
+ <span>500 گرم</span></h6>
  </a>
  </div>
  </li>
@@ -772,13 +791,16 @@
  <li class="list-1">
  <div class="deal-offer-contain">
  <a href="shop-left-sidebar.html" class="deal-image">
- <img src="<?php echo \htmlentities(asset('front/images/vegetable/product/13.png')??'', ENT_QUOTES, 'UTF-8', false); ?>" class="blur-up lazyload"
+ <img src="<?php echo \htmlentities(asset('front/images/vegetable/product/13.png')??'', ENT_QUOTES, 'UTF-8', false); ?>"
+ class="blur-up lazyload"
  alt="">
  </a>
 
  <a href="shop-left-sidebar.html" class="deal-contain">
  <h5>قهوه فوری مخلوط 50 گرم</h5>
- <h6>52.720 تومان <del>55.720</del> <span>500 گرم</span></h6>
+ <h6>52.720 تومان
+ <del>55.720</del>
+ <span>500 گرم</span></h6>
  </a>
  </div>
  </li>
@@ -787,11 +809,11 @@
  </div>
  </div>
  </div>
- </div>
- <!-- Deal Box Modal End -->
+</div>
+<!-- Deal Box Modal End -->
 
- <!-- Add to cart Modal Start -->
- <div class="add-cart-box">
+<!-- Add to cart Modal Start -->
+<div class="add-cart-box">
  <div class="add-image">
  <img src="<?php echo \htmlentities(asset('front/images/cake/pro/1.jpg')??'', ENT_QUOTES, 'UTF-8', false); ?>" class="img-fluid blur-up lazyload" alt="">
  </div>
@@ -799,11 +821,11 @@
  <div class="add-contain">
  <h6>افزودن به سبد خرید</h6>
  </div>
- </div>
- <!-- Add to cart Modal End -->
+</div>
+<!-- Add to cart Modal End -->
 
- <!-- Tap to top and theme setting button start -->
- <div class="theme-option">
+<!-- Tap to top and theme setting button start -->
+<div class="theme-option">
  <div class="setting-box">
  <button class="btn setting-button">
  <i class="fa-solid fa-gear"></i>
@@ -854,56 +876,56 @@
  <i class="fas fa-chevron-up"></i>
  </a>
  </div>
- </div>
- <!-- Tap to top and theme setting button end -->
+</div>
+<!-- Tap to top and theme setting button end -->
 
- <!-- Bg overlay Start -->
- <div class="bg-overlay"></div>
- <!-- Bg overlay End -->
+<!-- Bg overlay Start -->
+<div class="bg-overlay"></div>
+<!-- Bg overlay End -->
 
- <!-- latest jquery-->
- <script src="<?php echo \htmlentities(asset('front/js/jquery-3.6.0.min.js')??'', ENT_QUOTES, 'UTF-8', false); ?>"></script>
+<!-- latest jquery-->
+<script src="<?php echo \htmlentities(asset('front/js/jquery-3.6.0.min.js')??'', ENT_QUOTES, 'UTF-8', false); ?>"></script>
 
- <!-- jquery ui-->
- <script src="<?php echo \htmlentities(asset('front/js/jquery-ui.min.js')??'', ENT_QUOTES, 'UTF-8', false); ?>"></script>
+<!-- jquery ui-->
+<script src="<?php echo \htmlentities(asset('front/js/jquery-ui.min.js')??'', ENT_QUOTES, 'UTF-8', false); ?>"></script>
 
- <!-- sidebar open js -->
- <script src="<?php echo \htmlentities(asset('front/js/filter-sidebar.js')??'', ENT_QUOTES, 'UTF-8', false); ?>"></script>
+<!-- sidebar open js -->
+<script src="<?php echo \htmlentities(asset('front/js/filter-sidebar.js')??'', ENT_QUOTES, 'UTF-8', false); ?>"></script>
 
- <!-- Bootstrap js-->
- <script src="<?php echo \htmlentities(asset('front/js/bootstrap/bootstrap.bundle.min.js')??'', ENT_QUOTES, 'UTF-8', false); ?>"></script>
- <script src="<?php echo \htmlentities(asset('front/js/bootstrap/popper.min.js')??'', ENT_QUOTES, 'UTF-8', false); ?>"></script>
+<!-- Bootstrap js-->
+<script src="<?php echo \htmlentities(asset('front/js/bootstrap/bootstrap.bundle.min.js')??'', ENT_QUOTES, 'UTF-8', false); ?>"></script>
+<script src="<?php echo \htmlentities(asset('front/js/bootstrap/popper.min.js')??'', ENT_QUOTES, 'UTF-8', false); ?>"></script>
 
- <!-- feather icon js-->
- <script src="<?php echo \htmlentities(asset('front/js/feather/feather.min.js')??'', ENT_QUOTES, 'UTF-8', false); ?>"></script>
- <script src="<?php echo \htmlentities(asset('front/js/feather/feather-icon.js')??'', ENT_QUOTES, 'UTF-8', false); ?>"></script>
+<!-- feather icon js-->
+<script src="<?php echo \htmlentities(asset('front/js/feather/feather.min.js')??'', ENT_QUOTES, 'UTF-8', false); ?>"></script>
+<script src="<?php echo \htmlentities(asset('front/js/feather/feather-icon.js')??'', ENT_QUOTES, 'UTF-8', false); ?>"></script>
 
- <!-- Lazyload Js -->
- <script src="<?php echo \htmlentities(asset('front/js/lazysizes.min.js')??'', ENT_QUOTES, 'UTF-8', false); ?>"></script>
+<!-- Lazyload Js -->
+<script src="<?php echo \htmlentities(asset('front/js/lazysizes.min.js')??'', ENT_QUOTES, 'UTF-8', false); ?>"></script>
 
- <!-- Slick js-->
- <script src="<?php echo \htmlentities(asset('front/js/slick/slick.js')??'', ENT_QUOTES, 'UTF-8', false); ?>"></script>
- <script src="<?php echo \htmlentities(asset('front/js/slick/custom_slick.js')??'', ENT_QUOTES, 'UTF-8', false); ?>"></script>
- <script src="<?php echo \htmlentities(asset('front/js/bootstrap/bootstrap-notify.min.js')??'', ENT_QUOTES, 'UTF-8', false); ?>"></script>
+<!-- Slick js-->
+<script src="<?php echo \htmlentities(asset('front/js/slick/slick.js')??'', ENT_QUOTES, 'UTF-8', false); ?>"></script>
+<script src="<?php echo \htmlentities(asset('front/js/slick/custom_slick.js')??'', ENT_QUOTES, 'UTF-8', false); ?>"></script>
+<script src="<?php echo \htmlentities(asset('front/js/bootstrap/bootstrap-notify.min.js')??'', ENT_QUOTES, 'UTF-8', false); ?>"></script>
 
- <!-- Auto Height Js -->
- <script src="<?php echo \htmlentities(asset('front/js/auto-height.js')??'', ENT_QUOTES, 'UTF-8', false); ?>"></script>
+<!-- Auto Height Js -->
+<script src="<?php echo \htmlentities(asset('front/js/auto-height.js')??'', ENT_QUOTES, 'UTF-8', false); ?>"></script>
 
- <!-- Fly Cart Js -->
- <script src="<?php echo \htmlentities(asset('front/js/fly-cart.js')??'', ENT_QUOTES, 'UTF-8', false); ?>"></script>
+<!-- Fly Cart Js -->
+<script src="<?php echo \htmlentities(asset('front/js/fly-cart.js')??'', ENT_QUOTES, 'UTF-8', false); ?>"></script>
 
- <!-- Quantity js -->
- <script src="<?php echo \htmlentities(asset('front/js/quantity-2.js')??'', ENT_QUOTES, 'UTF-8', false); ?>"></script>
+<!-- Quantity js -->
+<script src="<?php echo \htmlentities(asset('front/js/quantity-2.js')??'', ENT_QUOTES, 'UTF-8', false); ?>"></script>
 
- <!-- WOW js -->
- <script src="<?php echo \htmlentities(asset('front/js/wow.min.js')??'', ENT_QUOTES, 'UTF-8', false); ?>"></script>
- <script src="<?php echo \htmlentities(asset('front/js/custom-wow.js')??'', ENT_QUOTES, 'UTF-8', false); ?>"></script>
+<!-- WOW js -->
+<script src="<?php echo \htmlentities(asset('front/js/wow.min.js')??'', ENT_QUOTES, 'UTF-8', false); ?>"></script>
+<script src="<?php echo \htmlentities(asset('front/js/custom-wow.js')??'', ENT_QUOTES, 'UTF-8', false); ?>"></script>
 
- <!-- script js -->
- <script src="<?php echo \htmlentities(asset('front/js/script.js')??'', ENT_QUOTES, 'UTF-8', false); ?>"></script>
+<!-- script js -->
+<script src="<?php echo \htmlentities(asset('front/js/script.js')??'', ENT_QUOTES, 'UTF-8', false); ?>"></script>
 
- <!-- theme setting js -->
- <script src="<?php echo \htmlentities(asset('front/js/theme-setting.js')??'', ENT_QUOTES, 'UTF-8', false); ?>"></script>
+<!-- theme setting js -->
+<script src="<?php echo \htmlentities(asset('front/js/theme-setting.js')??'', ENT_QUOTES, 'UTF-8', false); ?>"></script>
 </body>
 
 

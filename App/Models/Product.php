@@ -180,4 +180,57 @@ class Product extends Model
     {
         return (new Order)->topPurchasedProducts($limit);
     }
+
+    public function search(array $data): object
+    {
+        $sql = "SELECT * FROM {$this->table} WHERE 1 ";
+        $values = [];
+
+        if ($data['keyword'] ?? false) {
+            $sql .= " AND name LIKE :name ";
+            $values['name'] = "%" . trim($data['keyword']) . "%";
+        }
+
+        if ($data['price_from'] ?? false) {
+            $sql .= " AND price >= :price_from ";
+            $values['price_from'] = trim($data['price_from']);
+        }
+
+        if ($data['price_to'] ?? false) {
+            $sql .= " AND price <= :price_to ";
+            $values['price_to'] = trim($data['price_to']);
+        }
+
+        if ($data['category_id'] ?? false) {
+            $sql .= " AND category_id IN (";
+            foreach($data['category_id'] as $index => $category_id) {
+                $sql .= ":cat_{$index},";
+                $values["cat_{$index}"] = $category_id;
+            }
+
+            $sql = rtrim($sql, ",") . ")";
+        }
+
+        if ($data['order'] ?? false) {
+           switch ($data['order']) {
+               case 'price_desc':
+                   $sql .= "ORDER BY price DESC";
+                   break;
+               case 'price_asc':
+                   $sql .= "ORDER BY price ASC";
+                   break;
+               case 'default':
+               case 'date_desc':
+                   $sql .= "ORDER BY id DESC";
+                   break;
+               case 'date_asc':
+                   $sql .= "ORDER BY id ASC";
+                   break;
+           }
+        } else {
+            $sql .= "ORDER BY id DESC";
+        }
+
+        return $this->db->paginate($sql, $values, __CLASS__);
+    }
 }

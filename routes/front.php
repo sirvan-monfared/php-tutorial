@@ -9,8 +9,10 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SearchController;
 
 $router->get('/', [HomeController::class, 'index'], 'home');
+$router->get('/search', [SearchController::class, 'index'], 'search');
 
 $router->get('/product/[i:id]', [ProductController::class, 'show'], 'products.show');
 $router->post('/product/[i:id]/comment', [CommentController::class, 'store'], 'comment.store')->only('auth');

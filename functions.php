@@ -6,6 +6,8 @@ use App\Core\Request;
 use App\Core\Session;
 use App\Helpers\Cart;
 use eftec\bladeone\BladeOne;
+use Intervention\Image\Drivers\Gd\Driver;
+use Intervention\Image\ImageManager;
 
 function currentUrl()
 {
@@ -175,7 +177,10 @@ function uploadImage($field_name): bool|string
     $new_name = time() . rand(500, 10000) . '.' . $extension;
     $path = base_path('public/assets/uploads/') . $new_name;
 
-    if (move_uploaded_file($_FILES['image']['tmp_name'], $path)) {
+    $manager = new ImageManager(new Driver());
+    $image = $manager->read($file['tmp_name']);
+
+    if ($image->save($path)) {
         return $new_name;
     }
 
