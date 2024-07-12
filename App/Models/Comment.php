@@ -87,4 +87,26 @@ class Comment extends Model
             'status' => Comment::ACCEPTED
         ], __CLASS__)->all();
     }
+
+    public function averageRatingForProduct(int $product_id): int
+    {
+        $sql = "SELECT AVG(rating) AS avg_rate FROM comments WHERE product_id=:product_id LIMIT 1";
+
+        $result = $this->db->prepare($sql, [
+            'product_id' => $product_id,
+        ], __CLASS__)->find()?->avg_rate;
+
+        return $result ? round($result) : 0;
+    }
+
+    public function countForProduct(int $product_id): int
+    {
+        $sql = "SELECT COUNT(rating) AS count FROM comments WHERE product_id=:product_id LIMIT 1";
+
+        $result = $this->db->prepare($sql, [
+            'product_id' => $product_id,
+        ], __CLASS__)->find()?->count;
+
+        return $result ? round($result) : 0;
+    }
 }

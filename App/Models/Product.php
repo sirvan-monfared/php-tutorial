@@ -241,9 +241,18 @@ class Product extends Model
         return $this->db->paginate($sql, $values, __CLASS__);
     }
 
-    public function deleteAllGalleryImages()
+    public function deleteAllGalleryImages(): void
     {
         (new Image)->deleteAllForProduct($this->id);
     }
 
+    public function averageRating(): int
+    {
+        return (new Comment)->averageRatingForProduct($this->id);
+    }
+
+    public function commentsCount(): int
+    {
+        return (new Comment)->countForProduct($this->id);
+    }
 }

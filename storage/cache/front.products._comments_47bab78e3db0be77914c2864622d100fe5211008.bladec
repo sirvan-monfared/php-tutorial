@@ -17,7 +17,13 @@
 
  <div class="col-xl-7">
  <div class="review-people">
+ <?php if(! $product->comments()): ?>
+ <div class="no-comment">
+ <h3>هیچ دیدگاهی برای این محصول ثبت نشده است</h3>
+ </div>
+ <?php endif; ?>
  <ul class="review-list">
+
  <?php $__currentLoopData = $product->comments(); $this->addLoop($__currentLoopData);$this->getFirstLoop();
  foreach($__currentLoopData as $comment): $loop = $this->incrementLoopIndices();  ?>
  <li>

@@ -434,3 +434,9 @@ header .offcanvas:not(.offcanvas-end):not(.offcanvas-bottom) , [dir=rtl] .banner
 		transform: translatey(-15%) scale(1.35);
 	}
 }
+.no-comment {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}

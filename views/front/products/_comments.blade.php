@@ -17,7 +17,13 @@
 
     <div class="col-xl-7">
         <div class="review-people">
+            @if (! $product->comments())
+                <div class="no-comment">
+                    <h3>هیچ دیدگاهی برای این محصول ثبت نشده است</h3>
+                </div>
+            @endif
             <ul class="review-list">
+
                 @foreach($product->comments() as $comment)
                     <li>
                         <div class="people-box">

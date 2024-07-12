@@ -40,27 +40,16 @@
             </h5>
 
             <div class="product-rating mt-2">
-                <ul class="rating">
-                    <li>
-                        <i data-feather="star" class="fill"></i>
-                    </li>
-                    <li>
-                        <i data-feather="star" class="fill"></i>
-                    </li>
-                    <li>
-                        <i data-feather="star" class="fill"></i>
-                    </li>
-                    <li>
-                        <i data-feather="star" class="fill"></i>
-                    </li>
-                    <li>
-                        <i data-feather="star"></i>
-                    </li>
-                </ul>
-
                 <h6 class="theme-color">
-                    {{ $product->stock > 0 ? 'موجود در ابنار' : 'ناموجود' }}
+                    {{ $product->stock > 0 ? 'موجود در انبار' : 'ناموجود' }}
                 </h6>
+
+                @if ($product->averageRating())
+                    <ul class="rating">
+                        @component('front.components.rating', ['stars' => $product->averageRating()])
+                        @endcomponent
+                    </ul>
+                @endif
             </div>
 
             <div class="dynamic-checkout mt-3">

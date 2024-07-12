@@ -110,24 +110,14 @@
                                         @endif
                                     </h3>
                                     <div class="product-rating custom-rate">
-                                        <ul class="rating">
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star" class="fill"></i>
-                                            </li>
-                                            <li>
-                                                <i data-feather="star"></i>
-                                            </li>
-                                        </ul>
-                                        <span class="review">23 بازخورد</span>
+                                        @if ($product->averageRating())
+                                            <ul class="rating">
+                                                @component('front.components.rating', ['stars' => $product->averageRating()])
+                                                @endcomponent
+                                            </ul>
+
+                                            <span class="review">{{ $product->commentsCount() }} دیدگاه </span>
+                                        @endif
                                     </div>
                                 </div>
 
@@ -158,25 +148,6 @@
 
                                     <div>
                                         آخرین ویرایش: {{ jdate($product->updated_at)->format('Y/m/d') }}
-                                    </div>
-                                </div>
-
-                                <div class="pickup-box">
-                                    <div class="product-title">
-                                        <h4>اطلاعات فروشگاه</h4>
-                                    </div>
-
-                                    <div class="pickup-detail">
-                                        <h4 class="text-content w-100">کیک آب نبات چوبی کیک شکلاتی کیک شکلاتی دسر عناب.
-                                            شیرینی کوتاه آلو شکر پودر دسر کوکی براونی شیرین.</h4>
-                                    </div>
-
-                                    <div class="product-info">
-                                        <ul class="product-info-list product-info-list-2">
-                                            <li>نوع : <a href="javascript:void(0)">آستین بلند</a></li>
-                                            <li>تاریخ : <a href="javascript:void(0)">1 اردیبهشت 1403</a></li>
-                                            <li>موجودی : <a href="javascript:void(0)">5</a></li>
-                                        </ul>
                                     </div>
                                 </div>
 
@@ -213,12 +184,6 @@
                             @endif
 
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="care-tab" data-bs-toggle="tab" data-bs-target="#care"
-                                        type="button" role="tab">ویژگی محصول
-                                </button>
-                            </li>
-
-                            <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="review-tab" data-bs-toggle="tab" data-bs-target="#review"
                                         type="button" role="tab">بازخورد
                                 </button>
@@ -249,32 +214,6 @@
                                     </div>
                                 </div>
                             @endif
-
-                            <div class="tab-pane fade" id="care" role="tabpanel">
-                                <div class="information-box">
-                                    <ul>
-                                        <li>کیک های خامه ای را در یخچال نگهداری کنید. کیک های فوندانت باید در محیطی با
-                                            تهویه مطبوع نگهداری شوند.
-                                        </li>
-
-                                        <li>کیک را برش بزنید و در دمای اتاق سرو کنید و مطمئن شوید که در معرض حرارت
-                                            نباشد.
-                                        </li>
-
-                                        <li>از یک چاقوی دندانه دار برای برش کیک فوندانت استفاده کنید.</li>
-
-                                        <li>عناصر مجسمه سازی و مجسمه ها ممکن است حاوی تکیه گاه های سیمی یا خلال دندان یا
-                                            سیخ های چوبی برای حمایت باشند.
-                                        </li>
-
-                                        <li>لطفاً محل قرارگیری این اقلام را قبل از ارائه به کودکان کوچک بررسی کنید.</li>
-
-                                        <li>کیک باید ظرف 24 ساعت مصرف شود.</li>
-
-                                        <li>از کیک خود لذت ببرید!</li>
-                                    </ul>
-                                </div>
-                            </div>
 
                             <div class="tab-pane fade" id="review" role="tabpanel">
                                 <div class="review-box">
