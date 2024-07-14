@@ -151,34 +151,22 @@
         </div>
 
         <div class="seo-view">
-            <span class="link">https://laraplus.ir</span>
-            <h5>فلش 64 گیگ sandisk با گارانتی 18 ماهه متین</h5>
-            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                گرافیک است. </p>
+            <span class="link">{{ url('products.show', ['id' => $product->id]) }}</span>
+            <h5>{{ $product->seo_title }}</h5>
+            <p>{{ $product->seo_description }}</p>
         </div>
 
-        <div class="mb-4 row align-items-center">
-            <label class="form-label-title col-sm-3 mb-0">عنوان صفحه</label>
-            <div class="col-sm-9">
-                <input class="form-control" type="search"
-                       placeholder="فلش 64 گیگ sandisk با گارانتی 18 ماهه متین">
-            </div>
-        </div>
+        @component('admin.components.input', ['name' => 'seo_title', 'label' => 'عنوان سئو'])
+            {{ old('seo_title', $product->seo_title) }}
+        @endcomponent
 
-        <div class="mb-4 row">
-            <label class="form-label-title col-sm-3 mb-0">توضیحات متا</label>
-            <div class="col-sm-9">
-                <textarea class="form-control" rows="3"></textarea>
-            </div>
-        </div>
+        @component('admin.components.input', ['name' => 'seo_description', 'label' => 'توضیحات سئو'])
+            {{ old('seo_description', $product->seo_description) }}
+        @endcomponent
 
-        <div class="row">
-            <label class="form-label-title col-sm-3 mb-0">لینک شما</label>
-            <div class="col-sm-9">
-                <input class="form-control" type="search"
-                       placeholder="">
-            </div>
-        </div>
+        @component('admin.components.input', ['name' => 'seo_keywords', 'label' => 'کلمات کلیدی سئو'])
+            {{ old('seo_keywords', $product->seo_keywords) }}
+        @endcomponent
 
 
     </div>

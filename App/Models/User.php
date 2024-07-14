@@ -142,4 +142,14 @@ class User extends Model
     {
         return "{$this->name} {$this->last_name}";
     }
+
+    public function updateInfo(array $data): User
+    {
+        return $this->update([
+            'name' => $data['name'],
+            'last_name' => $data['last_name'],
+            'email' => $data['email'],
+            'address' => $data['address']
+        ]);
+    }
 }

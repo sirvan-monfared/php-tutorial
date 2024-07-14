@@ -62,7 +62,8 @@ class Validator
             'max' => "{$field} باید حداکثر از {$param} کاراکتر باشد",
             'confirm' => "فیلدهای {$field} و تکرار {$field} مطابقت ندارند",
             'unique' => "{$field} قبلا در سایت ثبت شده است ",
-            'int' => "{$field} باید از نوع عددی باشد"
+            'int' => "{$field} باید از نوع عددی باشد",
+            'email' => 'آدرس ایمیل وارد شده معتبر نیست'
         };
     }
 
@@ -117,6 +118,11 @@ class Validator
         }
 
         return ! $found;
+    }
+
+    public function email(mixed $value): bool
+    {
+        return !! filter_var($value, FILTER_VALIDATE_EMAIL);
     }
 
 }

@@ -6,14 +6,12 @@
  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <meta name="description"
- content="laraplus admin is super flexible, powerful, clean &amp; modern responsive bootstrap 5 admin template with unlimited possibilities.">
- <meta name="keywords"
- content="admin template, laraplus admin template, dashboard template, flat admin template, responsive admin template, web app">
- <meta name="author" content="pixelstrap">
- <link rel="icon" href="assets/images/favicon.png" type="image/x-icon">
- <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
- <title>پیشخوان </title>
+ <meta name="description" content="">
+ <meta name="keywords" content="">
+ <meta name="author" content="https://laraplus.ir">
+ <link rel="icon" href="<?php echo \htmlentities(asset('front/images/logo/2.png')??'', ENT_QUOTES, 'UTF-8', false); ?>" type="image/x-icon">
+ <link rel="shortcut icon" href="<?php echo \htmlentities(asset('front/images/logo/2.png')??'', ENT_QUOTES, 'UTF-8', false); ?>" type="image/x-icon">
+ <title><?php echo \htmlentities($page_title ?? 'لاراکامرس - مدیریت'??'', ENT_QUOTES, 'UTF-8', false); ?></title>
 
 
  <!-- Linear Icon css -->
@@ -83,21 +81,7 @@
  </div>
  </div>
 
- <form class="form-inline search-full" action="javascript:void(0)" method="get">
- <div class="form-group w-100">
- <div class="Typeahead Typeahead--twitterUsers">
- <div class="u-posRelative">
- <input class="demo-input Typeahead-input form-control-plaintext w-100" type="text"
- placeholder="جستجو کنید ..." name="q" title="" autofocus>
- <i class="close-search" data-feather="x"></i>
- <div class="spinner-border Typeahead-spinner" role="status">
- <span class="sr-only">لطفا صبر کنید ...</span>
- </div>
- </div>
- <div class="Typeahead-menu"></div>
- </div>
- </div>
- </form>
+
  <div class="nav-right col-6 pull-right right-header p-0">
  <ul class="nav-menus">
  <li>
@@ -105,46 +89,6 @@
  <i class="ri-search-line"></i>
  </span>
  </li>
- <li class="onhover-dropdown">
- <div class="notification-box">
- <i class="ri-notification-line"></i>
- <span class="badge rounded-pill badge-theme">4</span>
- </div>
- <ul class="notification-dropdown onhover-show-div">
- <li>
- <i class="ri-notification-line"></i>
- <h6 class="f-18 mb-0">پیام ها</h6>
- </li>
- <li>
- <p>
- <i class="fa fa-circle me-2 font-primary"></i>پردازش محصولات<span
- class="pull-right">10 دقیقه</span>
- </p>
- </li>
- <li>
- <p>
- <i class="fa fa-circle me-2 font-success"></i>تکمیل سفارش<span
- class="pull-right">1 ساعت</span>
- </p>
- </li>
- <li>
- <p>
- <i class="fa fa-circle me-2 font-info"></i>بلیط های تولید شده<span
- class="pull-right">3 ساعت</span>
- </p>
- </li>
- <li>
- <p>
- <i class="fa fa-circle me-2 font-danger"></i>تحویل کامل<span
- class="pull-right">6 ساعت</span>
- </p>
- </li>
- <li>
- <a class="btn btn-primary" href="javascript:void(0)">نمایش تمام پیام ها</a>
- </li>
- </ul>
- </li>
-
  <li>
  <div class="mode">
  <i class="ri-moon-line"></i>
@@ -155,41 +99,30 @@
  <img class="user-profile rounded-circle" src="<?php echo \htmlentities(asset('admin/images/users/4.jpg')??'', ENT_QUOTES, 'UTF-8', false); ?>"
  alt="">
  <div class="user-name-hide media-body">
- <span>ایلان ماسک</span>
+ <span><?php echo \htmlentities(auth()->user()->fullName()??'', ENT_QUOTES, 'UTF-8', false); ?></span>
  <p class="mb-0 font-roboto">مدیر<i class="middle ri-arrow-down-s-line"></i></p>
  </div>
  </div>
  <ul class="profile-dropdown onhover-show-div">
  <li>
- <a href="all-users.html">
+ <a href="<?php echo \htmlentities(route('admin.user.index')??'', ENT_QUOTES, 'UTF-8', false); ?>">
  <i data-feather="users"></i>
  <span>کاربران</span>
  </a>
  </li>
  <li>
- <a href="order-list.html">
+ <a href="<?php echo \htmlentities(route('admin.order.index')??'', ENT_QUOTES, 'UTF-8', false); ?>">
  <i data-feather="archive"></i>
  <span>سفارشات</span>
  </a>
  </li>
  <li>
- <a href="support-ticket.html">
- <i data-feather="phone"></i>
- <span>تیکت پشتیبانی</span>
- </a>
- </li>
- <li>
- <a href="profile-setting.html">
- <i data-feather="settings"></i>
- <span>تنظیمات</span>
- </a>
- </li>
- <li>
- <a data-bs-toggle="modal" data-bs-target="#staticBackdrop"
- href="javascript:void(0)">
+ <form method="POST" action="<?php echo \htmlentities(route('auth.logout')??'', ENT_QUOTES, 'UTF-8', false); ?>" class="d-flex align-items-center justify-content-start ">
+ <?php echo $this->runChild('partials._csrf'); ?>
+ <input type='hidden' name='_method' value='<?php echo 'DELETE'; ?>'/>
  <i data-feather="log-out"></i>
- <span>خروج</span>
- </a>
+ <button type="submit" class="btn btn-default p-0">خروج</button>
+ </form>
  </li>
  </ul>
  </li>
@@ -212,9 +145,7 @@
  <div class="back-btn">
  <i class="fa fa-angle-left"></i>
  </div>
- <div class="toggle-sidebar">
- <i class="ri-apps-line status_toggle middle sidebar-toggle"></i>
- </div>
+ 
  </div>
  <div class="logo-icon-wrapper">
  <a href="index.html">
@@ -238,7 +169,7 @@
  <footer class="footer">
  <div class="row">
  <div class="col-md-12 footer-copyright text-center">
- <p class="mb-0">راست چین شده توسط : ایلان ماسک</p>
+ <p class="mb-0">تهیه شده در <a href="https://laraplus.ir/course/laraplus-modern-php-from-zero-to-professional" target="_blank">دوره آموزش برنامه نویسی PHP مدرن</a> - لاراپلاس</p>
  </div>
  </div>
  </footer>

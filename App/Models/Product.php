@@ -58,7 +58,10 @@ class Product extends Model
             'prev_price' => $data['prev_price'] ?: null,
             'stock' => $data['stock'],
             'description' => $data['description'],
-            'featured_image' => $image_name
+            'featured_image' => $image_name,
+            'seo_title' => $data['seo_title'],
+            'seo_description' => $data['seo_description'],
+            'seo_keywords' => $data['seo_keywords']
         ]);
     }
 
@@ -72,7 +75,10 @@ class Product extends Model
             'prev_price' => $data['prev_price'] ?: null,
             'stock' => $data['stock'],
             'description' => $data['description'],
-            'featured_image' => $image_name ?: $this->featured_image
+            'featured_image' => $image_name ?: $this->featured_image,
+            'seo_title' => $data['seo_title'],
+            'seo_description' => $data['seo_description'],
+            'seo_keywords' => $data['seo_keywords']
         ]);
     }
 

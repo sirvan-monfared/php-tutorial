@@ -1,4 +1,8 @@
-@extends('front.layouts.main')
+@extends('front.layouts.main', [
+    'page_title' => $product->seo_title ?? $product->name,
+    'page_description' => $product->seo_description ?? str_limit($product->description, 150),
+    'page_keywords' => $product->seo_keywords
+])
 
 @section('content')
 

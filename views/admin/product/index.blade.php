@@ -1,4 +1,5 @@
 @extends('admin.layouts.table', [
+    'page_title' => 'مدیریت محصولات',
     'title' => 'مدیریت محصولات',
     'create_route' => route('admin.product.create')
 ])

@@ -24,54 +24,25 @@
             </div>
 
             <div class="profile-name">
-                <h3>زینب </h3>
-                <h6 class="text-content">email@domain.com</h6>
+                <h3>{{ auth()->user()->fullName() }} </h3>
+                <h6 class="text-content">{{ auth()->user()->phone }}</h6>
             </div>
         </div>
     </div>
 
     <ul class="nav nav-pills user-nav-pills" id="pills-tab" role="tablist">
+
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-dashboard-tab" data-bs-toggle="pill"
-                    data-bs-target="#pills-dashboard" type="button"><i data-feather="home"></i>
-                داشبورد
-            </button>
+            <a href="{{ route('dashboard.order.index') }}"  class="nav-link {{ routeIs('dashboard.order.index') ? 'active' : false }}" id="pills-order-tab">
+                <i data-feather="shopping-bag"></i>سفارشات
+            </a>
         </li>
+
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-order-tab" data-bs-toggle="pill"
-                    data-bs-target="#pills-order" type="button"><i
-                        data-feather="shopping-bag"></i>سفارشات
-            </button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-wishlist-tab" data-bs-toggle="pill"
-                    data-bs-target="#pills-wishlist" type="button"><i data-feather="heart"></i>
-                علاقه‌مندی
-            </button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-card-tab" data-bs-toggle="pill"
-                    data-bs-target="#pills-card" type="button" role="tab"><i
-                        data-feather="credit-card"></i> مالی
-            </button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-address-tab" data-bs-toggle="pill"
-                    data-bs-target="#pills-address" type="button" role="tab"><i
-                        data-feather="map-pin"></i>آدرس
-            </button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
-                    data-bs-target="#pills-profile" type="button" role="tab"><i data-feather="user"></i>
+            <a href="{{ route('dashboard.profile.edit') }}"  class="nav-link {{ routeIs('dashboard.profile.edit') ? 'active' : false }}" id="pills-order-tab">
+                <i data-feather="user"></i>
                 پروفایل
-            </button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-download-tab" data-bs-toggle="pill"
-                    data-bs-target="#pills-download" type="button" role="tab"><i
-                        data-feather="download"></i>دانلود
-            </button>
+            </a>
         </li>
         <li class="nav-item" role="presentation">
             <a href="{{ route('dashboard.password.edit') }}" class="nav-link {{ routeIs('dashboard.password.edit') ? 'active' : false }}" id="pills-security-tab">

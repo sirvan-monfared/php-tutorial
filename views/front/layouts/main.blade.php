@@ -5,11 +5,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="laraplus">
-    <meta name="keywords" content="laraplus">
-    <meta name="author" content="laraplus">
-    <link rel="icon" href="assets/images/favicon/2.png" type="image/x-icon">
-    <title>دمو دوم - قالب فروشگاهی </title>
+    <meta name="description" content="{{ $page_description ?? 'لارااکامرس یکگ فروشگاه ساخته شده با php است که در دوره php مدرسن سایت لاراپلاس توسعه داده شده است' }}">
+    <meta name="keywords" content="{{ $page_keywords ?? 'فروشگاه,طراحی سایت,آموزش برنامه نویسی' }}">
+    <meta name="author" content="https://laraplus.ir">
+    <link rel="icon" href="{{ asset('front/images/logo/2.png') }}" type="image/x-icon">
+    <title>{{ $page_title ?? 'لاراکامرس - فروشگاهی برای همه چیز' }}</title>
 
     <!-- bootstrap css -->
     <link id="rtl-link" rel="stylesheet" type="text/css" href="{{ asset('front/css/vendors/bootstrap.css') }}">
@@ -151,7 +151,7 @@
                                         @if(auth()->check())
                                             <div class="delivery-detail">
                                                 <h6>سلام,</h6>
-                                                <h5>{{ auth()->username() }}</h5>
+                                                <h5>{{ auth()->user()->fullName() }}</h5>
                                             </div>
                                         @endif
                                     </div>
@@ -347,24 +347,11 @@
 
                     <div class="footer-contain">
                         <ul>
-                            <li>
-                                <a href="shop-left-sidebar.html" class="text-content">میوه وسبزیجات</a>
-                            </li>
-                            <li>
-                                <a href="shop-left-sidebar.html" class="text-content">گوشت</a>
-                            </li>
-                            <li>
-                                <a href="shop-left-sidebar.html" class="text-content">غذای دریایی</a>
-                            </li>
-                            <li>
-                                <a href="shop-left-sidebar.html" class="text-content">غذای منجمد شده</a>
-                            </li>
-                            <li>
-                                <a href="shop-left-sidebar.html" class="text-content">بیسکویت</a>
-                            </li>
-                            <li>
-                                <a href="shop-left-sidebar.html" class="text-content">انرژی زا</a>
-                            </li>
+                            @foreach((new \App\Models\Category)->all(6) as $category)
+                                <li>
+                                    <a href="{{ $category->viewLink() }}" class="text-content">{{ $category->name }}</a>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -377,19 +364,19 @@
                     <div class="footer-contain">
                         <ul>
                             <li>
-                                <a href="index.html" class="text-content">خانه</a>
+                                <a href="{{ route('home') }}" class="text-content">خانه</a>
                             </li>
                             <li>
-                                <a href="shop-left-sidebar.html" class="text-content">فروشگاه</a>
+                                <a href="#" class="text-content">فروشگاه</a>
                             </li>
                             <li>
-                                <a href="about-us.html" class="text-content">درباره ما</a>
+                                <a href="#" class="text-content">درباره ما</a>
                             </li>
                             <li>
-                                <a href="blog-list.html" class="text-content">وبلاگ</a>
+                                <a href="#" class="text-content">وبلاگ</a>
                             </li>
                             <li>
-                                <a href="contact-us.html" class="text-content">تماس با ما</a>
+                                <a href="#" class="text-content">تماس با ما</a>
                             </li>
                         </ul>
                     </div>
@@ -403,22 +390,22 @@
                     <div class="footer-contain">
                         <ul>
                             <li>
-                                <a href="order-success.html" class="text-content">خرید راحت</a>
+                                <a href="#" class="text-content">خرید راحت</a>
                             </li>
                             <li>
-                                <a href="user-dashboard.html" class="text-content">حساب کاربری</a>
+                                <a href="{{ route('dashboard.order.index') }}" class="text-content">حساب کاربری</a>
                             </li>
                             <li>
-                                <a href="order-tracking.html" class="text-content">پیگیری سفارش</a>
+                                <a href="#" class="text-content">پیگیری سفارش</a>
                             </li>
                             <li>
-                                <a href="wishlist.html" class="text-content">لیست علاقه‌مندی</a>
+                                <a href="#" class="text-content">لیست علاقه‌مندی</a>
                             </li>
                             <li>
-                                <a href="search.html" class="text-content">جستجو</a>
+                                <a href="#" class="text-content">جستجو</a>
                             </li>
                             <li>
-                                <a href="faq.html" class="text-content">سوالات متداول</a>
+                                <a href="#" class="text-content">سوالات متداول</a>
                             </li>
                         </ul>
                     </div>
@@ -436,7 +423,7 @@
                                     <i data-feather="phone"></i>
                                     <div class="contact-number">
                                         <h6 class="text-content">پشتیبانی 24 ساعته :</h6>
-                                        <h5>0936.000.0000</h5>
+                                        <h5>0912.000.0000</h5>
                                     </div>
                                 </div>
                             </li>
@@ -446,7 +433,7 @@
                                     <i data-feather="mail"></i>
                                     <div class="contact-number">
                                         <h6 class="text-content">آدرس ایمیل :</h6>
-                                        <h5>[ایمیل شما]</h5>
+                                        <h5>mail@site.com</h5>
                                     </div>
                                 </div>
                             </li>
@@ -455,16 +442,13 @@
                                 <h5 class="mb-2 text-content">دانلود اپلیکیشن :</h5>
                                 <ul>
                                     <li class="mb-0">
-                                        <a href="https://play.google.com/store/apps" target="_blank">
-                                            <img src="{{ asset('front/images/playstore.svg') }}"
-                                                 class="blur-up lazyload"
-                                                 alt="">
+                                        <a href="#" target="_blank">
+                                            <img src="{{ asset('front/images/playstore.svg') }}" class="blur-up lazyload" alt="">
                                         </a>
                                     </li>
                                     <li class="mb-0">
-                                        <a href="https://www.apple.com/in/app-store/" target="_blank">
-                                            <img src="{{ asset('front/images/appstore.svg') }}" class="blur-up lazyload"
-                                                 alt="">
+                                        <a href="#" target="_blank">
+                                            <img src="{{ asset('front/images/appstore.svg') }}" class="blur-up lazyload" alt="">
                                         </a>
                                     </li>
                                 </ul>
@@ -475,409 +459,8 @@
             </div>
         </div>
 
-        <div class="sub-footer section-small-space">
-            <div class="reserve">
-                <h6 class="text-content">فارسی سازی و راست چین شده توسط </h6>
-            </div>
-
-            <div class="payment">
-                <img src="{{ asset('front/images/payment/1.png') }}" class="blur-up lazyload" alt="">
-            </div>
-
-            <div class="social-link">
-                <h6 class="text-content">شبکه های اجتماعی :</h6>
-                <ul>
-                    <li>
-                        <a href="https://www.facebook.com/" target="_blank">
-                            <i class="fa-brands fa-facebook-f"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://twitter.com/" target="_blank">
-                            <i class="fa-brands fa-twitter"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.instagram.com/" target="_blank">
-                            <i class="fa-brands fa-instagram"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://in.pinterest.com/" target="_blank">
-                            <i class="fa-brands fa-pinterest-p"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
     </div>
 </footer>
-<!-- Footer Section End -->
-
-<!-- Location Modal Start -->
-<div class="modal location-modal fade theme-modal" id="locationModal" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">آدرس خود را انتخاب کنید</h5>
-                <p class="mt-1 text-content">آدرس خود را وارد کنید تا ما پیشنهاد را برای منطقه شما مشخص می کنیم.</p>
-                <button type="button" class="btn-close" data-bs-dismiss="modal">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="location-list">
-                    <div class="search-input">
-                        <input type="search" class="form-control" placeholder="محل خود را جستجو کنید">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </div>
-
-                    <div class="disabled-box">
-                        <h6>انتخاب مکان شما</h6>
-                    </div>
-
-                    <ul class="location-select custom-height">
-                        <li>
-                            <a href="javascript:void(0)">
-                                <h6>آلاباما</h6>
-                                <span>حداقل: 100 تومان</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="javascript:void(0)">
-                                <h6>آریزوانا</h6>
-                                <span>حداقل: 150 تومان</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="javascript:void(0)">
-                                <h6>کالیفرنیا</h6>
-                                <span>حداقل: 170 تومان</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="javascript:void(0)">
-                                <h6>ایران</h6>
-                                <span>حداقل: 150 تومان</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="javascript:void(0)">
-                                <h6>فلوریدا</h6>
-                                <span>حداقل: 160 تومان</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="javascript:void(0)">
-                                <h6>جورجیا</h6>
-                                <span>حداقل: 110 تومان</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="javascript:void(0)">
-                                <h6>کانزاس</h6>
-                                <span>حداقل: 130 تومان</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="javascript:void(0)">
-                                <h6>مینه سوتا</h6>
-                                <span>حداقل: 140 تومان</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="javascript:void(0)">
-                                <h6>نیویورک</h6>
-                                <span>حداقل: 120 تومان</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="javascript:void(0)">
-                                <h6>واشنگتن</h6>
-                                <span>حداقل: 160 تومان</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Location Modal End -->
-
-<!-- Quick View Modal Box Start -->
-<div class="modal fade theme-modal view-modal" id="view" tabindex="-1" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-xl modal-fullscreen-sm-down">
-        <div class="modal-content">
-            <div class="modal-header p-0">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="row g-sm-4 g-2">
-                    <div class="col-lg-6">
-                        <div class="slider-image">
-                            <img src="{{ asset('front/images/product/category/1.jpg') }}"
-                                 class="img-fluid blur-up lazyload"
-                                 alt="">
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <div class="right-sidebar-modal">
-                            <h4 class="title-name">کیک خامه ای سفید رنگ با روکش قرم 500 گرمی</h4>
-                            <h4 class="price">36.000 تومان</h4>
-                            <div class="product-rating">
-                                <ul class="rating">
-                                    <li>
-                                        <i data-feather="star" class="fill"></i>
-                                    </li>
-                                    <li>
-                                        <i data-feather="star" class="fill"></i>
-                                    </li>
-                                    <li>
-                                        <i data-feather="star" class="fill"></i>
-                                    </li>
-                                    <li>
-                                        <i data-feather="star" class="fill"></i>
-                                    </li>
-                                    <li>
-                                        <i data-feather="star"></i>
-                                    </li>
-                                </ul>
-                                <span class="ms-2">8 بازخورد</span>
-                                <span class="ms-2 text-danger">6 عدد در 16 ساعت گذشته فروخته شد</span>
-                            </div>
-
-                            <div class="product-detail">
-                                <h4>جزئیات محصول :</h4>
-                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
-                                    گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و
-                                    برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی
-                                    می باشد.</p>
-                            </div>
-
-                            <ul class="brand-list">
-                                <li>
-                                    <div class="brand-box">
-                                        <h5>نام برند :</h5>
-                                        <h6>جنگل سیاه</h6>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="brand-box">
-                                        <h5>کد محصول :</h5>
-                                        <h6>W0690034</h6>
-                                    </div>
-                                </li>
-
-                                <li>
-                                    <div class="brand-box">
-                                        <h5>نوع محصول :</h5>
-                                        <h6>کیک خامه ای سفید</h6>
-                                    </div>
-                                </li>
-                            </ul>
-
-                            <div class="select-size">
-                                <h4>اندازه کیک :</h4>
-                                <select class="form-select select-form-size">
-                                    <option selected>انتخاب وزن</option>
-                                    <option value="1.2">1/2 کیلوگرم</option>
-                                    <option value="0">1 کیلوگرم</option>
-                                    <option value="1.5">1/5 کیلوگرم</option>
-                                    <option value="red">با رز های قرمز</option>
-                                    <option value="pink">با رزهای صورتی</option>
-                                </select>
-                            </div>
-
-                            <div class="modal-button">
-                                <button onclick="location.href = 'cart.html';"
-                                        class="btn btn-md add-cart-button icon">افزودن به سبد خرید
-                                </button>
-                                <button onclick="location.href = 'product-left.html';"
-                                        class="btn theme-bg-color view-button icon text-white fw-bold btn-md">
-                                    نمایش جزئیات بیشتر
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Quick View Modal Box End -->
-
-<!-- Deal Box Modal Start -->
-<div class="modal fade theme-modal deal-modal" id="deal-box" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div>
-                    <h5 class="modal-title w-100" id="deal_today">پرفروش ترین های امروز</h5>
-                    <p class="mt-1 text-content">محصولات پیشنهادی برای شما</p>
-                </div>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="deal-offer-box">
-                    <ul class="deal-offer-list">
-                        <li class="list-1">
-                            <div class="deal-offer-contain">
-                                <a href="shop-left-sidebar.html" class="deal-image">
-                                    <img src="{{ asset('front/images/vegetable/product/10.png') }}"
-                                         class="blur-up lazyload"
-                                         alt="">
-                                </a>
-
-                                <a href="shop-left-sidebar.html" class="deal-contain">
-                                    <h5>قهوه فوری مخلوط 50 گرم</h5>
-                                    <h6>52.720 تومان
-                                        <del>55.720</del>
-                                        <span>500 گرم</span></h6>
-                                </a>
-                            </div>
-                        </li>
-
-                        <li class="list-2">
-                            <div class="deal-offer-contain">
-                                <a href="shop-left-sidebar.html" class="deal-image">
-                                    <img src="{{ asset('front/images/vegetable/product/11.png') }}"
-                                         class="blur-up lazyload"
-                                         alt="">
-                                </a>
-
-                                <a href="shop-left-sidebar.html" class="deal-contain">
-                                    <h5>قهوه فوری مخلوط 50 گرم</h5>
-                                    <h6>52.720 تومان
-                                        <del>55.720</del>
-                                        <span>500 گرم</span></h6>
-                                </a>
-                            </div>
-                        </li>
-
-                        <li class="list-3">
-                            <div class="deal-offer-contain">
-                                <a href="shop-left-sidebar.html" class="deal-image">
-                                    <img src="{{ asset('front/images/vegetable/product/12.png') }}"
-                                         class="blur-up lazyload"
-                                         alt="">
-                                </a>
-
-                                <a href="shop-left-sidebar.html" class="deal-contain">
-                                    <h5>قهوه فوری مخلوط 50 گرم</h5>
-                                    <h6>52.720 تومان
-                                        <del>55.720</del>
-                                        <span>500 گرم</span></h6>
-                                </a>
-                            </div>
-                        </li>
-
-                        <li class="list-1">
-                            <div class="deal-offer-contain">
-                                <a href="shop-left-sidebar.html" class="deal-image">
-                                    <img src="{{ asset('front/images/vegetable/product/13.png') }}"
-                                         class="blur-up lazyload"
-                                         alt="">
-                                </a>
-
-                                <a href="shop-left-sidebar.html" class="deal-contain">
-                                    <h5>قهوه فوری مخلوط 50 گرم</h5>
-                                    <h6>52.720 تومان
-                                        <del>55.720</del>
-                                        <span>500 گرم</span></h6>
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Deal Box Modal End -->
-
-<!-- Add to cart Modal Start -->
-<div class="add-cart-box">
-    <div class="add-image">
-        <img src="{{ asset('front/images/cake/pro/1.jpg') }}" class="img-fluid blur-up lazyload" alt="">
-    </div>
-
-    <div class="add-contain">
-        <h6>افزودن به سبد خرید</h6>
-    </div>
-</div>
-<!-- Add to cart Modal End -->
-
-<!-- Tap to top and theme setting button start -->
-<div class="theme-option">
-    <div class="setting-box">
-        <button class="btn setting-button">
-            <i class="fa-solid fa-gear"></i>
-        </button>
-
-        <div class="theme-setting-2">
-            <div class="theme-box">
-                <ul>
-                    <li>
-                        <div class="setting-name">
-                            <h4>Color</h4>
-                        </div>
-                        <div class="theme-setting-button color-picker">
-                            <form class="form-control">
-                                <label for="colorPick" class="form-label mb-0">Theme Color</label>
-                                <input type="color" class="form-control form-control-color" id="colorPick"
-                                       value="#d99f46" title="Choose your color">
-                            </form>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="setting-name">
-                            <h4>Dark</h4>
-                        </div>
-                        <div class="theme-setting-button">
-                            <button class="btn btn-2 outline" id="darkButton">Dark</button>
-                            <button class="btn btn-2 unline" id="lightButton">Light</button>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="setting-name">
-                            <h4>RTL</h4>
-                        </div>
-                        <div class="theme-setting-button rtl">
-                            <button class="btn btn-2 rtl-unline">LTR</button>
-                            <button class="btn btn-2 rtl-outline">RTL</button>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="back-to-top">
-        <a id="back-to-top" href="#">
-            <i class="fas fa-chevron-up"></i>
-        </a>
-    </div>
-</div>
-<!-- Tap to top and theme setting button end -->
 
 <!-- Bg overlay Start -->
 <div class="bg-overlay"></div>
