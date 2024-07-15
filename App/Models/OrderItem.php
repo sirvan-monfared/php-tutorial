@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Helpers\CartItem;
+
 class OrderItem extends Model
 {
     protected string $table = 'order_items';
@@ -10,13 +12,13 @@ class OrderItem extends Model
     protected ?Product $product = null;
     protected ?Order $order = null;
 
-    public function insert(int $order_id, array $item)
+    public function insert(int $order_id, CartItem $item): ?OrderItem
     {
         return $this->create([
             'order_id' => $order_id,
-            'product_id' => $item['id'],
-            'quantity' => $item['qty'],
-            'unit_price' => $item['price'],
+            'product_id' => $item->id,
+            'quantity' => $item->qty,
+            'unit_price' => $item->price,
         ]);
     }
 

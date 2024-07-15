@@ -5,6 +5,10 @@ use App\Core\Session;
 use App\Core\Router;
 use App\Helpers\Cart;
 
+//error_reporting(E_ALL);
+//ini_set('display_errors', '1');
+ini_set("display_errors", 0);
+
 const BASE_PATH = __DIR__ . '/../';
 const SITE_URL = 'https://laracommerce.test/';
 
