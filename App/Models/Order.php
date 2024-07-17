@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Core\Database;
+use App\Enums\OrderStatus;
 
 class Order extends Model
 {
@@ -12,10 +13,6 @@ class Order extends Model
     protected ?User $user = null;
     protected ?Shipment $shipment = null;
 
-    const NOT_PAID = 1;
-    const PAID = 2;
-    const FAILED = 3;
-
     public function insert($amount): ?Order
     {
         return $this->create([
@@ -23,7 +20,7 @@ class Order extends Model
             'shipment_id' => null,
             'amount' => $amount,
             'gateway' => null,
-            'status' => Order::NOT_PAID
+            'status' => OrderStatus::NOT_PAID->value
         ]);
     }
 
@@ -45,7 +42,7 @@ class Order extends Model
         return $this->db->prepare($sql, [
             'ref_id' => $ref_id,
             'payment_order_id' => $payment_order_id,
-            'status' => ORDER::NOT_PAID
+            'status' => OrderStatus::NOT_PAID->value
         ], __CLASS__)->find();
     }
 
@@ -61,7 +58,7 @@ class Order extends Model
     public function changeStatusToPaid(string $track_id): static
     {
         return $this->update([
-            'status' => Order::PAID,
+            'status' => OrderStatus::PAID->value,
             'track_id' => $track_id,
             'updated_at' => now(),
             'id' => $this->id
@@ -71,7 +68,7 @@ class Order extends Model
     public function changeStatusToFailed(string $track_id): static
     {
         return $this->update([
-            'status' => Order::FAILED,
+            'status' => OrderStatus::FAILED->value,
             'track_id' => $track_id,
             'id' => $this->id
         ]);
@@ -79,7 +76,7 @@ class Order extends Model
 
     public function isPaid(): bool
     {
-        return $this->status === Order::PAID;
+        return $this->status === OrderStatus::PAID->value;
     }
 
     public function editLink(): string
@@ -87,13 +84,9 @@ class Order extends Model
         return route('admin.order.edit', ['id' => $this->id]);
     }
 
-    public function status(): string
+    public function status(): OrderStatus
     {
-        return match($this->status) {
-            self::NOT_PAID => '<span class="badge badge-warning">در انتظار پرداخت</span>',
-            self::PAID => '<span class="badge badge-success">پرداخت شده</span>',
-            self::FAILED => '<span class="badge badge-danger">پرداخت ناموفق</span>',
-        };
+        return OrderStatus::from($this->status);
     }
 
     public function updateStatus(array $data): Order
@@ -149,7 +142,7 @@ class Order extends Model
 
         return $this->db->prepare($sql, [
             'user_id' => $id,
-            'status' => Order::PAID
+            'status' => OrderStatus::PAID->value
         ], __CLASS__)->all();
     }
 
@@ -163,7 +156,7 @@ class Order extends Model
         $sql = "SELECT SUM(`amount`) AS total FROM {$this->table} WHERE status=:status LIMIT 1";
 
         return $this->db->prepare($sql, [
-            'status' => ORDER::PAID
+            'status' => OrderStatus::PAID->value
         ], __CLASS__)->find()->total;
     }
 
@@ -172,7 +165,7 @@ class Order extends Model
         $sql = "SELECT COUNT(`id`) AS count FROM {$this->table} WHERE status=:status LIMIT 1";
 
         return $this->db->prepare($sql, [
-            'status' => ORDER::PAID
+            'status' => OrderStatus::PAID->value
         ], __CLASS__)->find()->count;
     }
 
@@ -202,5 +195,18 @@ class Order extends Model
         ";
 
         return $this->db->prepare($sql, [], Product::class)->all();
+    }
+
+    public function filtered(array $data)
+    {
+        $sql = "SELECT * FROM {$this->table} WHERE 1";
+        $values = [];
+
+        if ($data['status'] ?? false) {
+            $sql .= " AND status=:status";
+            $values['status'] = $data['status'];
+        }
+
+        return $this->db->paginate($sql, $values, __CLASS__);
     }
 }

@@ -4,7 +4,7 @@
             <div class="title-header title-header-block package-card">
                 <div class="d-flex justify-content-between">
                     <h5>سفارش {{$order->id}}#</h5>
-                    {!! $order->status() !!}
+                    <span class="badge badge-{{ $order->status()->cssClass() }}">{{ $order->status()->translate() }}</span>
                 </div>
                 <div class="d-flex justify-content-between mt-3">
                     @if($order->payment_order_id)

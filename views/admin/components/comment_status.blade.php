@@ -1,3 +1,3 @@
-<option value="{{ App\Models\Comment::PENDING }}" @selected((int) $value === App\Models\Comment::PENDING)>در دست بررسی</option>
-<option value="{{ App\Models\Comment::ACCEPTED }}" @selected((int) $value === App\Models\Comment::ACCEPTED)>تایید شده</option>
-<option value="{{ App\Models\Comment::SPAM }}" @selected((int) $value === App\Models\Comment::SPAM)>هرزنامه</option>
+@foreach(App\Enums\CommentStatus::cases() as $commentStatus)
+    <option value="{{ $commentStatus->value }}" @selected((int) $value === $commentStatus->value)>{{ $commentStatus->translate() }}</option>
+@endforeach

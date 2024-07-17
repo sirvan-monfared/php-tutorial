@@ -2,13 +2,11 @@
 
 namespace App\Models;
 
+use App\Enums\CommentStatus;
+
 class Comment extends Model
 {
     protected string $table = 'comments';
-
-    CONST PENDING = 1;
-    CONST ACCEPTED = 2;
-    CONST SPAM = 3;
 
     protected ?User $user = null;
     protected ?Product $product = null;
@@ -20,7 +18,7 @@ class Comment extends Model
             'product_id' => $product_id,
             'body' => $data['body'],
             'rating' => (int) $data['rating'],
-            'status' => self::PENDING
+            'status' => CommentStatus::PENDING->value
         ]);
     }
 
@@ -69,13 +67,9 @@ class Comment extends Model
         ]);
     }
 
-    public function status(): string
+    public function status(): CommentStatus
     {
-        return match($this->status) {
-            self::PENDING => '<span class="badge badge-warning">در انتظار بررسی</span>',
-            self::ACCEPTED => '<span class="badge badge-success">تایید شده</span>',
-            self::SPAM => '<span class="badge badge-danger">هرزنامه</span>',
-        };
+        return CommentStatus::from($this->status);
     }
 
     public function forProduct(int $product_id): array
@@ -84,7 +78,7 @@ class Comment extends Model
 
         return $this->db->prepare($sql, [
             'product_id' => $product_id,
-            'status' => Comment::ACCEPTED
+            'status' => CommentStatus::ACCEPTED->value
         ], __CLASS__)->all();
     }
 

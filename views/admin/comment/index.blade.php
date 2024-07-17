@@ -40,7 +40,7 @@
 
                     <td>{{ $comment->body }}</td>
 
-                    <td>{!! $comment->status() !!}</td>
+                    <td><span class="badge badge-{{ $comment->status()->cssClass() }}">{{ $comment->status()->translate() }}</span></td>
 
                     <td>
                         <ul>

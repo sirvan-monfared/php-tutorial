@@ -13,8 +13,11 @@ class OrderController extends BaseController
 {
     public function index(): void
     {
+        $paginated = (new Order)->filtered($_GET);
+
         $this->view('admin.order.index', [
-            'orders' => (new Order)->all()
+            'orders' => $paginated->items,
+            'paginator' => $paginated->paginator
         ]);
     }
 

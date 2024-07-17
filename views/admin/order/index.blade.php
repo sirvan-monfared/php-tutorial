@@ -3,7 +3,13 @@
     'create_route' => route('admin.order.create')
 ])
 
+@section('css')
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin/css/select2.min.css') }}">
+@endsection
+
 @section('table')
+
+     @include('admin.order._filters')
 
     <table class="table all-package theme-table" id="table_id">
         <thead>
@@ -28,7 +34,9 @@
 
                 <td>{{ shamsi($order->created_at, 'Y/m/d - H:i')}}</td>
 
-                <td>{!! $order->status() !!}</td>
+                <td>
+                    <span class="badge badge-{{ $order->status()->cssClass() }}">{{ $order->status()->translate() }}</span>
+                </td>
 
                 <td>
                     <ul>
@@ -63,4 +71,11 @@
         </tbody>
     </table>
 
+    {!! $paginator->render() !!}
+
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('admin/js/select2.min.js') }}"></script>
+    <script src="{{ asset('admin/js/select2-custom.js') }}"></script>
 @endsection
