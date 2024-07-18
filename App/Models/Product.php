@@ -2,11 +2,18 @@
 
 namespace App\Models;
 
-use App\Core\Paginator;
+use App\Traits\Filterable;
+use App\Traits\HasImage;
 
 class Product extends Model
 {
+    use HasImage, Filterable {
+        HasImage::featuredImage insteadof Filterable;
+    }
+
     protected string $table = 'products';
+
+    protected string $default_image = 'front/images/default-product.jpg';
 
     const RULES = [
         'name' => ['required', 'min:3'],
@@ -80,35 +87,6 @@ class Product extends Model
             'seo_description' => $data['seo_description'],
             'seo_keywords' => $data['seo_keywords']
         ]);
-    }
-
-    public function featuredImage(): string
-    {
-        if (! $this->featured_image) return '';
-
-        return  asset("uploads/$this->featured_image");
-    }
-
-    public function featuredImageOrDefault(): string
-    {
-        return $this->featuredImage() ?: $this->defaultFeaturedImage();
-    }
-
-    public function featuredImagePath(): string
-    {
-        if (! $this->featured_image) return '';
-
-        return base_path('public/assets/uploads/') . $this->featured_image;
-    }
-
-    public function defaultFeaturedImage(): string
-    {
-        return asset('front/images/default-product.jpg');
-    }
-
-    public function hasFeaturedImage(): bool
-    {
-        return ($this->featuredImage() && $this->featuredImagePath() && is_file($this->featuredImagePath()));
     }
 
     public function filtered(array $data): object

@@ -2,10 +2,16 @@
 
 namespace App\Models;
 
+use App\Traits\HasImage;
+
 class Category extends Model
 {
+    use HasImage;
+
     protected string $table = 'categories';
     protected bool $timestamps = false;
+
+    protected string $default_image = 'front/svg/2/1.svg';
 
     const RULES = [
         'name' => ['required'],
@@ -44,34 +50,5 @@ class Category extends Model
     public function viewLink(): string
     {
         return route('category.show', ['slug' => $this->slug]);
-    }
-
-    public function featuredImage(): string
-    {
-        if (! $this->featured_image) return '';
-
-        return  asset("uploads/$this->featured_image");
-    }
-
-    public function featuredImageOrDefault(): string
-    {
-        return $this->featuredImage() ?: $this->defaultFeaturedImage();
-    }
-
-    public function featuredImagePath(): string
-    {
-        if (! $this->featured_image) return '';
-
-        return base_path('public/assets/uploads/') . $this->featured_image;
-    }
-
-    public function defaultFeaturedImage(): string
-    {
-        return asset('front/svg/2/1.svg');
-    }
-
-    public function hasFeaturedImage(): bool
-    {
-        return ($this->featuredImage() && $this->featuredImagePath() && is_file($this->featuredImagePath()));
     }
 }

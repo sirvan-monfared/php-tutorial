@@ -2,8 +2,12 @@
 
 namespace App\Models;
 
+use App\Traits\HasImage;
+
 class User extends Model
 {
+    use HasImage;
+
     protected string $table = 'users';
 
     const NAMES = [
