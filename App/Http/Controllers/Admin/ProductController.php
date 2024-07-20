@@ -52,22 +52,7 @@ class ProductController extends BaseController
             $this->handleCustomFields($product->id);
 
             if ($_FILES['gallery']['name'][0] ?? false) {
-                for($i = 0; $i < count($_FILES['gallery']['name']); $i++) {
-                    $upload_info = [
-                        "name" => $_FILES['gallery']['name'][$i],
-                        "full_path" => $_FILES['gallery']['name'][$i],
-                        "type" => $_FILES['gallery']['type'][$i],
-                        "tmp_name" => $_FILES['gallery']['tmp_name'][$i],
-                        "error" => $_FILES['gallery']['error'][$i],
-                        "size" => $_FILES['gallery']['size'][$i]
-                    ];
-
-                    $path = uploadImage($upload_info);
-
-                    if ($path) {
-                        (new Image())->insert($product->id, $path);
-                    }
-                }
+                $this->uploadGalleryImages($product);
             }
 
 
@@ -117,22 +102,7 @@ class ProductController extends BaseController
                     $product->deleteAllGalleryImages();
                 }
 
-                for($i = 0; $i < count($_FILES['gallery']['name']); $i++) {
-                    $upload_info = [
-                        "name" => $_FILES['gallery']['name'][$i],
-                        "full_path" => $_FILES['gallery']['name'][$i],
-                        "type" => $_FILES['gallery']['type'][$i],
-                        "tmp_name" => $_FILES['gallery']['tmp_name'][$i],
-                        "error" => $_FILES['gallery']['error'][$i],
-                        "size" => $_FILES['gallery']['size'][$i]
-                    ];
-
-                    $path = uploadImage($upload_info);
-
-                    if ($path) {
-                        (new Image())->insert($product->id, $path);
-                    }
-                }
+                $this->uploadGalleryImages($product);
             }
 
             $product->revise($_POST, $image_name);
@@ -177,6 +147,30 @@ class ProductController extends BaseController
                 'name' => $key,
                 'value' => $value
             ]);
+        }
+    }
+
+    /**
+     * @param Product|null $product
+     * @return void
+     */
+    public function uploadGalleryImages(?Product $product): void
+    {
+        for ($i = 0; $i < count($_FILES['gallery']['name']); $i++) {
+            $upload_info = [
+                "name" => $_FILES['gallery']['name'][$i],
+                "full_path" => $_FILES['gallery']['name'][$i],
+                "type" => $_FILES['gallery']['type'][$i],
+                "tmp_name" => $_FILES['gallery']['tmp_name'][$i],
+                "error" => $_FILES['gallery']['error'][$i],
+                "size" => $_FILES['gallery']['size'][$i]
+            ];
+
+            $path = uploadImage($upload_info);
+
+            if ($path) {
+                (new Image())->insert($product->id, $path);
+            }
         }
     }
 }

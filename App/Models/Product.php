@@ -4,12 +4,14 @@ namespace App\Models;
 
 use App\Traits\Filterable;
 use App\Traits\HasImage;
+use App\Traits\Sluggable;
 
 class Product extends Model
 {
     use HasImage, Filterable {
         HasImage::featuredImage insteadof Filterable;
     }
+    use Sluggable;
 
     protected string $table = 'products';
 
@@ -17,7 +19,6 @@ class Product extends Model
 
     const RULES = [
         'name' => ['required', 'min:3'],
-        'slug' => ['required', 'min:3'],
         'category_id' => ['required'],
         'description' =>  ['required', 'min:5'],
         'price' => ['required']
@@ -25,7 +26,6 @@ class Product extends Model
 
     const NAMES = [
         'name' => 'نام محصول',
-        'slug' => 'نامک محصول',
         'category_id' => 'دسته بندی',
         'description' =>  'توضیحات محصول',
         'price' => 'قیمت'
@@ -59,7 +59,7 @@ class Product extends Model
     {
         return $this->create([
             'name' => $data['name'],
-            'slug' => $data['slug'],
+            'slug' => $this->slugify($data['slug'] ?: $data['name']),
             'category_id' => $data['category_id'],
             'price' => $data['price'],
             'prev_price' => $data['prev_price'] ?: null,
@@ -74,9 +74,12 @@ class Product extends Model
 
     public function revise(array $data, ?string $image_name = ''): Product
     {
+        $slug = $data['slug'] ?: $data['name'];
+        $slug = ($data['slug'] !== $this->slug) ? $this->slugify($slug, except_id: $this->id) : $this->slug;
+
         return $this->update([
             'name' => $data['name'],
-            'slug' => $data['slug'],
+            'slug' => $slug,
             'category_id' => $data['category_id'],
             'price' => $data['price'],
             'prev_price' => $data['prev_price'] ?: null,
@@ -239,4 +242,5 @@ class Product extends Model
     {
         return (new Comment)->countForProduct($this->id);
     }
+
 }
