@@ -93,7 +93,7 @@ class Model {
         return $this;
     }
 
-    public function where($column, $value): static|bool
+    public function where($column, $value): static|bool|null
     {
         return $this->db->prepare("SELECT * FROM `{$this->table}` WHERE {$column}=:{$column}", [
             "$column" => $value

@@ -10,6 +10,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\TestController;
 
 $router->get('/', [HomeController::class, 'index'], 'home');
 $router->get('/search', [SearchController::class, 'index'], 'search');

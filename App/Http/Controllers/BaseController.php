@@ -16,10 +16,10 @@ class BaseController {
     public function __construct()
     {
         // TODO :: extract a csrf class with exception routes
-//        if (httpRequestMethod() !== 'GET' && ! CSRF::verify()) {
-//            Session::warning('نشست شما منقضی شده است');
-//            redirectBack();
-//        }
+        if (httpRequestMethod() !== 'GET' && ! CSRF::verify()) {
+            Session::warning('نشست شما منقضی شده است');
+            redirectBack();
+        }
 
         $this->blade = blade();
 

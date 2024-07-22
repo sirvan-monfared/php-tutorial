@@ -36,12 +36,12 @@ class User extends Model
         return $rules;
     }
 
-    public function byPhone(string $phone): static|bool
+    public function byPhone(string $phone): static|bool|null
     {
         return $this->where('phone', $phone);
     }
 
-    public function byToken($token)
+    public function byToken($token): static|bool|null
     {
         return $this->where('token', $token);
     }
