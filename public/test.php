@@ -1,23 +1,18 @@
 <?php
 
-interface Gateway
-{
-    public function getGatewayToken();
+abstract class NewGateway {
 
-    public function verify($amount);
-}
-
-interface MustAuthenticate
-{
-    public function authenticate($username, $password);
-}
-
-class Mellat implements Gateway, MustAuthenticate
-{
     public function image() {
         return  "/images/gateways/". strtolower(basename($this::class)) .".png";
     }
 
+    abstract public function getGatewayToken();
+
+    abstract public function verify($amount);
+}
+
+class Mellat extends NewGateway
+{
     public function getGatewayToken()
     {
         echo 'Connecting To Mellat Gateway...';
@@ -25,35 +20,24 @@ class Mellat implements Gateway, MustAuthenticate
 
     public function verify($amount)
     {
-        $this->authenticate('safsaf', 'safsaf');
+        // TODO: Implement verify() method.
     }
-
-    public function authenticate($username, $password) {
-        echo "authenticating...";
-    }
-
 }
-class Parsian implements Gateway
+class Parsian extends NewGateway
 {
-    public function image() {
-        return "/images/gateways/". strtolower(basename($this::class)) .".png";
-    }
 
     public function getGatewayToken()
     {
-        echo 'Connecting To Parsian Gateway...';
+        // TODO: Implement getGatewayToken() method.
     }
 
     public function verify($amount)
     {
-
+        // TODO: Implement verify() method.
     }
 }
-class IdPay implements Gateway
+class IdPay extends NewGateway
 {
-    public function image() {
-        return "/images/gateways/". strtolower(basename($this::class)) .".png";
-    }
 
     public function getGatewayToken()
     {
@@ -68,7 +52,7 @@ class IdPay implements Gateway
 
 class Order
 {
-    public function pay(Gateway $gateway)
+    public function pay(NewGateway $gateway)
     {
         $gateway->getGatewayToken();
 
@@ -82,4 +66,6 @@ if ($_GET['gateway']) {
 
     echo (new $gateway_name())->image();
 }
+
+//echo (new NewGateway())->image();
 

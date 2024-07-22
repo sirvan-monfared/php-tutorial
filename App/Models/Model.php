@@ -3,7 +3,7 @@ namespace App\Models;
 
 use App\Core\Database;
 
-class Model {
+abstract class Model {
 
     protected string $table = '';
     protected Database $db;
