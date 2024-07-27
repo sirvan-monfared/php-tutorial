@@ -2,8 +2,10 @@
 
 namespace App\Core;
 
+use AllowDynamicProperties;
 use PDO;
 
+#[AllowDynamicProperties]
 class Database
 {
     public $pdo;

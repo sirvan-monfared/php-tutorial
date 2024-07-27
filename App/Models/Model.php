@@ -1,8 +1,10 @@
 <?php
 namespace App\Models;
 
+use AllowDynamicProperties;
 use App\Core\Database;
 
+#[AllowDynamicProperties]
 abstract class Model {
 
     protected string $table = '';

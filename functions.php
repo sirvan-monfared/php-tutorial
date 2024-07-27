@@ -194,3 +194,8 @@ function blade(): BladeOne
 {
     return new BladeOne(base_path('views'), base_path('storage/cache'), BladeOne::MODE_DEBUG);
 }
+
+function sum(int $a,int $b): int
+{
+    return $a + $b;
+}
