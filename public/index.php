@@ -29,6 +29,11 @@ $router = new Router();
 
 require(base_path('routes/routes.php'));
 
-$router->match(httpRequestMethod());
+try {
+    $router->match(httpRequestMethod());
+} catch (\App\Exceptions\RouteNotMatchException $e) {
+    abort();
+}
+
 
 Session::unflash();

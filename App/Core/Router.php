@@ -4,6 +4,9 @@ namespace App\Core;
 
 use AltoRouter;
 use App\Core\Middlewares\Middleware;
+use App\Exceptions\RegisterRouteException;
+use App\Exceptions\RouteNotMatchException;
+use PHPUnit\Logging\Exception;
 
 class Router {
 
@@ -15,7 +18,15 @@ class Router {
         $this->router = new AltoRouter();
     }
 
-    protected function add($uri, $controller, $method, $name = null){
+    /**
+     * @throws RegisterRouteException
+     */
+    public function add($uri, $controller, $method, $name = null): static
+    {
+        if (! is_array($controller)) {
+            throw new RegisterRouteException("controller should be an array");
+        }
+
         $this->routes[] = [
             'uri' => $uri,
             'controller' => $controller,
@@ -68,16 +79,19 @@ class Router {
         $this->routes[array_key_last($this->routes)]['middleware'] = $key; 
     }
 
-    public function match($method) 
+    /**
+     * @throws RouteNotMatchException
+     */
+    public function match($method, $currentUrl = null)
     {
         foreach($this->routes as $route) {
             $this->router->map($route['method'], $route['uri'], [...$route['controller'], $route['middleware']], $route['name']);
         }
 
-        $match = $this->router->match(requestMethod: $method);
+        $match = $this->router->match(requestUrl: $currentUrl, requestMethod: $method);
 
         if (!$match || !is_array($match)) {
-            $this->abort();
+            throw new RouteNotMatchException("Route Does not Exists");
         }
 
         $class = $match['target'][0] ?? null;
@@ -85,12 +99,15 @@ class Router {
         $middleware = $match['target'][2] ?? null;
         $params = $match['params'];
 
+        if (! class_exists($class) || ! method_exists($class, $method)) {
+            throw new RouteNotMatchException("Controller or Method Not Found");
+        }
+
         if ($middleware) {
             Middleware::handle($middleware);
         }   
 
-        (new $class)->$method(...$params);
-        return;
+        return (new $class)->$method(...$params);
     }
 
 
@@ -100,5 +117,10 @@ class Router {
 
     public function route($name, $params) {
         return $this->router->generate($name, $params);
+    }
+
+    public function routes(): array
+    {
+        return $this->routes;
     }
 }
