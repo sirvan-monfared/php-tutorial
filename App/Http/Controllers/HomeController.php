@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use App\Models\Model;
-use App\Models\Product;
+use App\Core\App;
+use App\Services\InvoiceService;
 
 class HomeController extends BaseController
 {
+    public function __construct(public InvoiceService $invoiceService) {
+        parent::__construct();
+    }
+
+    // Dependency Injection
     public function index(): void
     {
-        $this->view('front.home', [
-            'products' => (new Product)->all(limit: 4, order_by: "RAND()"),
-            'categories' => (new Category)->all(),
-            'top_purchased' => (new Product)->topPurchased(limit: 4),
-            'most_recent' => (new Product)->all(limit: 4, order_by: "id DESC"),
-        ]);
+        $result = $this->invoiceService->process(['id' => 12, 'name' => 'sirvan', 'age' => 19], 100000);
+
+        echo $result ? "finished" : "failed";
     }
 }

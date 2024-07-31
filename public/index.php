@@ -19,9 +19,10 @@ session_start();
 $dotenv = Dotenv\Dotenv::createImmutable(BASE_PATH);
 $dotenv->load();
 
-$cart = new Cart;
 
 $url = currentUrl();
+
+require base_path('bootstrap.php');
 
 (new Authenticator())->check();
 

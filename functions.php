@@ -1,5 +1,6 @@
 <?php
 
+use App\Core\App;
 use App\Core\Authenticator;
 use App\Core\CSRF;
 use App\Core\Request;
@@ -175,7 +176,7 @@ function uploadImage(array $file): bool|string
     $new_name = time() . rand(500, 10000) . '.' . $extension;
     $path = base_path('public/assets/uploads/') . $new_name;
 
-    $manager = new ImageManager(new Driver());
+    $manager = App::resolve(ImageManager::class);
     $image = $manager->read($file['tmp_name']);
 
     if ($image->save($path)) {
@@ -188,11 +189,6 @@ function uploadImage(array $file): bool|string
 function shamsi($date, $format = 'Y/m/d'): string
 {
     return jdate($date)->format($format);
-}
-
-function blade(): BladeOne
-{
-    return new BladeOne(base_path('views'), base_path('storage/cache'), BladeOne::MODE_DEBUG);
 }
 
 function sum(int $a,int $b): int

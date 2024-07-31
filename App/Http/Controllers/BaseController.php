@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Composers\CategoriesComposer;
+use App\Core\App;
+use App\Core\Container;
 use App\Core\CSRF;
 use App\Core\Session;
 use App\Core\Validator;
@@ -21,7 +23,8 @@ class BaseController {
             redirectBack();
         }
 
-        $this->blade = blade();
+
+        $this->blade = App::resolve('blade');
 
         $this->setComposers();
     }

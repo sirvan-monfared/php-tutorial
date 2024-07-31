@@ -76,7 +76,7 @@ class Paginator
 
     public function render()
     {
-        return blade()->run('admin.partials._pagination', [
+        return App::resolve('blade')->run('admin.partials._pagination', [
             'paginator' => $this
         ]);
     }

@@ -1,5 +1,5 @@
 <?php
-include (base_path('routes/front.php'));
-include (base_path('routes/dashboard.php'));
-include (base_path('routes/auth.php'));
-include (base_path('routes/admin.php'));
+
+use App\Http\Controllers\HomeController;
+
+$router->get('/', [HomeController::class, 'index'], 'home');

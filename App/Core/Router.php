@@ -107,7 +107,7 @@ class Router {
             Middleware::handle($middleware);
         }   
 
-        return (new $class)->$method(...$params);
+        return App::resolve($class)->$method(...$params);
     }
 
 
